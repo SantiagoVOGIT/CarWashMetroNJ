@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrarse / CarWashMetro</title>
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
+    <meta
+      name="description"
+      content="!Registrate ahora en CarWashMetro para empezar a usar a nuestros servicios!" />
+
+    <!-- Links CSS -->
+    <%- include('templates/styles') %>
+  </head>
+
+  <body>
+    <main class="vh-100">
+      <div class="container-fluid h-100">
+        <div class="row h-100">
+          <!-- Columna izquierda que siempre se mostrará en cualquier dispositivo -->
+          <div
+            class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column">
+            <div>
+              <h1 class="rem-3 weight-700">Registrarse</h1>
+            </div>
+            <!-- Contenido de la columna izquierda -->
+            <div
+              class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75">
+              <h2 class="text-center">
+                Aquí puedes registrate rapídamente, recuerda verificar que los
+                datos ingresados son correctos
+              </h2>
+              <form class="w-100 mt-5" action="" method="post" id="myForm">
+                <input
+                  class="w-100 input-primary"
+                  type="text"
+                  id="identificacion"
+                  name="identificacion"
+                  placeholder="Identificación"
+                  title="Número de identificación, puede ser tu cédula"
+                  required />
+                <input
+                  class="mt-3 w-100 input-primary"
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Nombre"
+                  title="Tu nombre"
+                  required />
+                <input
+                  class="mt-3 w-100 input-primary"
+                  type="text"
+                  id="apellido"
+                  name="apellido"
+                  placeholder="Apellido"
+                  title="Tu apellido"
+                  required />
+                <input
+                  class="mt-3 w-100 input-primary"
+                  type="text"
+                  id="telefono"
+                  name="telefono"
+                  placeholder="Teléfono"
+                  title="Tu número de teléfono o celular"
+                  required />
+
+                <!-- mensaje de error -->
+
+                <!-- Boton de registrarse -->
+                <input
+                  class="mt-4 w-100 button-primary"
+                  type="submit"
+                  value="Registrarse" />
+
+                <hr class="mt-5" />
+              </form>
+
+              <h3 class="mt-3 text-center">¿Ya tienes una cuenta?</h3>
+              <a
+                class="link-primary mt-2 rem-1-5"
+                href="/"
+                title="Ir a registrarse"
+                >Inicia sesión aquí</a
+              >
+            </div>
+          </div>
+
+          <!-- Columna derecha que se ocultará en dispositivos móviles y ocupará toda la pantalla -->
+          <div
+            class="col-12 col-md-6 d-none d-md-flex justify-content-center align-items-center">
+            <!-- Contenido de la columna derecha -->
+            <div class="w-75">
+              <img
+                class="img-fluid"
+                src="/img/logo-main-carwashmetro.png"
+                alt="CarWashMetro Logo" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- links de scripts -->
+  </body>
+</html>

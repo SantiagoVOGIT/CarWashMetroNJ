@@ -1,0 +1,44 @@
+//Variables de colores
+$primary-color: #3398db;
+$secondary-color: #194a6b;
+$accent-color: #e74c3c;
+
+//Variables de color de fondos
+$background-color-primary: #121212;
+$background-color-secondary: #1d1d1d;
+$background-color-tertiary: #2e2e2e;
+
+//Variables de texto
+
+$text-color: #ffffff;
+$font-primary: "Raleway", sans-serif;
+$font-secondary: "Montserrat", sans-serif;
+$line-height: 1.5;
+
+// colores
+$color-white: #ffffff;
+$color-red: #db3333;
+$color-green: #33db57;
+$color-orange: #db9833;
+
+//Otras
+$border-radius-primary: 10px;
+$border-radius-secondary: 16px;
+$border-radius-tertiary: 5px;
+$padding-primary: 35px;
+
+$transition-duration: 0.2s;
+
+// Sombras y filtros
+$blur-primary: blur(30px);
+$brightness-primary: brightness(1.3);
+
+$shadow-primary: 0 0 5px rgba($primary-color, 0.1),
+  0 0 10px rgba($primary-color, 0.1), 0 0 15px rgba($primary-color, 0.1);
+
+$shadow-secondary: 0 0 5px rgba($background-color-tertiary, 0.1),
+  0 0 10px rgba($background-color-tertiary, 0.1),
+  0 0 15px rgba($background-color-tertiary, 0.1);
+
+$shadow-danger: 0 0 5px rgba($color-red, 0.1), 0 0 10px rgba($color-red, 0.1),
+  0 0 15px rgba($color-red, 0.1);

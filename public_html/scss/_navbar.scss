@@ -1,0 +1,45 @@
+@import "variables";
+
+.navbar {
+  background-color: rgba(
+    $background-color-secondary,
+    0.7
+  ); // Reemplaza 0.5 con tu valor de transparencia deseado
+  backdrop-filter: $blur-primary;
+}
+
+// Estilado de los textos con contenedores de iconos
+
+.text-icon-container {
+  background-color: $background-color-tertiary;
+  border-radius: $border-radius-tertiary;
+  color: $text-color;
+  font-size: 1.5rem;
+  padding: 8px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-right: 9px;
+  &:hover {
+    box-shadow: $shadow-secondary;
+  }
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-color;
+  border-radius: $border-radius-tertiary;
+  padding: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.icon-container i {
+  font-size: 2.5rem;
+  color: $color-white;
+}
+
+.a {
+  border: solid 1px red;
+}

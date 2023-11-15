@@ -1,13 +1,29 @@
 {
-  "name": "nodejs-practica",
+  "name": "carwashmetro",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicación web para automatizar los procesos manuales de un autolavado",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantiagoVOGIT/CarWashMetroNJ.git"
+  },
+  "keywords": [
+    "autolavado",
+    "automatizacion",
+    "reservas"
+  ],
+  "author": "Santiago Valencia Ochoa <santiagovalenciaochoa2005@gmail.com>",
+  "contributors": [
+    "Susana Gonzales Lopez <zacglopez13@gmail.com>",
+    "Erika Alexandra Mendoza <alexandramendoza511@gmail.com>",
+    "Maria Clara Baldovino <mariaclarabaldovino@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/SantiagoVOGIT/CarWashMetroNJ/issues"
+  },
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.9",

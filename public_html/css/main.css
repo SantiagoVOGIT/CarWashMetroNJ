@@ -524,7 +524,7 @@ table {
   box-sizing: border-box;
 }
 
-.navbar {
+.navbar-background {
   background-color: rgba(29, 29, 29, 0.7);
   -webkit-backdrop-filter: blur(30px);
           backdrop-filter: blur(30px);
@@ -560,6 +560,20 @@ table {
   color: #ffffff;
 }
 
+.logo-nav {
+  width: 7rem;
+}
+
+@media (max-width: 991px) {
+  .collapse-nav-config {
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .collapse-nav-config .button-primary {
+    margin: 0px !important;
+  }
+}
 .a {
   border: solid 1px red;
 }

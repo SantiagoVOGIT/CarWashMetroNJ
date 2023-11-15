@@ -1,6 +1,6 @@
 @import "variables";
 
-.navbar {
+.navbar-background {
   background-color: rgba(
     $background-color-secondary,
     0.7
@@ -38,6 +38,22 @@
 .icon-container i {
   font-size: 2.5rem;
   color: $color-white;
+}
+
+.logo-nav {
+  width: 7rem;
+}
+
+@media (max-width: 991px) {
+  .collapse-nav-config {
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .button-primary {
+      margin: 0px !important;
+    }
+  }
 }
 
 .a {

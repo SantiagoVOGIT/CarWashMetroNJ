@@ -20,23 +20,19 @@
         <div class="row h-100">
           <!-- Columna izquierda que siempre se mostrará en cualquier dispositivo -->
           <div
-            class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column">
+            class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column p-5">
             <div>
               <h1 class="rem-3 weight-700">Iniciar sesión</h1>
             </div>
             <!-- Contenido de la columna izquierda -->
             <div
-              class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75">
+              class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75 media-sm-w-100">
               <h2 class="text-center">
                 Si ya tienes una cuenta, inicia sesión para empezar a disfrutar
                 de nuestros servicios
               </h2>
 
-              <form
-                class="w-100 mt-5"
-                action="/users/login"
-                method="post"
-                id="myForm">
+              <form class="w-100 mt-5" action="/" method="post" id="myForm">
                 <input
                   class="w-100 input-primary"
                   type="text"
@@ -67,6 +63,12 @@
                     >Administrador</span
                   >
                 </div>
+                <% if (typeof message !== 'undefined') { %>
+                <div
+                  class="<%= message.type === 'error' ? 'errorAlert-primary' : 'successAlert-primary' %> mt-4">
+                  <%= message.text %>
+                </div>
+                <% } %>
 
                 <!-- Boton de iniciar sesión -->
                 <input

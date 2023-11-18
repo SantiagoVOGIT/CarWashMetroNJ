@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil / CarWashMetro</title>
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
+    <meta
+      name="description"
+      content="Controla tu información desde el perfil" />
+
+    <!-- Links CSS -->
+    <%- include('../templates/styles') %>
+  </head>
+
+  <body class="vh-100">
+    <!-- Navbar -->
+    <%- include('../templates/headeruser') %>
+    <!-- Main ocupa el 90% del body y el nav el 10% -->
+
+    <main
+      class="h-100 p-5 d-flex justify-content-center align-items-center nav-margin">
+      <!-- Contenedor principal de la pagina -->
+      <div
+        class="container-fluid w-75 media-lg-w-100 h-100 d-flex flex-column flex-lg-row justify-content-center align-items-center gap-6 p-0">
+        <!-- Contenedor de información de usuario -->
+
+        <div class="container-fluid container-primary p-5">
+          <!-- Contenedor de icono y texto exterior -->
+
+          <div class="p-0">
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="icon-container">
+                <i class="material-icons"> feed </i>
+              </div>
+              <h2 class="ms-3 rem-2-2 weight-700">Tu información</h2>
+            </div>
+            <!-- Sub contenedor de información de usuario -->
+
+            <div class="mt-4 container-secondary border-primary p-5">
+              <!-- Contenedor de icono y texto de nombre de usuario -->
+              <div class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> person </i>
+                </div>
+                <h3 class="ms-3 opacity-75 weight-700">
+                  <%= user.nombre %> <%= user.apellido %>
+                </h3>
+              </div>
+
+              <hr />
+
+              <!-- Contenedor de icono y texto de número de identificación -->
+              <div class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> badge </i>
+                </div>
+                <h3 class="ms-3 font-secondary opacity-75">
+                  <%= user.identificacion %>
+                </h3>
+              </div>
+
+              <hr />
+
+              <!-- Contenedor de icono y texto de número de telefono -->
+              <div class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> call </i>
+                </div>
+                <h3 class="ms-3 font-secondary opacity-75">
+                  <%= user.telefono %>
+                </h3>
+              </div>
+
+              <hr />
+              <button class="mt-4 w-100 button-primary">
+                Modificar información
+              </button>
+              <button class="mt-4 w-100 button-danger-primary">
+                Eliminar cuenta
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenedor de información de vehículos -->
+
+        <div class="container-fluid container-primary p-5">
+          <!-- Contenedor de icono y texto exterior -->
+
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="icon-container">
+              <i class="material-icons"> airport_shuttle </i>
+            </div>
+            <h2 class="ms-3 rem-2-2 weight-700">Tus vehículos</h2>
+          </div>
+
+          <!-- Contenedor de info de vehículo -->
+          <div
+            class="d-flex flex-column flex-sm-row justify-content-between justify-content-center mt-4 container-secondary border-primary p-4 gap-4">
+            <!-- Contenedor de info de tipó de vehiculo -->
+
+            <div class="d-flex align-items-center">
+              <div class="icon-container">
+                <i class="material-icons"> directions_car </i>
+              </div>
+              <h2 class="ms-3">Carro</h2>
+            </div>
+
+            <!-- Contenedor de info de marca de vehículo -->
+            <div class="d-flex align-items-center">
+              <div class="icon-container">
+                <i class="material-icons"> branding_watermark </i>
+              </div>
+              <h2 class="ms-3">Marca</h2>
+            </div>
+
+            <!-- Contenedor de info de placa de vehículo -->
+            <div class="d-flex align-items-center">
+              <div class="icon-container">
+                <i class="material-icons"> money </i>
+              </div>
+              <h2 class="ms-3 font-secondary">AAA-000</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- links de scripts -->
+    <%- include('../templates/scripts') %>
+  </body>
+</html>

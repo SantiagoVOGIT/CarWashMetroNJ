@@ -27,10 +27,30 @@ body {
   padding: 0;
 }
 
-.text-icon-container-profile {
-  background-color: transparent;
+// Responsive globales
+
+// lg
+@media (max-width: 991px) {
+  // heredor del rem global
+  body {
+    font-size: 1.2rem;
+  }
+
+  // Complemento responsive para ajustar el width de los contenedores principales en diferentes tamaños
+  .media-lg-w-100 {
+    width: 100% !important;
+  }
 }
 
-.rows-info-container {
-  background-color: $background-color-secondary;
+// sm
+
+@media (max-width: 576px) {
+  body {
+    font-size: 1.2rem;
+  }
+
+  // Complemento responsive para ajustar el width de los contenedores principales en diferentes tamaños
+  .media-sm-w-100 {
+    width: 100% !important;
+  }
 }

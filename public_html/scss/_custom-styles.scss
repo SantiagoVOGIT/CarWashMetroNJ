@@ -24,6 +24,7 @@
   padding: $padding-primary;
   border-radius: $border-radius-primary;
 }
+
 // Estilos de botones
 
 .button-primary {
@@ -146,6 +147,20 @@
   font-weight: 700;
 }
 
+// vhs
+
+.vh-100 {
+  height: 100vh;
+}
+
+.vh-90 {
+  height: 100vh;
+}
+
+.gap-6 {
+  gap: 4rem !important;
+}
+
 // Tamaños de letra
 
 $font-sizes: (
@@ -228,12 +243,6 @@ $heights: (
   .h-#{$key} {
     height: $value;
   }
-}
-
-// 100% de ViewPort
-
-.vh-100 {
-  height: 100vh;
 }
 
 //* Estilos para el switch */

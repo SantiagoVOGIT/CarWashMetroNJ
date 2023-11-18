@@ -31,7 +31,11 @@
                 Aquí puedes registrate rapídamente, recuerda verificar que los
                 datos ingresados son correctos
               </h2>
-              <form class="w-100 mt-5" action="" method="post" id="myForm">
+              <form
+                class="w-100 mt-5"
+                action="/register"
+                method="post"
+                id="myForm">
                 <input
                   class="w-100 input-primary"
                   type="text"
@@ -66,6 +70,13 @@
                   required />
 
                 <!-- mensaje de error -->
+
+                <% if (typeof message !== 'undefined') { %>
+                <div
+                  class="<%= message.type === 'error' ? 'errorAlert-primary' : 'successAlert-primary' %> mt-4">
+                  <%= message.text %>
+                </div>
+                <% } %>
 
                 <!-- Boton de registrarse -->
                 <input

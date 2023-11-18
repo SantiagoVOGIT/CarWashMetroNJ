@@ -1,24 +1,35 @@
-//Importador modulo externos
-let db = require("./database");
 const express = require("express");
-const mysql = require("mysql");
-const router = require("./router/routes");
+const session = require("express-session");
 const app = express();
-
-//Configuración del server
 const port = 3000;
 
-//motor de plantillas
+// El resto de tu código aquí...
+
+// Configuración de motor de plantillas
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
-//Instanciamiento de la carpeta public
+// Configuración para establecer la carpeta publica para el usuario
 app.use(express.static(__dirname + "/public_html"));
 
-//importación de la configuración de rutas
-app.use("/", require("./router/routes"));
+// Middleware para el registro
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-//middleware de 404
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }, // Recuerda configurar esto a true si estás en un entorno de producción con HTTPS habilitado
+  })
+);
+
+// Importación de rutas
+const routes = require("./router/routes");
+app.use("/", routes);
+
+// Plantilla predeterminado en caso de ingresar a una url no existente de la pagina
 app.use((req, res, next) => {
   res.status(404).render("404.ejs", {
     titulo: "Página no encontrada",

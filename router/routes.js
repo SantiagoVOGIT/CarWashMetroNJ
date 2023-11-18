@@ -85,7 +85,7 @@ router.post("/", (req, res) => {
         if (results.length > 0) {
           // Inicio de sesión exitoso
           req.session.user = results[0]; // Guarda el usuario en la sesión
-          res.redirect("/user/profile"); // Redirige al usuario a la página principal
+          res.redirect("/user/home"); // Redirige al usuario a la página principal
         } else {
           // Las credenciales no son correctas
           res.render("index.ejs", {
@@ -98,14 +98,6 @@ router.post("/", (req, res) => {
       }
     }
   );
-});
-
-router.get("/user/profile", (req, res) => {
-  if (req.session.user) {
-    res.render("user/profile.ejs", { user: req.session.user });
-  } else {
-    res.redirect("/");
-  }
 });
 
 module.exports = router;

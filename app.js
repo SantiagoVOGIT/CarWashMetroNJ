@@ -29,6 +29,9 @@ app.use(
 const routes = require("./router/routes");
 app.use("/", routes);
 
+const userRoutes = require("./router/routesUser");
+app.use("/", userRoutes);
+
 // Plantilla predeterminado en caso de ingresar a una url no existente de la pagina
 app.use((req, res, next) => {
   res.status(404).render("404.ejs", {

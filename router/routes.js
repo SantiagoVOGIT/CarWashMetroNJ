@@ -2,69 +2,72 @@ const express = require("express");
 const router = express.Router();
 const db = require("../database");
 
-// Configuración de ruta get para el registro
 router.get("/register", (req, res) => {
   res.render("register.ejs");
 });
 
 // Configuración de ruta post para el registro
 router.post("/register", (req, res) => {
-  const user = {
+  const usuario = {
     identificacion: req.body.identificacion,
     nombre: req.body.nombre,
     apellido: req.body.apellido,
     telefono: req.body.telefono,
   };
 
-  db.query(
-    "SELECT * FROM Usuarios WHERE identificacion = ?",
-    [user.identificacion],
-    (error, results) => {
-      if (error) {
-        console.log(error);
-        res.render("register", {
-          message: { type: "error", text: "Error al registrar el usuario" },
-        });
-      } else {
-        if (results.length > 0) {
-          res.render("register", {
-            message: {
-              type: "error",
-              text: "Usuario ya registrado, pruebe con otros datos",
-            },
-          });
-        } else {
-          db.query("INSERT INTO Usuarios SET ?", user, (error, results) => {
-            if (error) {
-              console.log(error);
-              res.render("register", {
-                message: {
-                  type: "error",
-                  text: "Error al registrar el usuario",
-                },
-              });
-            } else {
-              res.render("register", {
-                message: {
-                  type: "success",
-                  text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
-                },
-              });
-            }
-          });
-        }
-      }
-    }
-  );
-});
+  const vehiculo = {
+    marca: req.body.marca,
+    placa: req.body.placa,
+    tipo_vehiculo: req.body.tipo_vehiculo,
+  };
 
-// Configuración de ruta get para el index (incio de sesión)
+  db.query("INSERT INTO Usuarios SET ?", usuario, (error, userResults) => {
+    if (error) {
+      console.log(error);
+      res.render("register", {
+        message: {
+          type: "error",
+          text: "Error al registrar el usuario",
+        },
+      });
+    } else {
+      vehiculo.id_usuario = userResults.insertId;
+      db.query(
+        "INSERT INTO Vehiculos SET ?",
+        vehiculo,
+        (error, vehiculoResults) => {
+          console.log("Vehiculo insertion results:", vehiculoResults);
+          if (error) {
+            console.log(error);
+            res.render("register", {
+              message: {
+                type: "error",
+                text: "Error al registrar el vehículo",
+              },
+            });
+          } else {
+            // Después de insertar el usuario y vehículo en la base de datos
+            req.session.user = {
+              ...usuario,
+              vehiculo: vehiculo, // Aquí añadimos la información del vehículo
+            };
+
+            res.render("register", {
+              message: {
+                type: "success",
+                text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
+              },
+            });
+          }
+        }
+      );
+    }
+  });
+});
 
 router.get("/", (req, res) => {
   res.render("index.ejs");
 });
-
-// Configuración de ruta post para el index (incio de sesión)
 
 router.post("/", (req, res) => {
   const user = {
@@ -83,11 +86,10 @@ router.post("/", (req, res) => {
         });
       } else {
         if (results.length > 0) {
-          // Inicio de sesión exitoso
-          req.session.user = results[0]; // Guarda el usuario en la sesión
-          res.redirect("/user/home"); // Redirige al usuario a la página principal
+          req.session.user = results[0];
+          console.log("Session after login:", req.session);
+          res.redirect("/user/home");
         } else {
-          // Las credenciales no son correctas
           res.render("index.ejs", {
             message: {
               type: "error",

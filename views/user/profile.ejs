@@ -93,7 +93,7 @@
             <div class="icon-container">
               <i class="material-icons"> airport_shuttle </i>
             </div>
-            <h2 class="ms-3 rem-2-2 weight-700">Tus vehículos</h2>
+            <h2 class="ms-3 rem-2-2 weight-700">Tu vehículo</h2>
           </div>
 
           <!-- Contenedor de info de vehículo -->
@@ -103,9 +103,16 @@
 
             <div class="d-flex align-items-center">
               <div class="icon-container">
-                <i class="material-icons"> directions_car </i>
+                <% if (user.vehiculo.tipo_vehiculo === 'carro') { %>
+                <i class="material-icons">directions_car</i>
+                <% } else if (user.vehiculo.tipo_vehiculo === 'moto') { %>
+                <i class="material-icons">two_wheeler</i>
+                <% } else { %>
+                <!-- Manejar otro tipo de vehículo o mostrar un icono predeterminado -->
+                <i class="material-icons">directions_car</i>
+                <% } %>
               </div>
-              <h2 class="ms-3">Carro</h2>
+              <h2 class="ms-3"><%= user.vehiculo.tipo_vehiculo %></h2>
             </div>
 
             <!-- Contenedor de info de marca de vehículo -->
@@ -113,7 +120,7 @@
               <div class="icon-container">
                 <i class="material-icons"> branding_watermark </i>
               </div>
-              <h2 class="ms-3">Marca</h2>
+              <h2 class="ms-3"><%= user.vehiculo.marca %></h2>
             </div>
 
             <!-- Contenedor de info de placa de vehículo -->
@@ -121,7 +128,7 @@
               <div class="icon-container">
                 <i class="material-icons"> money </i>
               </div>
-              <h2 class="ms-3 font-secondary">AAA-000</h2>
+              <h2 class="ms-3 font-secondary"><%= user.vehiculo.placa %></h2>
             </div>
           </div>
         </div>

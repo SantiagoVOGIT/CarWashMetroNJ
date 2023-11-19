@@ -69,7 +69,7 @@
   }
 
   &::placeholder {
-    font-family: $font-primary;
+    font-family: $font-secondary;
     color: rgba($text-color, 0.5);
     font-weight: 500;
   }
@@ -150,10 +150,6 @@
 // vhs
 
 .vh-100 {
-  height: 100vh;
-}
-
-.vh-90 {
   height: 100vh;
 }
 

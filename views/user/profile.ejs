@@ -8,23 +8,23 @@
     <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
     <meta
       name="description"
-      content="Controla tu información desde el perfil" />
+      content="Aquí puedes ver toda tu información personal" />
 
     <!-- Links CSS -->
     <%- include('../templates/styles') %>
   </head>
 
   <body class="vh-100">
-    <!-- Navbar -->
-    <%- include('../templates/headeruser') %>
-    <!-- Main ocupa el 90% del body y el nav el 10% -->
+    <div class="container-fluid p-0 m-0 d-flex flex-column h-100">
+      <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
+      <%- include('../templates/headeruser') %>
 
-    <main
-      class="h-100 p-5 d-flex justify-content-center align-items-center nav-margin">
-      <!-- Contenedor principal de la pagina -->
-      <div
-        class="container-fluid w-75 media-lg-w-100 h-100 d-flex flex-column flex-lg-row justify-content-center align-items-center gap-6 p-0">
-        <!-- Contenedor de información de usuario -->
+      <!-- contenedor principal -->
+
+      <main
+        class="container-fluid p-5 gap-6 w-75 d-flex flex-column flex-lg-row align-items-center media-sm-w-100"
+        style="flex: 1">
+        <!-- contenedor de información de usuario -->
 
         <div class="container-fluid container-primary p-5">
           <!-- Contenedor de icono y texto exterior -->
@@ -102,6 +102,7 @@
             <!-- Contenedor de info de tipó de vehiculo -->
 
             <div class="d-flex align-items-center">
+              <!-- Icono dinámico en base al tipo de vehiculo-->
               <div class="icon-container">
                 <% if (user.vehiculo.tipo_vehiculo === 'carro') { %>
                 <i class="material-icons">directions_car</i>
@@ -132,10 +133,10 @@
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
 
-    <!-- links de scripts -->
+    <!-- Enlaces de scripts -->
     <%- include('../templates/scripts') %>
   </body>
 </html>

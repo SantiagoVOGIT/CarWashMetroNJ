@@ -14,95 +14,92 @@
     <%- include('templates/styles') %>
   </head>
 
-  <body>
-    <main class="vh-100">
-      <div class="container-fluid h-100">
-        <div class="row h-100">
-          <!-- Columna izquierda que siempre se mostrará en cualquier dispositivo -->
-          <div
-            class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column p-5">
-            <div>
-              <h1 class="rem-3 weight-700">Iniciar sesión</h1>
-            </div>
-            <!-- Contenido de la columna izquierda -->
-            <div
-              class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75 media-sm-w-100">
-              <h2 class="text-center">
-                Si ya tienes una cuenta, inicia sesión para empezar a disfrutar
-                de nuestros servicios
-              </h2>
+  <body class="vh-100">
+    <div class="container-fluid p-0 m-0 h-100">
+      <main class="row m-0 p-5 media-sm-w-100 h-100" style="flex: 1">
+        <!-- Contenedor de columna de inicio de sesión-->
 
-              <form class="w-100 mt-5" action="/" method="post" id="myForm">
-                <input
-                  class="w-100 input-primary"
-                  type="text"
-                  id="telefono"
-                  name="telefono"
-                  placeholder="Teléfono"
-                  title="Número de celular o teléfono que registraste" />
-                <input
-                  class="mt-3 w-100 input-primary"
-                  type="password"
-                  id="identificacion"
-                  name="identificacion"
-                  placeholder="Identificación"
-                  title="Número de identificación que registraste" />
-
-                <!-- switch de palanca -->
-                <div class="d-flex align-items-center mt-4">
-                  <label
-                    title="Si no eres administrador no selecciones esta opción"
-                    class="switch">
-                    <input
-                      type="checkbox"
-                      id="usePassword"
-                      name="usePassword" />
-                    <span class="slider"></span>
-                  </label>
-                  <span class="opacity-50 ms-3 weight-500 rem-1-5"
-                    >Administrador</span
-                  >
-                </div>
-                <% if (typeof message !== 'undefined') { %>
-                <div
-                  class="<%= message.type === 'error' ? 'errorAlert-primary' : 'successAlert-primary' %> mt-4">
-                  <%= message.text %>
-                </div>
-                <% } %>
-
-                <!-- Boton de iniciar sesión -->
-                <input
-                  class="mt-4 w-100 button-primary"
-                  type="submit"
-                  value="Iniciar sesión" />
-
-                <hr class="mt-5" />
-              </form>
-
-              <h3 class="mt-3 text-center rem-1-5">¿No tienes una cuenta?</h3>
-              <a
-                class="link-primary mt-2 rem-1-5"
-                href="/register"
-                title="Ir a registrarse"
-                >Registrate aquí</a
-              >
-            </div>
+        <div
+          class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column p-0">
+          <div>
+            <h1 class="rem-3 weight-700">Iniciar sesión</h1>
           </div>
 
-          <!-- Columna derecha que se ocultará en dispositivos móviles y ocupará toda la pantalla -->
+          <!-- Contenido de la columna izquierda -->
+
           <div
-            class="col-12 col-md-6 d-none d-md-flex justify-content-center align-items-center">
-            <!-- Contenido de la columna derecha -->
-            <div class="w-75">
-              <img
-                class="img-fluid"
-                src="/img/logo-main-carwashmetro.png"
-                alt="CarWashMetro Logo" />
-            </div>
+            class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75 media-sm-w-100">
+            <h2 class="text-center">
+              Si ya tienes una cuenta, inicia sesión para empezar a disfrutar de
+              nuestros servicios
+            </h2>
+
+            <form class="w-100 mt-5" action="/" method="post" id="myForm">
+              <input
+                class="w-100 input-primary"
+                type="text"
+                id="telefono"
+                name="telefono"
+                placeholder="Teléfono"
+                title="Número de celular o teléfono que registraste" />
+              <input
+                class="mt-3 w-100 input-primary"
+                type="password"
+                id="identificacion"
+                name="identificacion"
+                placeholder="Identificación"
+                title="Número de identificación que registraste" />
+
+              <!-- switch de palanca -->
+              <div class="d-flex align-items-center mt-4">
+                <label
+                  title="Si no eres administrador no selecciones esta opción"
+                  class="switch">
+                  <input type="checkbox" id="usePassword" name="usePassword" />
+                  <span class="slider"></span>
+                </label>
+                <span class="opacity-50 ms-3 weight-500 rem-1-5"
+                  >Administrador</span
+                >
+              </div>
+              <% if (typeof message !== 'undefined') { %>
+              <div
+                class="<%= message.type === 'error' ? 'errorAlert-primary' : 'successAlert-primary' %> mt-4">
+                <%= message.text %>
+              </div>
+              <% } %>
+
+              <!-- Boton de iniciar sesión -->
+              <input
+                class="mt-4 w-100 button-primary"
+                type="submit"
+                value="Iniciar sesión" />
+
+              <hr class="mt-5" />
+            </form>
+
+            <h3 class="mt-3 text-center rem-1-5">¿No tienes una cuenta?</h3>
+            <a
+              class="link-primary mt-2 rem-1-5"
+              href="/register"
+              title="Ir a registrarse"
+              >Registrate aquí</a
+            >
           </div>
         </div>
-      </div>
-    </main>
+        <!-- Contenido de columna con el logo -->
+        <div
+          class="col-12 col-md-6 d-none d-md-flex justify-content-center align-items-center">
+          <!-- Contenido de la columna derecha -->
+          <div class="w-75">
+            <img
+              class="img-fluid"
+              src="/img/logo-main-carwashmetro.png"
+              alt="CarWashMetro Logo" />
+          </div>
+        </div>
+      </main>
+    </div>
     <!-- links de scripts -->
     <%- include('templates/scripts') %>
   </body>

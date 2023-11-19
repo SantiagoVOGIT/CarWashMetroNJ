@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../database");
-const async = require("async");
+const VehiculosModel = require("../models/vehiculosModel");
 
 router.get("/profile", (req, res) => {
   console.log("Session before querying for vehicle:", req.session);
   if (req.session.user) {
-    db.query(
-      "SELECT * FROM Vehiculos WHERE id_usuario = ?",
-      [req.session.user.id_usuario],
+    VehiculosModel.getVehiculoByIdUsuario(
+      req.session.user.id_usuario,
       (error, results) => {
         console.log("Direct query results:", results);
 
@@ -24,10 +22,9 @@ router.get("/profile", (req, res) => {
         } else {
           const vehiculo = results.length > 0 ? results[0] : {};
 
-          // Después de insertar el usuario y vehículo en la base de datos
           req.session.user = {
             ...req.session.user,
-            vehiculo: vehiculo, // Aquí añadimos la información del vehículo
+            vehiculo: vehiculo,
           };
 
           console.log("Session after login:", req.session);

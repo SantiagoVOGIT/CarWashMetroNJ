@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../database");
+const UsuariosModel = require("../models/usuariosModel");
+const VehiculosModel = require("../models/vehiculosModel");
 
 router.get("/register", (req, res) => {
   res.render("register.ejs");
 });
 
-// Configuración de ruta post para el registro
 router.post("/register", (req, res) => {
   const usuario = {
     identificacion: req.body.identificacion,
@@ -21,7 +21,7 @@ router.post("/register", (req, res) => {
     tipo_vehiculo: req.body.tipo_vehiculo,
   };
 
-  db.query("INSERT INTO Usuarios SET ?", usuario, (error, userResults) => {
+  UsuariosModel.createUser(usuario, (error, userResults) => {
     if (error) {
       console.log(error);
       res.render("register", {
@@ -32,35 +32,30 @@ router.post("/register", (req, res) => {
       });
     } else {
       vehiculo.id_usuario = userResults.insertId;
-      db.query(
-        "INSERT INTO Vehiculos SET ?",
-        vehiculo,
-        (error, vehiculoResults) => {
-          console.log("Vehiculo insertion results:", vehiculoResults);
-          if (error) {
-            console.log(error);
-            res.render("register", {
-              message: {
-                type: "error",
-                text: "Error al registrar el vehículo",
-              },
-            });
-          } else {
-            // Después de insertar el usuario y vehículo en la base de datos
-            req.session.user = {
-              ...usuario,
-              vehiculo: vehiculo, // Aquí añadimos la información del vehículo
-            };
+      VehiculosModel.createVehiculo(vehiculo, (error, vehiculoResults) => {
+        console.log("Vehiculo insertion results:", vehiculoResults);
+        if (error) {
+          console.log(error);
+          res.render("register", {
+            message: {
+              type: "error",
+              text: "Error al registrar el vehículo",
+            },
+          });
+        } else {
+          req.session.user = {
+            ...usuario,
+            vehiculo: vehiculo,
+          };
 
-            res.render("register", {
-              message: {
-                type: "success",
-                text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
-              },
-            });
-          }
+          res.render("register", {
+            message: {
+              type: "success",
+              text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
+            },
+          });
         }
-      );
+      });
     }
   });
 });
@@ -75,9 +70,9 @@ router.post("/", (req, res) => {
     identificacion: req.body.identificacion,
   };
 
-  db.query(
-    "SELECT * FROM Usuarios WHERE telefono = ? AND identificacion = ?",
-    [user.telefono, user.identificacion],
+  UsuariosModel.getUserByTelefonoIdentificacion(
+    user.telefono,
+    user.identificacion,
     (error, results) => {
       if (error) {
         console.log(error);

@@ -3,152 +3,151 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registrarse / CarWashMetro</title>
+    <title>Iniciar Sesión / CarWashMetro</title>
     <meta name="robots" content="index, follow" />
     <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
     <meta
       name="description"
-      content="!Registrate ahora en CarWashMetro para empezar a usar a nuestros servicios!" />
+      content="!Inicia sesión en CarWashMetro para empezar a usar a nuestros servicios!" />
 
     <!-- Links CSS -->
     <%- include('templates/styles') %>
   </head>
 
-  <body>
-    <main class="vh-100">
-      <div class="container-fluid h-100">
-        <div class="row h-100">
-          <!-- Columna izquierda que siempre se mostrará en cualquier dispositivo -->
-          <div
-            class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column p-5">
-            <div>
-              <h1 class="rem-3 weight-700">Registrarse</h1>
-            </div>
-            <!-- Contenido de la columna izquierda -->
-            <div
-              class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75 media-sm-w-100">
-              <h2 class="text-center">
-                Aquí puedes registrate rapídamente, recuerda verificar que tus
-                datos y los de tu vehículo son correctos
-              </h2>
-              <form
-                class="w-100 mt-5"
-                action="/register"
-                method="post"
-                id="myForm">
-                <input
-                  class="w-100 input-primary"
-                  type="text"
-                  id="identificacion"
-                  name="identificacion"
-                  placeholder="Identificación"
-                  title="Número de identificación, puede ser tu cédula"
-                  required />
-                <input
-                  class="mt-3 w-100 input-primary"
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  placeholder="Nombre"
-                  title="Tu nombre"
-                  required />
-                <input
-                  class="mt-3 w-100 input-primary"
-                  type="text"
-                  id="apellido"
-                  name="apellido"
-                  placeholder="Apellido"
-                  title="Tu apellido"
-                  required />
-                <input
-                  class="mt-3 w-100 input-primary"
-                  type="text"
-                  id="telefono"
-                  name="telefono"
-                  placeholder="Teléfono"
-                  title="Tu número de teléfono o celular"
-                  required />
+  <body class="vh-100">
+    <div class="container-fluid p-0 m-0 h-100">
+      <main class="row m-0 p-5 media-sm-w-100 h-100" style="flex: 1">
+        <!-- Contenedor de columna de registro-->
 
-                <!-- Contenido de la columna izquierda -->
-
-                <div class="row mt-3">
-                  <div class="col-4">
-                    <input
-                      class="input-primary w-100"
-                      type="text"
-                      id="marca"
-                      name="marca"
-                      placeholder="Marca"
-                      title="La marca de tu vehículo"
-                      required />
-                  </div>
-                  <div class="col-4">
-                    <input
-                      class="input-primary w-100"
-                      type="text"
-                      id="placa"
-                      name="placa"
-                      placeholder="AAA-OOO"
-                      title="La placa de tu vehículo en formato AAA-000"
-                      pattern="^[A-Z]{3}-[0-9]{3}$"
-                      required />
-                  </div>
-                  <div class="col-4">
-                    <select
-                      class="input-primary w-100 font-secondary h-100"
-                      id="tipo_vehiculo"
-                      name="tipo_vehiculo"
-                      title="El tipo de tu vehículo"
-                      required>
-                      <option value="">Tipo</option>
-                      <option value="carro">Carro</option>
-                      <option value="moto">Moto</option>
-                    </select>
-                  </div>
-                </div>
-                <!-- mensaje de error -->
-
-                <% if (typeof message !== 'undefined') { %>
-                <div
-                  class="<%= message.type === 'error' ? 'errorAlert-primary' : 'successAlert-primary' %> mt-4">
-                  <%= message.text %>
-                </div>
-                <% } %>
-
-                <!-- Boton de registrarse -->
-                <input
-                  class="mt-4 w-100 button-primary"
-                  type="submit"
-                  value="Registrarse" />
-
-                <hr class="mt-5" />
-              </form>
-
-              <h3 class="mt-3 text-center rem-1-5">¿Ya tienes una cuenta?</h3>
-              <a
-                class="link-primary mt-2 rem-1-5"
-                href="/"
-                title="Ir a registrarse"
-                >Inicia sesión aquí</a
-              >
-            </div>
+        <div
+          class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column p-0">
+          <div>
+            <h1 class="rem-3 weight-700">Registrarse</h1>
           </div>
-
-          <!-- Columna derecha que se ocultará en dispositivos móviles y ocupará toda la pantalla -->
+          <!-- Contenido de la columna de registro -->
           <div
-            class="col-12 col-md-6 d-none d-md-flex justify-content-center align-items-center">
-            <!-- Contenido de la columna derecha -->
-            <div class="w-75">
-              <img
-                class="img-fluid"
-                src="/img/logo-main-carwashmetro.png"
-                alt="CarWashMetro Logo" />
-            </div>
+            class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75 media-sm-w-100">
+            <h2 class="text-center">
+              Aquí puedes registrate rapídamente, recuerda verificar que tus
+              datos y los de tu vehículo son correctos
+            </h2>
+            <form
+              class="w-100 mt-5"
+              action="/register"
+              method="post"
+              id="myForm">
+              <input
+                class="w-100 input-primary"
+                type="text"
+                id="identificacion"
+                name="identificacion"
+                placeholder="Identificación"
+                title="Número de identificación, puede ser tu cédula"
+                required />
+              <input
+                class="mt-3 w-100 input-primary"
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Nombre"
+                title="Tu nombre"
+                required />
+              <input
+                class="mt-3 w-100 input-primary"
+                type="text"
+                id="apellido"
+                name="apellido"
+                placeholder="Apellido"
+                title="Tu apellido"
+                required />
+              <input
+                class="mt-3 w-100 input-primary"
+                type="text"
+                id="telefono"
+                name="telefono"
+                placeholder="Teléfono"
+                title="Tu número de teléfono o celular"
+                required />
+
+              <!-- Contenido de la columna izquierda -->
+
+              <div class="row mt-3">
+                <div class="col-4">
+                  <input
+                    class="input-primary w-100"
+                    type="text"
+                    id="marca"
+                    name="marca"
+                    placeholder="Marca"
+                    title="La marca de tu vehículo"
+                    required />
+                </div>
+                <div class="col-4">
+                  <input
+                    class="input-primary w-100"
+                    type="text"
+                    id="placa"
+                    name="placa"
+                    placeholder="AAA-OOO"
+                    title="La placa de tu vehículo en formato AAA-000"
+                    pattern="^[A-Z]{3}-[0-9]{3}$"
+                    required />
+                </div>
+                <div class="col-4">
+                  <select
+                    class="input-primary w-100 font-secondary h-100"
+                    id="tipo_vehiculo"
+                    name="tipo_vehiculo"
+                    title="El tipo de tu vehículo"
+                    required>
+                    <option value="">Tipo</option>
+                    <option value="carro">Carro</option>
+                    <option value="moto">Moto</option>
+                  </select>
+                </div>
+              </div>
+              <!-- mensaje en caso de exito o de error-->
+
+              <% if (typeof message !== 'undefined') { %>
+              <div
+                class="<%= message.type === 'error' ? 'errorAlert-primary' : 'successAlert-primary' %> mt-4">
+                <%= message.text %>
+              </div>
+              <% } %>
+
+              <!-- Boton de registrarse -->
+              <input
+                class="mt-4 w-100 button-primary"
+                type="submit"
+                value="Registrarse" />
+
+              <hr class="mt-5" />
+            </form>
+
+            <h3 class="mt-3 text-center rem-1-5">¿Ya tienes una cuenta?</h3>
+            <a
+              class="link-primary mt-2 rem-1-5"
+              href="/"
+              title="Ir a registrarse"
+              >Inicia sesión aquí</a
+            >
           </div>
         </div>
-      </div>
-    </main>
+        <!-- Contenido de columna con el logo -->
+        <div
+          class="col-12 col-md-6 d-none d-md-flex justify-content-center align-items-center">
+          <!-- Contenido de la columna de el logo-->
+          <div class="w-75">
+            <img
+              class="img-fluid"
+              src="/img/logo-main-carwashmetro.png"
+              alt="CarWashMetro Logo" />
+          </div>
+        </div>
+      </main>
+    </div>
 
     <!-- links de scripts -->
+    <%- include('templates/scripts') %>
   </body>
 </html>

@@ -19,7 +19,8 @@
   font-weight: 600;
 }
 
-body {
+body,
+html {
   background-color: $background-color-primary;
   color: $text-color;
   font-size: 1.4rem;

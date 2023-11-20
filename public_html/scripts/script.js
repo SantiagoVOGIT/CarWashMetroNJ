@@ -32,3 +32,13 @@ function togglePassword() {
     toggleIcon.textContent = "visibility_off";
   }
 }
+
+function mostrarAviso() {
+  // Mostrar el cuadro de diálogo personalizado
+  document.getElementById("dialog-overlay").style.display = "flex";
+}
+
+function cerrarAviso() {
+  // Cerrar el cuadro de diálogo personalizado
+  document.getElementById("dialog-overlay").style.display = "none";
+}

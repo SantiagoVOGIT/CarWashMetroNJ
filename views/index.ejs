@@ -42,7 +42,7 @@
                 name="telefono"
                 placeholder="Teléfono"
                 title="Número de celular o teléfono que registraste" />
-              <div class="password-container mt-3 opacity-50">
+              <div class="password-container mt-3">
                 <input
                   class="w-100 input-primary password-input"
                   type="password"
@@ -50,7 +50,10 @@
                   name="identificacion"
                   placeholder="Identificación"
                   title="Número de identificación que registraste" />
-                <span class="toggle-password" onclick="togglePassword()">
+                <span
+                  class="toggle-password opacity-50"
+                  onclick="togglePassword()"
+                  title="Mostrar u ocultar contraseña">
                   <i id="toggle-icon" class="material-icons">visibility_off</i>
                 </span>
               </div>

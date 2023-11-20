@@ -1,12 +1,12 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Raleway:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap");
-.gradient-primary, .container-primary {
+.gradient-primary, .container-primary, #dialog-box {
   background: #194a6b;
   background: linear-gradient(180deg, #194a6b 0%, #1d1d1d 45%);
 }
 
-.container-primary {
+.container-primary, #dialog-box {
   padding: 35px;
   border-radius: 10px;
 }
@@ -131,6 +131,23 @@
 
 .border-primary {
   border: solid 1px rgba(51, 152, 219, 0.2) !important;
+}
+
+/* Estilos para el cuadro de diálogo personalizado */
+#dialog-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 29, 29, 0.5);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  z-index: 1000;
 }
 
 .weight-400 {

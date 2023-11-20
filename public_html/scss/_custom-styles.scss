@@ -151,6 +151,27 @@
   border: solid 1px rgba($primary-color, 0.2) !important;
 }
 
+/* Estilos para el cuadro de diálogo personalizado */
+
+#dialog-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($background-color-secondary, 0.5);
+  backdrop-filter: $blur-primary;
+  justify-content: center;
+  align-items: center;
+  color: $text-color;
+  z-index: 1000;
+}
+
+#dialog-box {
+  @extend .container-primary;
+}
+
 // Grosor de fuentes
 
 .weight-400 {

@@ -74,12 +74,55 @@
               </div>
 
               <hr />
-              <button class="mt-4 w-100 button-primary">
+              <button
+                class="mt-4 w-100 button-primary"
+                onclick="mostrarAviso()">
                 Modificar información
               </button>
               <button class="mt-4 w-100 button-danger-primary">
                 Eliminar cuenta
               </button>
+            </div>
+
+            <div id="dialog-overlay" class="">
+              <div id="dialog-box" class="m-5 p-5 border-primary">
+                <div
+                  class="d-flex justify-content-center align-items-center opacity-75">
+                  <span class="material-icons rem-3"> info </span>
+                  <span class="ms-1 rem-1-5 weight-700">Aviso</span>
+                </div>
+                <p class="text-center mt-4">
+                  Por seguridad para poder modificar tú información <br />
+                  es necesario hacernos una solicitud, por favor <br />
+                  comunícate con nosotros en algunas de estos medios: <br />
+                </p>
+                <div
+                  class="mt-4 d-flex align-items-center border-primary container-secondary p-2">
+                  <div class="icon-container">
+                    <i class="material-icons"> call </i>
+                  </div>
+                  <h3 class="ms-3 font-secondary opacity-75 rem-1-2">
+                    3024508215
+                  </h3>
+                </div>
+                <div
+                  class="mt-3 d-flex align-items-center border-primary container-secondary p-2">
+                  <div class="icon-container">
+                    <i class="material-icons"> email </i>
+                  </div>
+                  <h3 class="ms-3 font-secondary opacity-75 rem-1-2">
+                    correo@gmail.com
+                  </h3>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-end">
+                  <button
+                    class="button-primary mt-4 w-25 rounded-4"
+                    onclick="cerrarAviso()">
+                    Aceptar
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -104,9 +147,9 @@
             <div class="d-flex align-items-center">
               <!-- Icono dinámico en base al tipo de vehiculo-->
               <div class="icon-container">
-                <% if (user.vehiculo.tipo_vehiculo === 'carro') { %>
+                <% if (user.vehiculo.tipo_vehiculo === 'Carro') { %>
                 <i class="material-icons">directions_car</i>
-                <% } else if (user.vehiculo.tipo_vehiculo === 'moto') { %>
+                <% } else if (user.vehiculo.tipo_vehiculo === 'Moto') { %>
                 <i class="material-icons">two_wheeler</i>
                 <% } else { %>
                 <!-- Manejar otro tipo de vehículo o mostrar un icono predeterminado -->

@@ -42,13 +42,18 @@
                 name="telefono"
                 placeholder="Teléfono"
                 title="Número de celular o teléfono que registraste" />
-              <input
-                class="mt-3 w-100 input-primary"
-                type="password"
-                id="identificacion"
-                name="identificacion"
-                placeholder="Identificación"
-                title="Número de identificación que registraste" />
+              <div class="password-container mt-3 opacity-50">
+                <input
+                  class="w-100 input-primary password-input"
+                  type="password"
+                  id="identificacion"
+                  name="identificacion"
+                  placeholder="Identificación"
+                  title="Número de identificación que registraste" />
+                <span class="toggle-password" onclick="togglePassword()">
+                  <i id="toggle-icon" class="material-icons">visibility_off</i>
+                </span>
+              </div>
 
               <!-- switch de palanca -->
               <div class="d-flex align-items-center mt-4">

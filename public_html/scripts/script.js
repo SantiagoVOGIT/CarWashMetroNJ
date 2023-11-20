@@ -19,3 +19,16 @@ document.getElementById("usePassword").addEventListener("change", function (e) {
     identificacionInput.title = "Número de identificacion que registraste";
   }
 });
+
+function togglePassword() {
+  var passwordInput = document.getElementById("identificacion");
+  var toggleIcon = document.getElementById("toggle-icon");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    toggleIcon.textContent = "visibility";
+  } else {
+    passwordInput.type = "password";
+    toggleIcon.textContent = "visibility_off";
+  }
+}

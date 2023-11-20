@@ -74,6 +74,28 @@
     font-weight: 500;
   }
 }
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.password-input {
+  width: calc(100% - 30px);
+  padding-right: 30px;
+}
 
 // Estilos de textos
 

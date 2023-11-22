@@ -74,6 +74,9 @@
     font-weight: 500;
   }
 }
+
+// estilos para el icono de mostrar u ocultar contraseña
+
 .password-container {
   position: relative;
   width: 100%;
@@ -81,7 +84,7 @@
 
 .toggle-password {
   position: absolute;
-  right: 5px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -89,12 +92,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 50%;
 }
 
 .password-input {
   width: calc(100% - 30px);
   padding-right: 30px;
+}
+
+#toggle-icon {
+  font-size: 20px;
 }
 
 // Estilos de textos
@@ -139,19 +146,13 @@
   border: 1px solid $color-green;
 }
 
-//lineas separadoras
-
-.hr-primary {
-  color: $color-white;
-}
-
 // bordes
 
 .border-primary {
   border: solid 1px rgba($primary-color, 0.2) !important;
 }
 
-/* Estilos para el cuadro de diálogo personalizado */
+// Estilos para el cuadro de diálogo personalizado
 
 #dialog-overlay {
   display: none;
@@ -195,6 +196,8 @@
 .vh-100 {
   height: 100vh;
 }
+
+// gap
 
 .gap-6 {
   gap: 4rem !important;

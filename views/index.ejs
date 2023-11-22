@@ -25,7 +25,7 @@
             <h1 class="rem-3 weight-700">Iniciar sesión</h1>
           </div>
 
-          <!-- Contenido de la columna izquierda -->
+          <!-- Contenido de la columna del formulario -->
 
           <div
             class="container-primary mt-4 d-flex d-flex justify-content-center flex-column align-items-center w-75 media-sm-w-100">
@@ -34,6 +34,7 @@
               nuestros servicios
             </h2>
 
+            <!-- Formulario de usuario -->
             <form class="w-100 mt-5" action="/" method="post" id="myForm">
               <input
                 class="w-100 input-primary"
@@ -50,6 +51,7 @@
                   name="identificacion"
                   placeholder="Identificación"
                   title="Número de identificación que registraste" />
+                <!-- Icono para mostrar u ocultar contraseña -->
                 <span
                   class="toggle-password opacity-50"
                   onclick="togglePassword()"
@@ -58,18 +60,8 @@
                 </span>
               </div>
 
-              <!-- switch de palanca -->
-              <div class="d-flex align-items-center mt-4">
-                <label
-                  title="Si no eres administrador no selecciones esta opción"
-                  class="switch">
-                  <input type="checkbox" id="usePassword" name="usePassword" />
-                  <span class="slider"></span>
-                </label>
-                <span class="opacity-50 ms-3 weight-500 rem-1-5"
-                  >Administrador</span
-                >
-              </div>
+              <!-- Mensaje de error en caso de error al iniciar sesión -->
+
               <% if (typeof message !== 'undefined') { %>
               <div
                 class="<%= message.type === 'error' ? 'errorAlert-primary' : 'successAlert-primary' %> mt-4">
@@ -82,9 +74,63 @@
                 class="mt-4 w-100 button-primary"
                 type="submit"
                 value="Iniciar sesión" />
-
-              <hr class="mt-5" />
             </form>
+
+            <!-- Formulario de admin -->
+            <form
+              class="w-100 mt-5"
+              action="/"
+              method="post"
+              id="loginAdminForm"
+              style="display: none">
+              <input
+                class="w-100 input-primary"
+                type="text"
+                id="correo"
+                name="correo"
+                placeholder="Correo"
+                title="Correo electrónico que registraste" />
+
+              <div class="password-container mt-3">
+                <input
+                  class="w-100 input-primary password-input"
+                  type="password"
+                  id="contrasena"
+                  name="contrasena"
+                  placeholder="Contraseña"
+                  title="Contraseña que registraste" />
+
+                <!-- Icono para mostrar u ocultar contraseña -->
+                <span
+                  class="toggle-password opacity-50"
+                  onclick="togglePassword()"
+                  title="Mostrar u ocultar contraseña">
+                  <i id="toggle-icon" class="material-icons">visibility_off</i>
+                </span>
+              </div>
+
+              <!-- Boton de iniciar sesión -->
+              <input
+                class="mt-4 w-100 button-primary"
+                type="submit"
+                value="Iniciar sesión" />
+            </form>
+
+            <!-- switch de palanca para cambiar el formulario de usuario a admin -->
+
+            <div class="d-flex align-items-center mt-4 align-self-start">
+              <label
+                title="Si no eres administrador no selecciones esta opción"
+                class="switch">
+                <input type="checkbox" id="usePassword" name="usePassword" />
+                <span class="slider"></span>
+              </label>
+              <span class="opacity-50 ms-3 weight-500 rem-1-5"
+                >Administrador</span
+              >
+            </div>
+
+            <hr class="w-100 mt-4" />
 
             <h3 class="mt-3 text-center rem-1-5">¿No tienes una cuenta?</h3>
             <a
@@ -95,10 +141,13 @@
             >
           </div>
         </div>
+
         <!-- Contenido de columna con el logo -->
+
         <div
           class="col-12 col-md-6 d-none d-md-flex justify-content-center align-items-center">
           <!-- Contenido de la columna derecha -->
+
           <div class="w-75">
             <img
               class="img-fluid"

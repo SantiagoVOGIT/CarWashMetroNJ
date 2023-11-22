@@ -72,7 +72,7 @@
 
 .toggle-password {
   position: absolute;
-  right: 5px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -80,12 +80,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 50%;
 }
 
 .password-input {
   width: calc(100% - 30px);
   padding-right: 30px;
+}
+
+#toggle-icon {
+  font-size: 20px;
 }
 
 .font-secondary {
@@ -125,15 +129,10 @@
   border: 1px solid #33db57;
 }
 
-.hr-primary {
-  color: #ffffff;
-}
-
 .border-primary {
   border: solid 1px rgba(51, 152, 219, 0.2) !important;
 }
 
-/* Estilos para el cuadro de diálogo personalizado */
 #dialog-overlay {
   display: none;
   position: fixed;

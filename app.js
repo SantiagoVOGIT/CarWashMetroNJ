@@ -33,6 +33,10 @@ app.use("/", routes);
 const userRoutes = require("./router/routesUser");
 app.use("/user", userRoutes);
 
+// Rutas para usuarios
+const adminRoutes = require("./router/routesAdmin");
+app.use("/admin", adminRoutes);
+
 // Middleware para manejar las solicitudes no encontradas (404)
 app.use((req, res, next) => {
   res.status(404).render("404.ejs", {

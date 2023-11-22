@@ -1,27 +1,20 @@
 // Función para cambiar el login de usuario a admin
-document.getElementById("usePassword").addEventListener("change", function (e) {
-  let usePassword = document.getElementById("usePassword").checked;
-  let identificacionInput = document.getElementById("identificacion");
-  let telefonoInput = document.getElementById("telefono");
-  if (usePassword) {
-    telefonoInput.name = "correo";
-    telefonoInput.placeholder = "Correo de administrador";
-    telefonoInput.title = "Se requiere correo de administrador";
-    identificacionInput.name = "contrasena";
-    identificacionInput.placeholder = "Contraseña";
-    identificacionInput.title = "Se requiere contraseña de administrador";
+document.getElementById("usePassword").addEventListener("change", function () {
+  var form1 = document.getElementById("myForm");
+  var form2 = document.getElementById("loginAdminForm");
+  if (this.checked) {
+    form1.style.display = "none";
+    form2.style.display = "block";
   } else {
-    telefonoInput.name = "telefono";
-    telefonoInput.placeholder = "Teléfono";
-    telefonoInput.title = "Número de celular o teléfono que registraste";
-    identificacionInput.name = "identificacion";
-    identificacionInput.placeholder = "Identificación";
-    identificacionInput.title = "Número de identificacion que registraste";
+    form1.style.display = "block";
+    form2.style.display = "none";
   }
 });
 
+// Función para mostrar u ocultar la contraseña en el login
+
 function togglePassword() {
-  var passwordInput = document.getElementById("identificacion");
+  var passwordInput = document.getElementById("identificacion", "contrasena");
   var toggleIcon = document.getElementById("toggle-icon");
 
   if (passwordInput.type === "password") {
@@ -32,6 +25,8 @@ function togglePassword() {
     toggleIcon.textContent = "visibility_off";
   }
 }
+
+// Función para mostrar u ocultar un aviso
 
 function mostrarAviso() {
   // Mostrar el cuadro de diálogo personalizado

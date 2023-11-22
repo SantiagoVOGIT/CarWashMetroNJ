@@ -37,9 +37,12 @@
   color: $color-white;
 }
 
+// Tamaño del logo
 .logo-nav {
   width: 7rem;
 }
+
+// Estilo del navbar collapsable en moviles
 
 @media (max-width: 991px) {
   .collapse-nav-config {

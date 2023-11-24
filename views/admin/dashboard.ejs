@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Inicio / Admin</title>
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
+
+    <!-- Links CSS -->
+    <%- include('../templates/styles') %>
   </head>
-  <body>
-    <H1>bienvenido admin</H1>
+
+  <body class="vh-100">
+    <div class="container-fluid p-0 m-0 d-flex flex-column h-100">
+      <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
+      <%- include('../templates/headerAdmin') %>
+
+      <!-- contenedor principal -->
+
+      <main
+        class="container-fluid p-5 gap-6 w-75 d-flex flex-column flex-lg-row align-items-center media-sm-w-100"
+        style="flex: 1">
+        <h1>Incio</h1>
+        <!-- contenedor de información de usuario -->
+      </main>
+    </div>
+
+    <!-- Enlaces de scripts -->
+    <%- include('../templates/scripts') %>
   </body>
 </html>

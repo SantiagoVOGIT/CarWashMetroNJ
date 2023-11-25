@@ -46,32 +46,34 @@ router.post("/register", (req, res) => {
   UsuariosModel.createUser(usuario, (error, userResults) => {
     if (error) {
       console.log(error);
-      res.render("register", {
-        message: {
-          type: "error",
-          text: "Error al registrar el usuario",
-        },
-      });
+      req.session.message = {
+        type: "error",
+        text: "Error al registrar el usuario",
+      };
+      res.render("register", { message: req.session.message });
     } else {
       vehiculo.id_usuario = userResults.insertId;
       VehiculosModel.createVehiculo(vehiculo, (error, vehiculoResults) => {
         console.log("Vehiculo insertion results:", vehiculoResults);
         if (error) {
           console.log(error);
-          res.render("register", {
-            message: {
-              type: "error",
-              text: "Error al registrar el vehículo",
-            },
-          });
+          req.session.message = {
+            type: "error",
+            text: "Error al registrar el vehículo",
+          };
+          res.render("register", { message: req.session.message });
         } else {
-          // Se eliminó la asignación a req.session.user aquí
-          res.render("register", {
-            message: {
-              type: "success",
-              text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
-            },
-          });
+          req.session.user = {
+            ...usuario,
+            vehiculo: vehiculo,
+          };
+
+          req.session.message = {
+            type: "success",
+            text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
+          };
+
+          res.render("register", { message: req.session.message });
         }
       });
     }
@@ -94,21 +96,22 @@ router.post("/", (req, res) => {
     (error, results) => {
       if (error) {
         console.log(error);
-        res.render("index.ejs", {
-          message: { type: "error", text: "Error al iniciar sesión" },
-        });
+        req.session.message = {
+          type: "error",
+          text: "Error al iniciar sesión",
+        };
+        res.render("index.ejs", { message: req.session.message });
       } else {
         if (results.length > 0) {
           req.session.user = results[0];
           console.log("Session after login:", req.session);
           res.redirect("/user/home");
         } else {
-          res.render("index.ejs", {
-            message: {
-              type: "error",
-              text: "Teléfono o identificación incorrectos",
-            },
-          });
+          req.session.message = {
+            type: "error",
+            text: "Teléfono o identificación incorrectos",
+          };
+          res.render("index.ejs", { message: req.session.message });
         }
       }
     }

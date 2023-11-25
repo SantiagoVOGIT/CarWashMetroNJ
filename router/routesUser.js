@@ -14,12 +14,13 @@ router.get("/profile", (req, res) => {
 
         if (error) {
           console.log(error);
+          req.session.message = {
+            type: "error",
+            text: "Error al obtener los datos del vehículo",
+          };
           res.render("user/profile", {
             user: req.session.user,
-            message: {
-              type: "error",
-              text: "Error al obtener los datos del vehículo",
-            },
+            message: req.session.message,
           });
         } else {
           const vehiculo = results.length > 0 ? results[0] : {};
@@ -59,11 +60,14 @@ router.get("/home", async (req, res) => {
       req.session.user.id_usuario
     );
 
-    // Renderizar la vista home.ejs con los datos necesarios
+    // Obtener el mensaje de la sesión y limpiarlo
+    const message = req.session.message;
+    req.session.message = null;
+
     res.render("user/home.ejs", {
       celdasDisponibles: celdasDisponibles,
       vehiculosUsuario: vehiculosUsuario,
-      message: {}, // Establecer un objeto message predeterminado
+      message: message || {}, // Establecer un objeto message predeterminado si no hay mensaje en la sesión
     });
   } catch (error) {
     console.error("Error al obtener datos:", error);
@@ -72,14 +76,6 @@ router.get("/home", async (req, res) => {
 });
 
 router.post("/reservar", (req, res) => {
-  console.log("Datos del usuario en la sesión:", req.session.user);
-
-  // Verificar si el usuario está autenticado antes de proceder con la reserva
-  if (!req.session.user || !req.session.user.id_usuario) {
-    console.log("Usuario no autenticado");
-    return res.redirect("/"); // Redirige a la página principal si el usuario no está autenticado
-  }
-
   // Obtener los datos del formulario
   const idCelda = req.body.id_celda;
 
@@ -98,24 +94,26 @@ router.post("/reservar", (req, res) => {
   };
 
   ReservasModel.createReserva(reserva, (error, results) => {
+    let message = null;
+
     if (error) {
       console.error("Error al crear reserva en la base de datos:", error);
-      return res.redirect(
-        "/user/home?message=error&text=Error%20al%20realizar%20la%20reserva"
-      );
+      message = {
+        type: "error",
+        text: "Error al realizar la reserva",
+      };
+    } else {
+      message = {
+        type: "success",
+        text: "Reserva exitosa, ahora ve a la sección reservas para verificar el estado de tu reserva en la cola",
+      };
     }
 
-    // Verificar si la reserva se realizó correctamente
-    if (results && results.insertId) {
-      // Redirigir a la vista "home.ejs" con un mensaje de reserva exitosa
-      return res.redirect("/user/home?message=success&text=Reserva%20exitosa");
-    } else {
-      // Redirigir a la vista "home.ejs" con un mensaje de error en la reserva
-      return res.redirect(
-        "/user/home?message=error&text=Error%20al%20realizar%20la%20reserva"
-      );
-    }
+    // Almacenar el mensaje en la sesión
+    req.session.message = message;
+
+    // Redirigir a la vista "home.ejs"
+    res.redirect("/user/home");
   });
 });
-
 module.exports = router;

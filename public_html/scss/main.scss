@@ -28,6 +28,19 @@ html {
   padding: 0;
 }
 
+.cells-container {
+  @extend .container-secondary;
+  &:hover {
+    box-shadow: $shadow-primary;
+    cursor: pointer;
+    background-color: rgba($primary-color, 0.3);
+  }
+}
+
+.cells-container.selected {
+  box-shadow: $shadow-primary;
+  background-color: rgba($primary-color, 0.3);
+}
 // Responsive globales
 
 // lg

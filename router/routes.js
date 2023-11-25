@@ -3,6 +3,28 @@ const router = express.Router();
 const UsuariosModel = require("../models/usuariosModel");
 const VehiculosModel = require("../models/vehiculosModel");
 
+// Middleware para cargar datos de usuario y vehículo si el usuario está autenticado
+router.use((req, res, next) => {
+  if (req.session.user && req.session.user.id_usuario) {
+    // Si el usuario está autenticado, cargar datos de vehículo si están disponibles
+    VehiculosModel.getVehiculoByIdUsuario(
+      req.session.user.id_usuario,
+      (error, results) => {
+        if (!error && results.length > 0) {
+          const vehiculo = results[0];
+          req.session.user = {
+            ...req.session.user,
+            vehiculo: vehiculo,
+          };
+        }
+        next();
+      }
+    );
+  } else {
+    next();
+  }
+});
+
 router.get("/register", (req, res) => {
   res.render("register.ejs");
 });
@@ -43,11 +65,7 @@ router.post("/register", (req, res) => {
             },
           });
         } else {
-          req.session.user = {
-            ...usuario,
-            vehiculo: vehiculo,
-          };
-
+          // Se eliminó la asignación a req.session.user aquí
           res.render("register", {
             message: {
               type: "success",

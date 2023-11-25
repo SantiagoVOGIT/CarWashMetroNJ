@@ -23,7 +23,32 @@
 
       <main
         class="container-fluid p-5 gap-6 w-75 d-flex flex-column flex-lg-row align-items-center media-sm-w-100"
-        style="flex: 1"></main>
+        style="flex: 1">
+        <!-- Agrega esta sección para mostrar mensajes -->
+        <% if (message && message.type === 'success') { %>
+        <div role="alert"><%= message.text %></div>
+        <% } else if (message && message.type === 'error') { %>
+        <div role="alert"><%= message.text %></div>
+        <% } %>
+
+        <h2>Reservar Celda</h2>
+
+        <!-- Agrega tu formulario aquí -->
+        <form action="/user/reservar" method="POST">
+          <div>
+            <label for="id_celda">Selecciona una celda:</label>
+            <select name="id_celda" id="id_celda">
+              <% celdasDisponibles.forEach(celda => { %>
+              <option value="<%= celda.id_celda %>">
+                ID: <%= celda.id_celda %> - Tipo: <%= celda.tipo_celda %>
+              </option>
+              <% }); %>
+            </select>
+          </div>
+
+          <button type="submit">Reservar</button>
+        </form>
+      </main>
     </div>
 
     <!-- Enlaces de scripts -->

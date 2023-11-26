@@ -43,41 +43,69 @@ router.post("/register", (req, res) => {
     tipo_vehiculo: req.body.tipo_vehiculo,
   };
 
-  UsuariosModel.createUser(usuario, (error, userResults) => {
-    if (error) {
-      console.log(error);
-      req.session.message = {
-        type: "error",
-        text: "Error al registrar el usuario",
-      };
-      res.render("register", { message: req.session.message });
-    } else {
-      vehiculo.id_usuario = userResults.insertId;
-      VehiculosModel.createVehiculo(vehiculo, (error, vehiculoResults) => {
-        console.log("Vehiculo insertion results:", vehiculoResults);
-        if (error) {
-          console.log(error);
+  // Verificar si el número de identificación ya está registrado
+  UsuariosModel.getUserByIdentificacion(
+    usuario.identificacion,
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        req.session.message = {
+          type: "error",
+          text: "Error al verificar la identificación",
+        };
+        res.render("register", { message: req.session.message });
+      } else {
+        if (results.length > 0) {
+          // El número de identificación ya existe, mostrar mensaje de error
           req.session.message = {
             type: "error",
-            text: "Error al registrar el vehículo",
+            text: "El número de identificación ya está registrado",
           };
           res.render("register", { message: req.session.message });
         } else {
-          req.session.user = {
-            ...usuario,
-            vehiculo: vehiculo,
-          };
+          // El número de identificación no existe, proceder con el registro
+          UsuariosModel.createUser(usuario, (error, userResults) => {
+            if (error) {
+              console.log(error);
+              req.session.message = {
+                type: "error",
+                text: "Error al registrar el usuario",
+              };
+              res.render("register", { message: req.session.message });
+            } else {
+              vehiculo.id_usuario = userResults.insertId;
+              VehiculosModel.createVehiculo(
+                vehiculo,
+                (error, vehiculoResults) => {
+                  console.log("Vehiculo insertion results:", vehiculoResults);
+                  if (error) {
+                    console.log(error);
+                    req.session.message = {
+                      type: "error",
+                      text: "Error al registrar el vehículo",
+                    };
+                    res.render("register", { message: req.session.message });
+                  } else {
+                    req.session.user = {
+                      ...usuario,
+                      vehiculo: vehiculo,
+                    };
 
-          req.session.message = {
-            type: "success",
-            text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
-          };
+                    req.session.message = {
+                      type: "success",
+                      text: "Registro exitoso, ahora inicia sesión con los datos que ingresaste",
+                    };
 
-          res.render("register", { message: req.session.message });
+                    res.render("register", { message: req.session.message });
+                  }
+                }
+              );
+            }
+          });
         }
-      });
+      }
     }
-  });
+  );
 });
 
 router.get("/", (req, res) => {
@@ -105,11 +133,10 @@ router.post("/", (req, res) => {
         if (results.length > 0) {
           req.session.user = results[0];
           console.log("Session after login:", req.session);
-
-          // Limpiar el mensaje de la sesión antes de redirigir al usuario
-          delete req.session.message;
-
           res.redirect("/user/home");
+
+          // Limpiar el mensaje de la sesión después de redirigir al usuario
+          delete req.session.message;
         } else {
           req.session.message = {
             type: "error",

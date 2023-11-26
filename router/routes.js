@@ -105,6 +105,10 @@ router.post("/", (req, res) => {
         if (results.length > 0) {
           req.session.user = results[0];
           console.log("Session after login:", req.session);
+
+          // Limpiar el mensaje de la sesión antes de redirigir al usuario
+          delete req.session.message;
+
           res.redirect("/user/home");
         } else {
           req.session.message = {
@@ -117,5 +121,4 @@ router.post("/", (req, res) => {
     }
   );
 });
-
 module.exports = router;

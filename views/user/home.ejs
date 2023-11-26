@@ -26,11 +26,17 @@
         style="flex: 1">
         <div class="container-fluid p-0">
           <form action="/user/reservar" method="POST" class="mt-4">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
+              <h1 class="text-center rem-2-2 weight-700 opacity-75">
+                Selecciona la celda de lavado que se ajuste a ti y reserva ahora
+                mismo
+              </h1>
+            </div>
+            <div class="row mt-5">
               <% celdasDisponibles.forEach(celda => { %>
               <div class="col-md-4">
                 <div
-                  title="Seleccionar celda #<%= celda.id_celda %>"
+                  title="Seleccionar celda #<%= celda.id_celda %>, esta celda es para <%= celda.tipo_celda%>"
                   class="mb-4 border-primary p-4 cells-container"
                   data-id="<%= celda.id_celda %>"
                   onclick="selectRadio('<%= celda.id_celda %>')">

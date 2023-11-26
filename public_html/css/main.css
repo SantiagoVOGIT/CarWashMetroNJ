@@ -422,6 +422,14 @@
   border-radius: 50%;
 }
 
+input:checked + .slider {
+  background-color: #3398db;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px); /* Ajusta la distancia de desplazamiento aquí */
+}
+
 .form-check-input {
   background-color: rgba(51, 152, 219, 0.3);
   background-image: none;

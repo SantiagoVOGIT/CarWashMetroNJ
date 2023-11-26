@@ -13,7 +13,7 @@ const UsuariosModel = {
     );
   },
 
-  // Agregar la función para obtener un usuario por identificación
+  //  función para obtener un usuario por identificación
   getUserByIdentificacion: (identificacion, callback) => {
     db.query(
       "SELECT * FROM Usuarios WHERE identificacion = ?",

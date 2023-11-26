@@ -116,4 +116,18 @@ router.post("/reservar", (req, res) => {
     res.redirect("/user/home");
   });
 });
+
+router.post("/logout", (req, res) => {
+  // Destruir la sesión
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error al cerrar sesión:", err);
+      return res.redirect("/user/profile");
+    }
+
+    // Redirigir a la página de inicio de sesión
+    res.redirect("/");
+  });
+});
+
 module.exports = router;

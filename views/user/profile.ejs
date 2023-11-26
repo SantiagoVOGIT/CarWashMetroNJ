@@ -79,9 +79,11 @@
                 onclick="mostrarAviso()">
                 Modificar información
               </button>
-              <button class="mt-4 w-100 button-danger-primary">
-                Cerrar sesión
-              </button>
+              <form action="/user/logout" method="post">
+                <button type="submit" class="mt-4 w-100 button-danger-primary">
+                  Cerrar sesión
+                </button>
+              </form>
             </div>
 
             <div id="dialog-overlay" class="">

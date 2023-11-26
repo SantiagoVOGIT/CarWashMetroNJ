@@ -59,7 +59,7 @@ router.post("/register", (req, res) => {
           // El número de identificación ya existe, mostrar mensaje de error
           req.session.message = {
             type: "error",
-            text: "El número de identificación ya está registrado",
+            text: "El número de identificación ya está registrado, intenta con otro diferente",
           };
           res.render("register", { message: req.session.message });
         } else {
@@ -133,10 +133,11 @@ router.post("/", (req, res) => {
         if (results.length > 0) {
           req.session.user = results[0];
           console.log("Session after login:", req.session);
-          res.redirect("/user/home");
 
           // Limpiar el mensaje de la sesión después de redirigir al usuario
           delete req.session.message;
+
+          res.redirect("/user/home");
         } else {
           req.session.message = {
             type: "error",

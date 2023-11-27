@@ -4,6 +4,7 @@ const VehiculosModel = require("../models/vehiculosModel");
 const CeldasModel = require("../models/celdasModel");
 const ReservasModel = require("../models/reservasModel");
 
+// Ruta get para renderizar el perfil de usuario
 router.get("/profile", (req, res) => {
   console.log("Session before querying for vehicle:", req.session);
   if (req.session.user) {
@@ -44,6 +45,7 @@ router.get("/profile", (req, res) => {
   }
 });
 
+// Ruta get para renderizar el inicio del usuario
 router.get("/home", async (req, res) => {
   try {
     // Verificar si el usuario está autenticado antes de proceder
@@ -52,10 +54,8 @@ router.get("/home", async (req, res) => {
       return res.redirect("/"); // Redirigir a la página principal si el usuario no está autenticado
     }
 
-    // Obtener celdas disponibles desde la base de datos
     const celdasDisponibles = await CeldasModel.getCeldasDisponibles();
 
-    // Obtener vehículos del usuario desde la base de datos
     const vehiculosUsuario = await VehiculosModel.getVehiculoByIdUsuario(
       req.session.user.id_usuario
     );
@@ -67,7 +67,7 @@ router.get("/home", async (req, res) => {
     res.render("user/home.ejs", {
       celdasDisponibles: celdasDisponibles,
       vehiculosUsuario: vehiculosUsuario,
-      message: message || {}, // Establecer un objeto message predeterminado si no hay mensaje en la sesión
+      message: message || {},
     });
   } catch (error) {
     console.error("Error al obtener datos:", error);
@@ -75,6 +75,7 @@ router.get("/home", async (req, res) => {
   }
 });
 
+// Ruta post que el usuario pueda hacer una reserva
 router.post("/reservar", (req, res) => {
   // Obtener los datos del formulario
   const idCelda = req.body.id_celda;
@@ -109,16 +110,15 @@ router.post("/reservar", (req, res) => {
       };
     }
 
-    // Almacenar el mensaje en la sesión
     req.session.message = message;
 
-    // Redirigir a la vista "home.ejs"
     res.redirect("/user/home");
   });
 });
 
+// Función de logout para usuario
 router.post("/logout", (req, res) => {
-  // Destruir la sesión
+  // Destruir la sección para poder hacer logout
   req.session.destroy((err) => {
     if (err) {
       console.error("Error al cerrar sesión:", err);
@@ -130,4 +130,26 @@ router.post("/logout", (req, res) => {
   });
 });
 
+// Ruta get para insertar la información de reservas
+router.get("/reservations", async (req, res) => {
+  try {
+    // Verificar si el usuario está autenticado antes de proceder
+    if (!req.session.user || !req.session.user.id_usuario) {
+      console.log("Usuario no autenticado");
+      return res.redirect("/"); // Redirigir a la página principal si el usuario no está autenticado
+    }
+
+    // Obtener historial de reservas desde la base de datos asociadas al id_usuario
+    const historialReservas = await ReservasModel.getReservasByIdUsuario(
+      req.session.user.id_usuario
+    );
+
+    res.render("user/reservations.ejs", {
+      historialReservas: historialReservas,
+    });
+  } catch (error) {
+    console.error("Error al obtener historial de reservas:", error);
+    res.redirect("/");
+  }
+});
 module.exports = router;

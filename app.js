@@ -45,6 +45,22 @@ app.use((req, res, next) => {
   });
 });
 
+function formatDateTime(dateTimeString) {
+  const options = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+
+  const dateTime = new Date(dateTimeString);
+  return new Intl.DateTimeFormat("es-CO", options).format(dateTime);
+}
+
+app.locals.formatDateTime = formatDateTime;
+
 // Iniciar el servidor en el puerto especificado
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

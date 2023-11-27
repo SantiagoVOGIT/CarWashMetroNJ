@@ -25,6 +25,7 @@ router.use((req, res, next) => {
   }
 });
 
+// Ruta get para que el usuario pueda visualizar la pagina registro
 router.get("/register", (req, res) => {
   res.render("register.ejs");
 });
@@ -107,6 +108,8 @@ router.post("/register", (req, res) => {
     }
   );
 });
+
+// Ruta get para que el usuario pueda visualizar la pagina login o index
 
 router.get("/", (req, res) => {
   res.render("index.ejs");

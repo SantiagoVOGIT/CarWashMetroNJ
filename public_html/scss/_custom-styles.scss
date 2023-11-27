@@ -146,10 +146,22 @@
   border: 1px solid $color-green;
 }
 
+.neutralAlert-primary {
+  @extend .alert-primary;
+  color: $primary-color;
+  text-shadow: $shadow-primary;
+  background-color: rgba($primary-color, 0.2);
+  border: 1px solid $primary-color;
+}
+
 // bordes
 
 .border-primary {
   border: solid 1px rgba($primary-color, 0.2) !important;
+}
+
+.outline-primary {
+  outline: solid 1px rgba($primary-color, 0.4) !important;
 }
 
 // Estilos para el cuadro de diálogo personalizado
@@ -219,6 +231,7 @@ $font-sizes: (
   "4": 4rem,
   "4-5": 4.5rem,
   "5": 5rem,
+  "10": 10rem,
 );
 
 @each $key, $value in $font-sizes {
@@ -285,6 +298,10 @@ $heights: (
   .h-#{$key} {
     height: $value;
   }
+}
+
+.h-max-content {
+  height: max-content !important;
 }
 
 //* Estilos para el switch */

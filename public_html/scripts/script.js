@@ -58,9 +58,9 @@ function cerrarAviso() {
 // Script para home.ejs
 
 //Función que permite que al seleccionar el contenedor de la celda se seleccione el input radio y se aplique un estilo
+
 function selectRadio(id) {
-  // Encuentra el input radio correspondiente al ID de la celda
-  var radioInput = document.querySelector(
+  let radioInput = document.querySelector(
     'input[name="id_celda"][value="' + id + '"]'
   );
 
@@ -68,14 +68,12 @@ function selectRadio(id) {
   if (radioInput) {
     radioInput.checked = true;
 
-    // Desactivar la clase 'selected' para todos los elementos con la clase 'cells-container'
-    var elements = document.querySelectorAll(".cells-container");
+    let elements = document.querySelectorAll(".cells-container");
     elements.forEach(function (element) {
       element.classList.remove("selected");
     });
 
-    // Activar la clase 'selected' solo para el elemento clicado
-    var clickedElement = document.querySelector(
+    let clickedElement = document.querySelector(
       '.cells-container[data-id="' + id + '"]'
     );
     if (clickedElement) {

@@ -106,7 +106,7 @@
   text-shadow: 0 0 5px rgba(51, 152, 219, 0.1), 0 0 10px rgba(51, 152, 219, 0.1), 0 0 15px rgba(51, 152, 219, 0.1);
 }
 
-.alert-primary, .successAlert-primary, .errorAlert-primary {
+.alert-primary, .neutralAlert-primary, .successAlert-primary, .errorAlert-primary {
   padding: 5px;
   display: flex;
   justify-content: center;
@@ -129,8 +129,19 @@
   border: 1px solid #33db57;
 }
 
+.neutralAlert-primary {
+  color: #3398db;
+  text-shadow: 0 0 5px rgba(51, 152, 219, 0.1), 0 0 10px rgba(51, 152, 219, 0.1), 0 0 15px rgba(51, 152, 219, 0.1);
+  background-color: rgba(51, 152, 219, 0.2);
+  border: 1px solid #3398db;
+}
+
 .border-primary, .form-check-input {
   border: solid 1px rgba(51, 152, 219, 0.2) !important;
+}
+
+.outline-primary {
+  outline: solid 1px rgba(51, 152, 219, 0.4) !important;
 }
 
 #dialog-overlay {
@@ -223,6 +234,10 @@
 
 .rem-5 {
   font-size: 5rem;
+}
+
+.rem-10 {
+  font-size: 10rem;
 }
 
 .w-5 {
@@ -383,6 +398,11 @@
 
 .h-100 {
   height: 100%;
+}
+
+.h-max-content {
+  height: -moz-max-content !important;
+  height: max-content !important;
 }
 
 .switch {
@@ -641,6 +661,7 @@ html {
   background-color: #121212;
   color: #ffffff;
   font-size: 1.4rem;
+  height: 100%;
   margin: 0;
   padding: 0;
 }

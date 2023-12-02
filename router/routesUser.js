@@ -152,6 +152,11 @@ router.get("/reservations", async (req, res) => {
       (reserva) => reserva.estado_reserva !== "Pendiente"
     );
 
+    // Ordenar historialReservasOtros por fecha en orden descendente
+    historialReservasOtros.sort(
+      (a, b) => new Date(b.fecha_reserva) - new Date(a.fecha_reserva)
+    );
+
     res.render("user/reservations.ejs", {
       historialReservasPendientes,
       historialReservasOtros,
@@ -162,7 +167,7 @@ router.get("/reservations", async (req, res) => {
   }
 });
 
-// Asegúrate de que la ruta POST coincida con la acción del formulario
+// Ruta para que el usuario pueda cancelar una reserva
 router.post("/reservas/cancelarReserva/:idReserva", async (req, res) => {
   try {
     const idReserva = req.params.idReserva;

@@ -1,6 +1,10 @@
+// En tu archivo ReservasModel.js
+
 const db = require("../database");
 
 const ReservasModel = {
+  // ... Otras funciones del modelo
+
   createReserva: (reserva, callback) => {
     db.query("INSERT INTO reservas SET ?", reserva, callback);
   },
@@ -26,6 +30,22 @@ const ReservasModel = {
       db.query(
         "SELECT * FROM reservas WHERE id_usuario = ?",
         [idUsuario],
+        (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+  },
+
+  cancelarReserva: (idReserva) => {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "UPDATE reservas SET estado_reserva = 'Cancelada' WHERE id_reserva = ?",
+        [idReserva],
         (error, results) => {
           if (error) {
             reject(error);

@@ -46,7 +46,7 @@
             class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
             <!-- Contenedor con información fecha y hora de reserva -->
 
-            <div class="col-12 col-lg-3 p-0">
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
               <div>
                 <div
                   title="Fecha y hora en la que se hizo la reserva"
@@ -63,7 +63,7 @@
 
             <!-- Contenedor con información de tipo de vehículo  -->
 
-            <div class="col-12 col-lg-3 p-0">
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <div
                   title="Tipo de vehículo con el que se hizo la reserva"
@@ -86,7 +86,7 @@
 
             <!-- Contenedor con información de celda -->
 
-            <div class="col-12 col-lg-3 p-0">
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
               <div
                 title="Número de celda asignada"
                 class="d-flex align-items-center">
@@ -101,13 +101,34 @@
 
             <!-- Contenedor con información de estado de la reserva -->
 
-            <div class="col-12 col-lg-3 p-0">
-              <div class="h-100 d-flex align-items-center">
-                <span
-                  title="Esta reserva se encuentra <%= reserva.estado_reserva %> de ser rechazada, cancelada o aceptada"
-                  class="<%= reserva.estado_reserva === 'Pendiente' ? 'neutralAlert-primary' : (reserva.estado_reserva === 'Rechazada' ? 'errorAlert-primary' : 'successAlert-primary') %>">
-                  <%= reserva.estado_reserva %>
-                </span>
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
+              <!-- Contenedor con el estado de la celda -->
+
+              <div class="w-100 d-flex">
+                <div class="w-50 me-3">
+                  <span
+                    title="Esta reserva se encuentra <%= reserva.estado_reserva %> de ser rechazada, cancelada o aceptada"
+                    class="w-100 h-100 d-flex align-items-center <%= reserva.estado_reserva === 'Pendiente' ? 'neutralAlert-primary' : (reserva.estado_reserva === 'Rechazada' ? 'errorAlert-primary' : 'successAlert-primary') %>">
+                    <%= reserva.estado_reserva %>
+                  </span>
+                </div>
+
+                <!-- Contenedor con el boton para cancelar la reserva -->
+
+                <div class="w-50">
+                  <% if (reserva.estado_reserva === 'Pendiente') { %>
+                  <form
+                    action="/user/reservas/cancelarReserva/<%= reserva.id_reserva %>"
+                    method="post">
+                    <button
+                      title="Cancelar esta reserva"
+                      type="submit"
+                      class="button-danger-primary rounded-3 w-100">
+                      Cancelar
+                    </button>
+                  </form>
+                  <% } %>
+                </div>
               </div>
             </div>
           </div>

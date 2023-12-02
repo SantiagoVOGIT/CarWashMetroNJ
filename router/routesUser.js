@@ -161,4 +161,21 @@ router.get("/reservations", async (req, res) => {
     res.redirect("/");
   }
 });
+
+// Asegúrate de que la ruta POST coincida con la acción del formulario
+router.post("/reservas/cancelarReserva/:idReserva", async (req, res) => {
+  try {
+    const idReserva = req.params.idReserva;
+
+    // Realiza la lógica para cambiar el estado de la reserva a "Cancelada" en la base de datos
+    await ReservasModel.cancelarReserva(idReserva);
+
+    // Redirige a la página de reservas después de la cancelación
+    res.redirect("/user/reservations"); // Ajusta la ruta según tu estructura
+  } catch (error) {
+    console.error("Error al cancelar la reserva:", error);
+    res.redirect("/user/reservations"); // Manejar el error redirigiendo a la página de reservas
+  }
+});
+
 module.exports = router;

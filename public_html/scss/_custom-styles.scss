@@ -32,9 +32,9 @@
   font-weight: 700;
   padding: 10px;
   border: none;
+  letter-spacing: 0.1px;
   border-radius: $border-radius-secondary;
   transition: $transition-duration;
-  letter-spacing: 0.4px;
   &:hover {
     filter: $brightness-primary;
     box-shadow: $shadow-primary;

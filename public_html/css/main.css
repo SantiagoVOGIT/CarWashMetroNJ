@@ -22,9 +22,9 @@
   font-weight: 700;
   padding: 10px;
   border: none;
+  letter-spacing: 0.1px;
   border-radius: 16px;
   transition: 0.2s;
-  letter-spacing: 0.4px;
 }
 .button-primary:hover, .button-danger-primary:hover {
   filter: brightness(1.3);

@@ -1,132 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio / CarWashMetro</title>
-    <meta name="robots" content="index, follow" />
-    <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
-    <meta
-      name="description"
-      content="Aquí puedes ver toda tu información personal" />
 
-    <!-- Links CSS -->
-    <%- include('../templates/styles') %>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio / CarWashMetro</title>
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
+  <meta name="description" content="Aquí puedes ver toda tu información personal" />
 
-  <body class="vh-100">
-    <div class="container-fluid d-flex flex-column h-100 p-0">
-      <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
-      <%- include('../templates/headeruser') %>
+  <!-- Links CSS -->
+  <%- include('../templates/styles') %>
+</head>
 
-      <!-- contenedor principal -->
+<body class="vh-100">
+  <div class="container-fluid d-flex flex-column h-100 p-0">
+    <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
+    <%- include('../templates/headeruser') %>
 
-      <main
-        class="container-fluid p-5 w-75 d-flex flex-column justify-content-center flex-lg-row align-items-center media-sm-w-100"
-        style="flex: 1">
-        <!-- Contenedor de formulario -->
+    <!-- contenedor principal -->
 
-        <div class="container-fluid p-0 m-0">
-          <!-- Formulario de reserva -->
+    <main class="container-fluid p-5 w-75 d-flex flex-column justify-content-center flex-lg-row align-items-center media-sm-w-100" style="flex: 1">
+      <!-- Contenedor de formulario -->
+      <div class="container-fluid p-0 m-0">
+        <!-- Formulario de reserva -->
 
-          <form action="/user/reservar" method="POST">
-            <!-- Fila de texto principal -->
+        <form action="/user/reservar" method="POST">
+          <!-- Fila de texto principal -->
 
-            <div class="row d-flex justify-content-center">
-              <h1 class="text-center rem-2-2 weight-700 opacity-75">
-                Selecciona la celda de lavado que se ajuste a ti y reserva ahora
-                mismo
-              </h1>
-            </div>
+          <div class="row d-flex justify-content-center">
+            <h1 class="text-center rem-2-2 weight-700 opacity-75">
+              Selecciona la celda de lavado que se ajuste a ti y reserva ahora mismo
+            </h1>
+          </div>
 
-            <!-- Fila con los contenedores de celdas -->
+          <!-- Fila con los contenedores de celdas -->
 
-            <div class="row mt-5">
-              <% celdasDisponibles.forEach(celda => { %>
+          <div class="row mt-5">
+            <% if (celdasDisponibles.length > 0) { %>
+            <% celdasDisponibles.forEach(celda => { %>
 
-              <!-- contenedor de celdas -->
+            <!-- contenedor de celdas -->
 
-              <div class="col-md-4 col-6">
-                <!-- Contenedor de información interna de la celda -->
+            <div class="col-md-4 col-6">
+              <!-- Contenedor de información interna de la celda -->
+              <div title="Seleccionar celda #<%= celda.id_celda %>, esta celda es para <%= celda.tipo_celda%>" class="mb-4 border-primary p-4 cells-container" data-id="<%= celda.id_celda %>" onclick="selectRadio('<%= celda.id_celda %>')">
+                <!-- Contenedor de icono y id de celda-->
 
-                <div
-                  title="Seleccionar celda #<%= celda.id_celda %>, esta celda es para <%= celda.tipo_celda%>"
-                  class="mb-4 border-primary p-4 cells-container"
-                  data-id="<%= celda.id_celda %>"
-                  onclick="selectRadio('<%= celda.id_celda %>')">
-                  <!-- Contenedor de icono y id de celda-->
-
-                  <div
-                    class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center">
-                      <div class="icon-container">
-                        <i class="material-icons">warehouse</i>
-                      </div>
-                      <span class="font-secondary ms-2 opacity-75"
-                        >#<%= celda.id_celda %></span
-                      >
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons">warehouse</i>
                     </div>
-
-                    <div class="d-flex align-items-center">
-                      <!-- Icono dinámico en base al tipo de vehículo-->
-                      <div class="icon-container">
-                        <% if (celda.tipo_celda === 'Carro') { %>
-                        <i class="material-icons">directions_car</i>
-                        <% } else if (celda.tipo_celda === 'Moto') { %>
-                        <i class="material-icons">two_wheeler</i>
-                        <% } else { %>
-                        <!-- Manejar otro tipo de vehículo o mostrar un icono predeterminado -->
-                        <i class="material-icons">directions_car</i>
-                        <% } %>
-                      </div>
-                    </div>
+                    <span class="font-secondary ms-2 opacity-75">
+                      #<%= celda.id_celda %>
+                    </span>
                   </div>
 
-                  <!-- Radio para seleccionar la celda -->
-
-                  <div class="w-100 d-flex mt-4">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="id_celda"
-                      id="id_celda_<%= celda.id_celda %>"
-                      value="<%= celda.id_celda %>"
-                      required />
+                  <div class="d-flex align-items-center">
+                    <!-- Icono dinámico en base al tipo de vehículo-->
+                    <div class="icon-container">
+                      <% if (celda.tipo_celda === 'Carro') { %>
+                      <i class="material-icons">directions_car</i>
+                      <% } else if (celda.tipo_celda === 'Moto') { %>
+                      <i class="material-icons">two_wheeler</i>
+                      <% } else { %>
+                      <!-- Manejar otro tipo de vehículo o mostrar un icono predeterminado -->
+                      <i class="material-icons">directions_car</i>
+                      <% } %>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <% }); %>
-            </div>
 
-            <!-- Fila que contiene el boton para enviar la reserva -->
-            <div class="row">
-              <div class="col-12">
-                <button
-                  title="Solicitar reserva"
-                  class="button-primary text-center w-100"
-                  type="submit">
-                  Reservar
-                </button>
-              </div>
-            </div>
+                <!-- Radio para seleccionar la celda -->
 
-            <!-- Fila que contiene el mensaje de error o exito de la reserva -->
-            <div class="row mt-3 d-flex justify-content-center">
-              <div class="w-50 opacity-75">
-                <% if (typeof message !== 'undefined' && message.type ===
-                'success') { %>
-                <div class="successAlert-primary mt-4"><%= message.text %></div>
-                <% } else if (typeof message !== 'undefined' && message.type ===
-                'error') { %>
-                <div class="errorAlert-primary mt-4"><%= message.text %></div>
-                <% } %>
+                <div class="w-100 d-flex mt-4">
+                  <input class="form-check-input" type="radio" name="id_celda" id="id_celda_<%= celda.id_celda %>" value="<%= celda.id_celda %>" required />
+                </div>
               </div>
             </div>
-          </form>
-        </div>
-      </main>
-    </div>
-    <!-- Enlaces de scripts -->
-    <%- include('../templates/scripts') %> >
-  </body>
+            <% }); %>
+            <% } else { %>
+            <!-- Mensaje cuando no hay celdas disponibles -->
+            <div class="col-12 p-0 d-flex justify-content-center flex-column align-items-center mb-4">
+              <p class="text-center d-flex rem-2 opacity-25">
+                Lo sentimos, no hay celdas disponibles en este momento...
+                <br />
+                Vuelve a revisar más tarde
+              </p>
+              <i class="material-icons rem-10 mt-4 opacity-25">
+                event_busy
+              </i>
+            </div>
+            <% } %>
+          </div>
+
+          <!-- Fila que contiene el boton para enviar la reserva -->
+          <div class="row">
+            <div class="col-12 text-center">
+              <!-- Ajuste del botón para deshabilitarlo cuando no hay celdas -->
+              <button title="Solicitar reserva" class="button-primary text-center w-100" type="<%= celdasDisponibles.length > 0 ? 'submit' : 'button' %>" <%= celdasDisponibles.length === 0 ? 'disabled' : '' %> >
+                Reservar
+              </button>
+            
+            </div>
+          </div>
+
+          <!-- Fila que contiene el mensaje de error o éxito de la reserva -->
+          <div class="row mt-3 d-flex justify-content-center">
+            <div class="w-50 opacity-75">
+              <% if (typeof message !== 'undefined' && message.type === 'success') { %>
+              <div class="successAlert-primary mt-4"><%= message.text %></div>
+              <% } else if (typeof message !== 'undefined' && message.type === 'error') { %>
+              <div class="errorAlert-primary mt-4"><%= message.text %></div>
+              <% } %>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+  <!-- Enlaces de scripts -->
+  <%- include('../templates/scripts') %>
+</body>
+
 </html>

@@ -16,33 +16,23 @@
 
   <body class="vh-100">
     <div class="container-fluid p-0 m-0 d-flex flex-column h-100">
-      <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
       <%- include('../templates/headeruser') %>
 
-      <!-- contenedor principal -->
-
       <main
-        class="container-fluid p-5 gap-6 w-75 d-flex flex-column justify-content-center flex-lg-row align-items-center media-sm-w-100"
+        class="container-fluid p-5 gap-6 w-75 d-flex flex-column justify-content-center align-items-center media-sm-w-100"
         style="flex: 1">
-        <!-- Contenedor de historial de reservas -->
-
         <div class="container-fluid">
-          <!-- Contenedor de fila de titulo de la pagina -->
-
+          <% if (historialReservasPendientes &&
+          historialReservasPendientes.length > 0) { %>
           <div class="row mb-5">
-            <h1 class="text-center text-center rem-2-2 weight-700 opacity-75">
-              Historial de reservas
-            </h1>
+            <h2 class="text-center rem-2-2 weight-700 opacity-75">
+              Reservas Pendientes
+            </h2>
           </div>
 
-          <!-- Contenedor de fila de reserva-->
-
-          <% if (historialReservas && historialReservas.length > 0) { %> <%
-          historialReservas.sort((a, b) => new Date(b.fecha_reserva) - new
-          Date(a.fecha_reserva)).forEach(reserva => { %>
+          <% historialReservasPendientes.forEach(reserva => { %>
           <div
             class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
-            <!-- Contenedor de información de hora-->
             <div class="col-12 col-lg-3 p-0">
               <div>
                 <div class="d-flex align-items-center">
@@ -56,8 +46,6 @@
               </div>
             </div>
 
-            <!-- Contenedor de información de vehículo-->
-
             <div class="col-12 col-lg-3 p-0">
               <div class="d-flex align-items-center">
                 <div class="icon-container">
@@ -66,7 +54,6 @@
                   <% } else if (reserva.placa_vehiculo === 'Moto') { %>
                   <i class="material-icons">two_wheeler</i>
                   <% } else { %>
-                  <!-- Manejar otro tipo de vehículo o mostrar un icono predeterminado -->
                   <i class="material-icons">directions_car</i>
                   <% } %>
                 </div>
@@ -76,7 +63,6 @@
               </div>
             </div>
 
-            <!-- Contenedor de información de celda-->
             <div class="col-12 col-lg-3 p-0">
               <div class="d-flex align-items-center">
                 <div class="icon-container">
@@ -88,8 +74,6 @@
               </div>
             </div>
 
-            <!-- Contenedor de información de estado de reserva-->
-
             <div class="col-12 col-lg-3 p-0">
               <div class="h-100 d-flex align-items-center">
                 <span
@@ -100,15 +84,98 @@
             </div>
           </div>
           <% }); %> <% } else { %>
-
           <div
-            class="col-12 d-flex justify-content-center flex-column align-items-center mt-4 opacity-25">
-            <p class="text-center d-flex rem-2">
-              Aún no has hecho ninguna reserva...
+            class="col-12 d-flex justify-content-center flex-column align-items-center">
+            <div class="row mb-5">
+              <h2 class="text-center rem-2-2 weight-700 opacity-75">
+                Reservas Pendientes
+              </h2>
+            </div>
+            <p class="text-center d-flex rem-2 opacity-25">
+              No tienes reservas pendientes en este momento...
             </p>
-            <i class="material-icons rem-10 mt-4"> pending_actions </i>
+            <i class="material-icons rem-10 mt-4 opacity-25"> check_circle </i>
           </div>
 
+          <% } %> <% if (historialReservasOtros && historialReservasOtros.length
+          > 0) { %>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row mb-5">
+            <h2 class="text-center rem-2-2 weight-700 opacity-75">
+              Historial de reservas
+            </h2>
+          </div>
+
+          <% historialReservasOtros.forEach(reserva => { %>
+          <div
+            class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
+            <div class="col-12 col-lg-3 p-0">
+              <div>
+                <div class="d-flex align-items-center">
+                  <div class="icon-container">
+                    <i class="material-icons"> watch_later </i>
+                  </div>
+                  <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                    <%= formatDateTime(reserva.fecha_reserva) %>
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-3 p-0">
+              <div class="d-flex align-items-center">
+                <div class="icon-container">
+                  <% if (reserva.placa_vehiculo === 'Carro') { %>
+                  <i class="material-icons">directions_car</i>
+                  <% } else if (reserva.placa_vehiculo === 'Moto') { %>
+                  <i class="material-icons">two_wheeler</i>
+                  <% } else { %>
+                  <i class="material-icons">directions_car</i>
+                  <% } %>
+                </div>
+                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  <%= reserva.placa_vehiculo %>
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-3 p-0">
+              <div class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> warehouse </i>
+                </div>
+                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  #<%= reserva.id_celda %>
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-3 p-0">
+              <div class="h-100 d-flex align-items-center">
+                <span
+                  class="<%= reserva.estado_reserva === 'Pendiente' ? 'neutralAlert-primary' : (reserva.estado_reserva === 'Rechazada' ? 'errorAlert-primary' : (reserva.estado_reserva === 'Cancelada' ? 'errorAlert-primary' : 'successAlert-primary')) %>">
+                  <%= reserva.estado_reserva %>
+                </span>
+              </div>
+            </div>
+          </div>
+          <% }); %> <% } else { %>
+          <div
+            class="col-12 d-flex justify-content-center flex-column align-items-center mt-5">
+            <div class="row mb-5">
+              <h2 class="text-center rem-2-2 weight-700 opacity-75">
+                Historial de reservas
+              </h2>
+            </div>
+            <p class="text-center d-flex rem-2 opacity-25">
+              No tienes reservas concretadas en tu historial...
+            </p>
+            <i class="material-icons rem-10 mt-4 opacity-25">
+              pending_actions
+            </i>
+          </div>
           <% } %>
         </div>
       </main>

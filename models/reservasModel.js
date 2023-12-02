@@ -8,6 +8,22 @@ const ReservasModel = {
   getReservasByIdUsuario: (idUsuario) => {
     return new Promise((resolve, reject) => {
       db.query(
+        "SELECT * FROM reservas WHERE id_usuario = ? AND estado_reserva IN (?, ?, ?, ?)",
+        [idUsuario, "Cancelada", "Rechazada", "Aceptada", "Pendiente"],
+        (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+  },
+
+  getReservasByIdUsuarioAll: (idUsuario) => {
+    return new Promise((resolve, reject) => {
+      db.query(
         "SELECT * FROM reservas WHERE id_usuario = ?",
         [idUsuario],
         (error, results) => {

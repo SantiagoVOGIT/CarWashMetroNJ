@@ -144,8 +144,17 @@ router.get("/reservations", async (req, res) => {
       req.session.user.id_usuario
     );
 
+    // Filtrar reservas pendientes y otras reservas
+    const historialReservasPendientes = historialReservas.filter(
+      (reserva) => reserva.estado_reserva === "Pendiente"
+    );
+    const historialReservasOtros = historialReservas.filter(
+      (reserva) => reserva.estado_reserva !== "Pendiente"
+    );
+
     res.render("user/reservations.ejs", {
-      historialReservas: historialReservas,
+      historialReservasPendientes,
+      historialReservasOtros,
     });
   } catch (error) {
     console.error("Error al obtener historial de reservas:", error);

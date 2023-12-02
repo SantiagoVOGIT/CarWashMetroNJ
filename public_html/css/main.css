@@ -137,11 +137,11 @@
 }
 
 .border-primary, .form-check-input {
-  border: solid 1px rgba(51, 152, 219, 0.2) !important;
+  border: solid 1.6px rgba(51, 152, 219, 0.2) !important;
 }
 
 .outline-primary {
-  outline: solid 1px rgba(51, 152, 219, 0.4) !important;
+  outline: solid 1px rgba(51, 152, 219, 0.2) !important;
 }
 
 #dialog-overlay {

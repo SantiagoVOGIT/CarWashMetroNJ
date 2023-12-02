@@ -16,14 +16,22 @@
 
   <body class="vh-100">
     <div class="container-fluid p-0 m-0 d-flex flex-column h-100">
+      <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
       <%- include('../templates/headeruser') %>
+
+      <!-- contenedor principal -->
 
       <main
         class="container-fluid p-5 gap-6 w-75 d-flex flex-column justify-content-center align-items-center media-sm-w-100"
         style="flex: 1">
-        <div class="container-fluid">
+        <!-- contenedor principal de historial de reservas pendientes -->
+
+        <div class="container-fluid p-0">
           <% if (historialReservasPendientes &&
           historialReservasPendientes.length > 0) { %>
+
+          <!-- Titulo principal -->
+
           <div class="row mb-5">
             <h2 class="text-center rem-2-2 weight-700 opacity-75">
               Reservas Pendientes
@@ -31,11 +39,18 @@
           </div>
 
           <% historialReservasPendientes.forEach(reserva => { %>
+
+          <!-- Fila con la información de la reserva -->
+
           <div
             class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
+            <!-- Contenedor con información fecha y hora de reserva -->
+
             <div class="col-12 col-lg-3 p-0">
               <div>
-                <div class="d-flex align-items-center">
+                <div
+                  title="Fecha y hora en la que se hizo la reserva"
+                  class="d-flex align-items-center">
                   <div class="icon-container">
                     <i class="material-icons"> watch_later </i>
                   </div>
@@ -46,25 +61,35 @@
               </div>
             </div>
 
+            <!-- Contenedor con información de tipo de vehículo  -->
+
             <div class="col-12 col-lg-3 p-0">
               <div class="d-flex align-items-center">
-                <div class="icon-container">
-                  <% if (reserva.placa_vehiculo === 'Carro') { %>
+                <div
+                  title="Tipo de vehículo con el que se hizo la reserva"
+                  class="icon-container">
+                  <% if (reserva.tipo_vehiculo === 'Carro') { %>
                   <i class="material-icons">directions_car</i>
-                  <% } else if (reserva.placa_vehiculo === 'Moto') { %>
+                  <% } else if (reserva.tipo_vehiculo === 'Moto') { %>
                   <i class="material-icons">two_wheeler</i>
                   <% } else { %>
-                  <i class="material-icons">directions_car</i>
+                  <i class="material-icons">airport_shuttle</i>
                   <% } %>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                <h3
+                  title="Placa del vehículo"
+                  class="ms-3 opacity-75 weight-700 font-secondary">
                   <%= reserva.placa_vehiculo %>
                 </h3>
               </div>
             </div>
 
+            <!-- Contenedor con información de celda -->
+
             <div class="col-12 col-lg-3 p-0">
-              <div class="d-flex align-items-center">
+              <div
+                title="Número de celda asignada"
+                class="d-flex align-items-center">
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
@@ -74,9 +99,12 @@
               </div>
             </div>
 
+            <!-- Contenedor con información de estado de la reserva -->
+
             <div class="col-12 col-lg-3 p-0">
               <div class="h-100 d-flex align-items-center">
                 <span
+                  title="Esta reserva se encuentra <%= reserva.estado_reserva %> de ser rechazada, cancelada o aceptada"
                   class="<%= reserva.estado_reserva === 'Pendiente' ? 'neutralAlert-primary' : (reserva.estado_reserva === 'Rechazada' ? 'errorAlert-primary' : 'successAlert-primary') %>">
                   <%= reserva.estado_reserva %>
                 </span>
@@ -84,6 +112,7 @@
             </div>
           </div>
           <% }); %> <% } else { %>
+          <!-- Codigo con diseño en caso de que no hayan reservas pendientes registradas -->
           <div
             class="col-12 d-flex justify-content-center flex-column align-items-center">
             <div class="row mb-5">
@@ -101,7 +130,9 @@
           > 0) { %>
         </div>
 
-        <div class="container-fluid">
+        <!-- contenedor principal de historial de reservas -->
+
+        <div class="container-fluid p-0">
           <div class="row mb-5">
             <h2 class="text-center rem-2-2 weight-700 opacity-75">
               Historial de reservas
@@ -113,7 +144,9 @@
             class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
             <div class="col-12 col-lg-3 p-0">
               <div>
-                <div class="d-flex align-items-center">
+                <div
+                  title="Fecha y hora en la que se hizo la reserva"
+                  class="d-flex align-items-center">
                   <div class="icon-container">
                     <i class="material-icons"> watch_later </i>
                   </div>
@@ -126,23 +159,29 @@
 
             <div class="col-12 col-lg-3 p-0">
               <div class="d-flex align-items-center">
-                <div class="icon-container">
-                  <% if (reserva.placa_vehiculo === 'Carro') { %>
+                <div
+                  title="Tipo de vehículo con el que se hizo la reserva"
+                  class="icon-container">
+                  <% if (reserva.tipo_vehiculo === 'Carro') { %>
                   <i class="material-icons">directions_car</i>
-                  <% } else if (reserva.placa_vehiculo === 'Moto') { %>
+                  <% } else if (reserva.tipo_vehiculo === 'Moto') { %>
                   <i class="material-icons">two_wheeler</i>
                   <% } else { %>
-                  <i class="material-icons">directions_car</i>
+                  <i class="material-icons">airport_shuttle</i>
                   <% } %>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                <h3
+                  title="Placa del vehículo"
+                  class="ms-3 opacity-75 weight-700 font-secondary">
                   <%= reserva.placa_vehiculo %>
                 </h3>
               </div>
             </div>
 
             <div class="col-12 col-lg-3 p-0">
-              <div class="d-flex align-items-center">
+              <div
+                title="Número de celda asignada"
+                class="d-flex align-items-center">
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
@@ -155,6 +194,7 @@
             <div class="col-12 col-lg-3 p-0">
               <div class="h-100 d-flex align-items-center">
                 <span
+                  title="Esta reserva fue <%= reserva.estado_reserva %>"
                   class="<%= reserva.estado_reserva === 'Pendiente' ? 'neutralAlert-primary' : (reserva.estado_reserva === 'Rechazada' ? 'errorAlert-primary' : (reserva.estado_reserva === 'Cancelada' ? 'errorAlert-primary' : 'successAlert-primary')) %>">
                   <%= reserva.estado_reserva %>
                 </span>

@@ -25,6 +25,20 @@
   border-radius: $border-radius-primary;
 }
 
+.cells-container {
+  @extend .container-secondary;
+  &:hover {
+    box-shadow: $shadow-primary;
+    cursor: pointer;
+    background-color: rgba($primary-color, 0.3);
+  }
+}
+
+.cells-container.selected {
+  box-shadow: $shadow-primary;
+  background-color: rgba($primary-color, 0.3);
+}
+
 // Estilos de botones
 
 .button-primary {
@@ -157,11 +171,11 @@
 // bordes
 
 .border-primary {
-  border: solid 1.6px rgba($primary-color, 0.2) !important;
+  border: solid 1.6px rgba($primary-color, 0.25) !important;
 }
 
 .outline-primary {
-  outline: solid 1px rgba($primary-color, 0.2) !important;
+  outline: solid 1.6px rgba($primary-color, 0.25) !important;
 }
 
 // Estilos para el cuadro de diálogo personalizado
@@ -326,9 +340,9 @@ $heights: (
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $background-color-primary;
-  transition: $transition-duration;
+  background-color: rgba($primary-color, 0.05);
   border-radius: $border-radius-secondary;
+  padding: 5px;
 }
 
 .slider:before {
@@ -352,7 +366,7 @@ input:checked + .slider:before {
 }
 
 .form-check-input {
-  background-color: rgba($primary-color, 0.3);
+  background-color: rgba($primary-color, 0.05);
   @extend .border-primary;
   background-image: none;
 }

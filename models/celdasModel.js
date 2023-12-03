@@ -15,6 +15,33 @@ const CeldasModel = {
       );
     });
   },
+
+  getCeldas: () => {
+    return new Promise((resolve, reject) => {
+      db.query("SELECT * FROM celdas", (error, results) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+  },
+  updateEstadoCelda: (celdaId, nuevoEstado) => {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "UPDATE celdas SET estado_celda = ? WHERE id_celda = ?",
+        [nuevoEstado, celdaId],
+        (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+  },
 };
 
 module.exports = CeldasModel;

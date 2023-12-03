@@ -105,7 +105,7 @@
               <!-- Contenedor con el estado de la celda -->
 
               <div class="w-100 d-flex">
-                <div class="w-50 me-3">
+                <div class="w-50">
                   <span
                     title="Esta reserva se encuentra <%= reserva.estado_reserva %> de ser rechazada, cancelada o aceptada"
                     class="w-100 h-100 d-flex align-items-center <%= reserva.estado_reserva === 'Pendiente' ? 'neutralAlert-primary' : (reserva.estado_reserva === 'Rechazada' ? 'errorAlert-primary' : 'successAlert-primary') %>">
@@ -115,7 +115,7 @@
 
                 <!-- Contenedor con el boton para cancelar la reserva -->
 
-                <div class="w-50">
+                <div class="w-50 ms-4">
                   <% if (reserva.estado_reserva === 'Pendiente') { %>
                   <form
                     action="/user/reservas/cancelarReserva/<%= reserva.id_reserva %>"
@@ -123,7 +123,7 @@
                     <button
                       title="Cancelar esta reserva"
                       type="submit"
-                      class="button-danger-primary rounded-3 w-100">
+                      class="button-danger-primary w-100">
                       Cancelar
                     </button>
                   </form>

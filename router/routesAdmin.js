@@ -73,6 +73,14 @@ router.get("/staff", (req, res) => {
   }
 });
 
+router.get("/reservationsDashboard", (req, res) => {
+  if (req.session.admin) {
+    res.render("admin/reservationsDashboard.ejs");
+  } else {
+    res.redirect("/");
+  }
+});
+
 router.post("/update-cell-status", async (req, res) => {
   try {
     const { celdaId, isChecked } = req.body;

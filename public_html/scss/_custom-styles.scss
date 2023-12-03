@@ -64,6 +64,15 @@
   }
 }
 
+.button-safety-primary {
+  @extend .button-primary;
+  background-color: $color-green;
+  &:hover {
+    filter: $brightness-primary;
+    box-shadow: $shadow-safety;
+  }
+}
+
 // Estilos de inputs
 
 .input-primary {

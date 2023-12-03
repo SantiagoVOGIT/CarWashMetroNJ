@@ -1,10 +1,6 @@
-// En tu archivo ReservasModel.js
-
 const db = require("../database");
 
 const ReservasModel = {
-  // ... Otras funciones del modelo
-
   createReserva: (reserva, callback) => {
     db.query("INSERT INTO reservas SET ?", reserva, callback);
   },

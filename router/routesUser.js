@@ -75,6 +75,20 @@ router.get("/home", async (req, res) => {
   }
 });
 
+// Función de logout para usuario
+router.post("/logout", (req, res) => {
+  // Destruir la sección para poder hacer logout
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error al cerrar sesión:", err);
+      return res.redirect("/user/profile");
+    }
+
+    // Redirigir a la página de inicio de sesión
+    res.redirect("/");
+  });
+});
+
 // Ruta post que el usuario pueda hacer una reserva
 router.post("/reservar", (req, res) => {
   // Obtener los datos del formulario
@@ -113,20 +127,6 @@ router.post("/reservar", (req, res) => {
     req.session.message = message;
 
     res.redirect("/user/home");
-  });
-});
-
-// Función de logout para usuario
-router.post("/logout", (req, res) => {
-  // Destruir la sección para poder hacer logout
-  req.session.destroy((err) => {
-    if (err) {
-      console.error("Error al cerrar sesión:", err);
-      return res.redirect("/user/profile");
-    }
-
-    // Redirigir a la página de inicio de sesión
-    res.redirect("/");
   });
 });
 

@@ -122,6 +122,12 @@
   </div>
   <!-- Enlaces de scripts -->
   <%- include('../templates/scripts') %>
+  <script>
+    // Recargar la página cada 5 minutos (ajusta según sea necesario)
+    setInterval(function() {
+      location.reload();
+    }, 12000); // 300000 milisegundos = 5 minutos
+  </script>
 </body>
 
 </html>

@@ -28,7 +28,7 @@
   background-color: rgba(51, 152, 219, 0.3);
 }
 
-.button-primary, .button-danger-primary {
+.button-primary, .button-safety-primary, .button-danger-primary {
   background-color: #3398db;
   font-weight: 700;
   padding: 10px;
@@ -37,7 +37,7 @@
   border-radius: 16px;
   transition: 0.2s;
 }
-.button-primary:hover, .button-danger-primary:hover {
+.button-primary:hover, .button-safety-primary:hover, .button-danger-primary:hover {
   filter: brightness(1.3);
   box-shadow: 0 0 5px rgba(51, 152, 219, 0.1), 0 0 10px rgba(51, 152, 219, 0.1), 0 0 15px rgba(51, 152, 219, 0.1);
 }
@@ -48,6 +48,14 @@
 .button-danger-primary:hover {
   filter: brightness(1.3);
   box-shadow: 0 0 5px rgba(219, 51, 51, 0.1), 0 0 10px rgba(219, 51, 51, 0.1), 0 0 15px rgba(219, 51, 51, 0.1);
+}
+
+.button-safety-primary {
+  background-color: #33db57;
+}
+.button-safety-primary:hover {
+  filter: brightness(1.3);
+  box-shadow: 0 0 5px rgba(51, 219, 87, 0.1), 0 0 10px rgba(51, 219, 87, 0.1), 0 0 15px rgba(51, 219, 87, 0.1);
 }
 
 .input-primary {

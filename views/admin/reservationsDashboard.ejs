@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio / Admin</title>
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
+
+    <!-- Links CSS -->
+    <%- include('../templates/styles') %>
+  </head>
+
+  <body class="vh-100">
+    <div class="container-fluid p-0 m-0 d-flex flex-column h-100">
+      <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
+      <%- include('../templates/headerAdmin') %>
+
+      <!-- contenedor principal -->
+
+      <main
+        class="container-fluid p-5 gap-6 w-75 d-flex flex-column justify-content-center align-items-center media-sm-w-100"
+        style="flex: 1">
+        <!-- contenedor principal de historial de reservas pendientes -->
+        <div class="container fluid p-0">
+          <div
+            class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
+            <!-- Contenedor con información fecha y hora de reserva -->
+
+            <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
+              <div>
+                <div
+                  title="Fecha y hora en la que se hizo la reserva"
+                  class="d-flex align-items-center">
+                  <div class="icon-container">
+                    <i class="material-icons"> watch_later </i>
+                  </div>
+                  <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                    fecha
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contenedor con información de tipo de vehículo  -->
+
+            <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                <div
+                  title="Tipo de vehículo con el que se hizo la reserva"
+                  class="icon-container">
+                  <i class="material-icons"> directions_car </i>
+                </div>
+                <h3
+                  title="Placa del vehículo"
+                  class="ms-3 opacity-75 weight-700 font-secondary">
+                  placa
+                </h3>
+              </div>
+            </div>
+
+            <!-- Contenedor con información de celda -->
+
+            <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
+              <div
+                title="Número de celda asignada"
+                class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> warehouse </i>
+                </div>
+                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  # id de celda
+                </h3>
+              </div>
+            </div>
+
+            <!-- Contenedor con información de estado de la reserva -->
+
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
+              <!-- Contenedor con el estado de la celda -->
+              <div
+                title="Número de celda asignada"
+                class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> person </i>
+                </div>
+                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  Nombre y apellido
+                </h3>
+              </div>
+            </div>
+
+            <div
+              class="col-12 col-lg-3 p-0 d-flex align-items-center d-flex justify-content-center">
+              <!-- Contenedor con el estado de la celda -->
+              <div class="w-50">
+                <form action="">
+                  <button class="button-danger-primary w-100">Rechazar</button>
+                </form>
+              </div>
+              <div class="w-50 ms-3">
+                <form action="">
+                  <button class="button-safety-primary w-100">Aceptar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Enlaces de scripts -->
+    <%- include('../templates/scripts') %>
+  </body>
+</html>

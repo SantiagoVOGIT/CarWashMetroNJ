@@ -22,7 +22,13 @@
         class="container-fluid p-5 gap-6 w-75 d-flex flex-column justify-content-center align-items-center media-sm-w-100"
         style="flex: 1">
         <!-- contenedor principal de historial de reservas pendientes -->
+
         <div class="container fluid p-0">
+          <div class="row mb-5">
+            <h2 class="text-center rem-2-2 weight-700 opacity-75">
+              Historial de reservas pendientes
+            </h2>
+          </div>
           <div
             class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
             <!-- Contenedor con información fecha y hora de reserva -->
@@ -36,7 +42,7 @@
                     <i class="material-icons"> watch_later </i>
                   </div>
                   <h3 class="ms-3 opacity-75 weight-700 font-secondary">
-                    fecha
+                    fecha y hora
                   </h3>
                 </div>
               </div>
@@ -74,10 +80,7 @@
               </div>
             </div>
 
-            <!-- Contenedor con información de estado de la reserva -->
-
             <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
-              <!-- Contenedor con el estado de la celda -->
               <div
                 title="Número de celda asignada"
                 class="d-flex align-items-center">
@@ -92,7 +95,6 @@
 
             <div
               class="col-12 col-lg-3 p-0 d-flex align-items-center d-flex justify-content-center">
-              <!-- Contenedor con el estado de la celda -->
               <div class="w-50">
                 <form action="">
                   <button class="button-danger-primary w-100">Rechazar</button>
@@ -104,6 +106,99 @@
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Historial de todas las reservas -->
+        <div class="container-fluid p-0">
+          <div class="row mb-5">
+            <h2 class="text-center rem-2-2 weight-700 opacity-75">
+              Historial de reservas
+            </h2>
+          </div>
+
+          <div
+            class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
+            <div class="col-12 col-lg-2 p-0">
+              <div>
+                <div
+                  title="Fecha y hora en la que se hizo la reserva"
+                  class="d-flex align-items-center">
+                  <div class="icon-container">
+                    <i class="material-icons"> watch_later </i>
+                  </div>
+                  <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                    Fecha y hora
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-2 p-0">
+              <div class="d-flex align-items-center">
+                <div
+                  title="Tipo de vehículo con el que se hizo la reserva"
+                  class="icon-container">
+                  <i class="material-icons">two_wheeler</i>
+                </div>
+                <h3
+                  title="Placa del vehículo"
+                  class="ms-3 opacity-75 weight-700 font-secondary">
+                  placa
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-2 p-0">
+              <div
+                title="Número de celda asignada"
+                class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> warehouse </i>
+                </div>
+                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  #id de celda
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
+              <div
+                title="Número de celda asignada"
+                class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> person </i>
+                </div>
+                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  Nombre y apellido
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-3 p-0">
+              <div class="h-100 d-flex align-items-center">
+                <span
+                  title="Esta reserva fue Cancelada"
+                  class="errorAlert-primary">
+                  estado reserva
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-12 d-flex justify-content-center flex-column align-items-center mt-5">
+            <div class="row mb-5">
+              <h2 class="text-center rem-2-2 weight-700 opacity-75">
+                Historial de reservas
+              </h2>
+            </div>
+            <p class="text-center d-flex rem-2 opacity-25">
+              Aún no se ha realizado ninguna reserva...
+            </p>
+            <i class="material-icons rem-10 mt-4 opacity-25">
+              pending_actions
+            </i>
           </div>
         </div>
       </main>

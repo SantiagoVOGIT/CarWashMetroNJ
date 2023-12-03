@@ -2,8 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Raleway:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap");
 .gradient-primary, .container-primary, #dialog-box {
-  background: #194a6b;
-  background: linear-gradient(180deg, #194a6b 0%, #1d1d1d 45%);
+  background: linear-gradient(180deg, rgba(51, 152, 219, 0.5) 0%, #1d1d1d 45%);
 }
 
 .container-primary, #dialog-box {

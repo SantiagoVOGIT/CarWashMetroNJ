@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Pagina no encontrada</title>
+    <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
+
+    <!-- Links CSS -->
+    <%- include('./templates/styles') %>
   </head>
-  <body>
-    <h1><%= titulo %></h1>
+
+  <body class="vh-100">
+    <div class="container-fluid d-flex flex-column h-100 p-0">
+      <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
+
+      <main
+        class="container-fluid p-5 w-75 d-flex flex-column justify-content-center flex-lg-row align-items-center media-sm-w-100"
+        style="flex: 1">
+        <!-- Contenedor de formulario -->
+        <div class="container-fluid p-0">
+          <div class="row">
+            <div class="col-6">
+              <h1 class="rem-5 opacity-75">
+                Esta pagina que estas buscando no existe
+              </h1>
+              <br />
+              <div class="d-flex justify-content-center flex-column">
+                <a class="link-primary rem-2" href="#" id="backLink"
+                  >Volver a la página anterior</a
+                >
+                <i class="material-icons rem-5 opacity-25 mt-4"> info </i>
+              </div>
+            </div>
+            <div class="col-6 opacity-25">
+              <img
+                class="img-fluid"
+                src="/img/logo-main-carwashmetro.png"
+                alt="" />
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      document
+        .getElementById("backLink")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          window.history.back();
+        });
+    </script>
+    <!-- Enlaces de scripts -->
+    <%- include('./templates/scripts') %>
   </body>
 </html>

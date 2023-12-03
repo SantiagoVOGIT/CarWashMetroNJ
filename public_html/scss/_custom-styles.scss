@@ -3,10 +3,9 @@
 // Fondos y gradientes
 
 .gradient-primary {
-  background: $secondary-color;
   background: linear-gradient(
     180deg,
-    $secondary-color 0%,
+    rgba($primary-color, 0.5) 0%,
     $background-color-secondary 45%
   );
 }

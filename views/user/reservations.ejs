@@ -54,7 +54,7 @@
                   <div class="icon-container">
                     <i class="material-icons"> watch_later </i>
                   </div>
-                  <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  <h3 class="ms-3 opacity-75 font-secondary">
                     <%= formatDateTime(reserva.fecha_reserva) %>
                   </h3>
                 </div>
@@ -78,7 +78,7 @@
                 </div>
                 <h3
                   title="Placa del vehículo"
-                  class="ms-3 opacity-75 weight-700 font-secondary">
+                  class="ms-3 opacity-75 font-secondary">
                   <%= reserva.placa_vehiculo %>
                 </h3>
               </div>
@@ -93,7 +93,7 @@
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                <h3 class="ms-3 opacity-75 font-secondary">
                   #<%= reserva.id_celda %>
                 </h3>
               </div>
@@ -171,7 +171,7 @@
                   <div class="icon-container">
                     <i class="material-icons"> watch_later </i>
                   </div>
-                  <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                  <h3 class="ms-3 opacity-75 font-secondary">
                     <%= formatDateTime(reserva.fecha_reserva) %>
                   </h3>
                 </div>
@@ -193,7 +193,7 @@
                 </div>
                 <h3
                   title="Placa del vehículo"
-                  class="ms-3 opacity-75 weight-700 font-secondary">
+                  class="ms-3 opacity-75 font-secondary">
                   <%= reserva.placa_vehiculo %>
                 </h3>
               </div>
@@ -206,7 +206,7 @@
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
+                <h3 class="ms-3 opacity-75 font-secondary">
                   #<%= reserva.id_celda %>
                 </h3>
               </div>
@@ -244,5 +244,11 @@
 
     <!-- Enlaces de scripts -->
     <%- include('../templates/scripts') %>
+    <script>
+      // Recargar la página cada 12 segundos
+      setInterval(function () {
+        location.reload();
+      }, 3000);
+    </script>
   </body>
 </html>

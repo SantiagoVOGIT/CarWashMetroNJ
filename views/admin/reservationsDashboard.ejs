@@ -23,49 +23,51 @@
         style="flex: 1">
         <!-- contenedor principal de historial de reservas pendientes -->
 
-        <div class="container fluid p-0">
+        <!-- Historial de todas las reservas -->
+        <div class="container-fluid p-0">
           <div class="row mb-5">
             <h2 class="text-center rem-2-2 weight-700 opacity-75">
-              Historial de reservas pendientes
+              Reservas pendientes
             </h2>
           </div>
+
+          <% const reservasPendientes = todasLasReservas.filter(reserva =>
+          reserva.estado_reserva === 'Pendiente'); %> <% if
+          (reservasPendientes.length > 0) { %> <%
+          reservasPendientes.forEach(reserva => { %>
           <div
             class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
-            <!-- Contenedor con información fecha y hora de reserva -->
-
-            <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
-              <div>
-                <div
-                  title="Fecha y hora en la que se hizo la reserva"
-                  class="d-flex align-items-center">
-                  <div class="icon-container">
-                    <i class="material-icons"> watch_later </i>
-                  </div>
-                  <h3 class="ms-3 opacity-75 weight-700 font-secondary">
-                    fecha y hora
-                  </h3>
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
+              <div
+                title="Fecha y hora en la que se hizo la reserva"
+                class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> watch_later </i>
                 </div>
+                <h3 class="ms-3 opacity-75 font-secondary">
+                  <%= formatDateTime(reserva.fecha_reserva) %>
+                </h3>
               </div>
             </div>
-
-            <!-- Contenedor con información de tipo de vehículo  -->
 
             <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <div
                   title="Tipo de vehículo con el que se hizo la reserva"
                   class="icon-container">
-                  <i class="material-icons"> directions_car </i>
+                  <i class="material-icons">
+                    <%= reserva.tipo_vehiculo === 'Carro' ? 'directions_car' :
+                    (reserva.tipo_vehiculo === 'Moto' ? 'two_wheeler' :
+                    'airport_shuttle') %>
+                  </i>
                 </div>
                 <h3
                   title="Placa del vehículo"
-                  class="ms-3 opacity-75 weight-700 font-secondary">
-                  placa
+                  class="ms-3 opacity-75 font-secondary">
+                  <%= reserva.placa_vehiculo %>
                 </h3>
               </div>
             </div>
-
-            <!-- Contenedor con información de celda -->
 
             <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
               <div
@@ -74,42 +76,62 @@
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
-                  # id de celda
+                <h3 class="ms-3 opacity-75 font-secondary">
+                  #<%= reserva.id_celda %>
                 </h3>
               </div>
             </div>
 
-            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
+            <div class="col-12 col-lg-2 p-0 d-flex align-items-center pe-4">
               <div
                 title="Número de celda asignada"
                 class="d-flex align-items-center">
                 <div class="icon-container">
                   <i class="material-icons"> person </i>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
-                  Nombre y apellido
+                <h3 class="ms-3 opacity-75">
+                  <%= reserva.nombre && reserva.apellido ? reserva.nombre + ' '
+                  + reserva.apellido : 'Usuario no encontrado' %>
                 </h3>
               </div>
             </div>
 
             <div
               class="col-12 col-lg-3 p-0 d-flex align-items-center d-flex justify-content-center">
+              <!-- Asegúrate de estar pasando el id_reserva y el estado en tu plantilla -->
               <div class="w-50">
-                <form action="">
-                  <button class="button-danger-primary w-100">Rechazar</button>
+                <form
+                  action="/admin/reservas/actualizarEstado/<%= reserva.id_reserva %>"
+                  method="post">
+                  <input type="hidden" name="estado" value="Rechazada" />
+                  <button class="button-danger-primary w-100" type="submit">
+                    Rechazar
+                  </button>
                 </form>
               </div>
               <div class="w-50 ms-3">
-                <form action="">
-                  <button class="button-primary w-100">Aceptar</button>
+                <form
+                  action="/admin/reservas/actualizarEstado/<%= reserva.id_reserva %>"
+                  method="post">
+                  <input type="hidden" name="estado" value="Aceptada" />
+                  <button class="button-primary w-100" type="submit">
+                    Aceptar
+                  </button>
                 </form>
               </div>
             </div>
           </div>
+          <% }); %> <% } else { %>
+          <div
+            class="col-12 d-flex justify-content-center flex-column align-items-center mt-5">
+            <p class="text-center d-flex rem-2 opacity-25">
+              No hay reservas pendientes en este momento...
+            </p>
+            <i class="material-icons rem-10 mt-4 opacity-25"> check_circle </i>
+          </div>
+          <% } %>
         </div>
 
-        <!-- Historial de todas las reservas -->
         <div class="container-fluid p-0">
           <div class="row mb-5">
             <h2 class="text-center rem-2-2 weight-700 opacity-75">
@@ -117,60 +139,68 @@
             </h2>
           </div>
 
+          <% const historialReservas = todasLasReservas.filter(reserva =>
+          reserva.estado_reserva === 'Cancelada' || reserva.estado_reserva ===
+          'Aceptada' || reserva.estado_reserva === 'Rechazada' ); %> <% if
+          (historialReservas.length > 0) { %> <%
+          historialReservas.forEach(reserva => { %>
           <div
             class="row container-secondary border-primary p-4 mt-4 flex-column flex-lg-row gap-4 gap-lg-0">
-            <div class="col-12 col-lg-2 p-0">
-              <div>
-                <div
-                  title="Fecha y hora en la que se hizo la reserva"
-                  class="d-flex align-items-center">
-                  <div class="icon-container">
-                    <i class="material-icons"> watch_later </i>
-                  </div>
-                  <h3 class="ms-3 opacity-75 weight-700 font-secondary">
-                    Fecha y hora
-                  </h3>
+            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
+              <div
+                title="Fecha y hora en la que se hizo la reserva"
+                class="d-flex align-items-center">
+                <div class="icon-container">
+                  <i class="material-icons"> watch_later </i>
                 </div>
-              </div>
-            </div>
-
-            <div class="col-12 col-lg-2 p-0">
-              <div class="d-flex align-items-center">
-                <div
-                  title="Tipo de vehículo con el que se hizo la reserva"
-                  class="icon-container">
-                  <i class="material-icons">two_wheeler</i>
-                </div>
-                <h3
-                  title="Placa del vehículo"
-                  class="ms-3 opacity-75 weight-700 font-secondary">
-                  placa
+                <h3 class="ms-3 opacity-75 font-secondary">
+                  <%= formatDateTime(reserva.fecha_reserva) %>
                 </h3>
               </div>
             </div>
 
-            <div class="col-12 col-lg-2 p-0">
+            <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                <div
+                  title="Tipo de vehículo con el que se hizo la reserva"
+                  class="icon-container">
+                  <i class="material-icons">
+                    <%= reserva.tipo_vehiculo === 'Carro' ? 'directions_car' :
+                    (reserva.tipo_vehiculo === 'Moto' ? 'two_wheeler' :
+                    'airport_shuttle') %>
+                  </i>
+                </div>
+                <h3
+                  title="Placa del vehículo"
+                  class="ms-3 opacity-75 font-secondary">
+                  <%= reserva.placa_vehiculo %>
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-2 p-0 d-flex align-items-center">
               <div
                 title="Número de celda asignada"
                 class="d-flex align-items-center">
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
-                  #id de celda
+                <h3 class="ms-3 opacity-75 font-secondary">
+                  #<%= reserva.id_celda %>
                 </h3>
               </div>
             </div>
 
-            <div class="col-12 col-lg-3 p-0 d-flex align-items-center">
+            <div class="col-12 col-lg-2 p-0 d-flex align-items-center pe-3">
               <div
                 title="Número de celda asignada"
                 class="d-flex align-items-center">
                 <div class="icon-container">
                   <i class="material-icons"> person </i>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700 font-secondary">
-                  Nombre y apellido
+                <h3 class="ms-3 opacity-75 pe-4">
+                  <%= reserva.nombre && reserva.apellido ? reserva.nombre + ' '
+                  + reserva.apellido : 'Usuario no encontrado' %>
                 </h3>
               </div>
             </div>
@@ -178,33 +208,35 @@
             <div class="col-12 col-lg-3 p-0">
               <div class="h-100 d-flex align-items-center">
                 <span
-                  title="Esta reserva fue Cancelada"
-                  class="errorAlert-primary">
-                  estado reserva
+                  title="Esta reserva fue <%= reserva.estado_reserva %> weight-700"
+                  class="<%= reserva.estado_reserva === 'Pendiente' ? 'neutralAlert-primary' : (reserva.estado_reserva === 'Rechazada' ? 'errorAlert-primary' : (reserva.estado_reserva === 'Cancelada' ? 'errorAlert-primary' : 'successAlert-primary')) %>">
+                  <%= reserva.estado_reserva %>
                 </span>
               </div>
             </div>
           </div>
-
+          <% }); %> <% } else { %>
           <div
             class="col-12 d-flex justify-content-center flex-column align-items-center mt-5">
-            <div class="row mb-5">
-              <h2 class="text-center rem-2-2 weight-700 opacity-75">
-                Historial de reservas
-              </h2>
-            </div>
             <p class="text-center d-flex rem-2 opacity-25">
-              Aún no se ha realizado ninguna reserva...
+              No hay reservas disponibles para mostrar...
             </p>
             <i class="material-icons rem-10 mt-4 opacity-25">
               pending_actions
             </i>
           </div>
+          <% } %>
         </div>
       </main>
     </div>
 
     <!-- Enlaces de scripts -->
     <%- include('../templates/scripts') %>
+    <script>
+      // Recargar la página cada 12 segundos
+      setInterval(function () {
+        location.reload();
+      }, 3000);
+    </script>
   </body>
 </html>

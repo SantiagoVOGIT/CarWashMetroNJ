@@ -46,7 +46,7 @@
                 <div class="icon-container">
                   <i class="material-icons"> person </i>
                 </div>
-                <h3 class="ms-3 opacity-75 weight-700">
+                <h3 class="ms-3 opacity-75">
                   <%= user.nombre %> <%= user.apellido %>
                 </h3>
               </div>
@@ -162,7 +162,9 @@
                 <i class="material-icons">directions_car</i>
                 <% } %>
               </div>
-              <h2 class="ms-3"><%= user.vehiculo.tipo_vehiculo %></h2>
+              <h2 class="ms-3 opacity-75">
+                <%= user.vehiculo.tipo_vehiculo %>
+              </h2>
             </div>
 
             <!-- Contenedor de info de marca de vehículo -->
@@ -170,7 +172,7 @@
               <div class="icon-container">
                 <i class="material-icons"> branding_watermark </i>
               </div>
-              <h2 class="ms-3"><%= user.vehiculo.marca %></h2>
+              <h2 class="ms-3 opacity-75"><%= user.vehiculo.marca %></h2>
             </div>
 
             <!-- Contenedor de info de placa de vehículo -->
@@ -178,7 +180,9 @@
               <div class="icon-container">
                 <i class="material-icons"> money </i>
               </div>
-              <h2 class="ms-3 font-secondary"><%= user.vehiculo.placa %></h2>
+              <h2 class="ms-3 font-secondary opacity-75">
+                <%= user.vehiculo.placa %>
+              </h2>
             </div>
           </div>
         </div>

@@ -21,6 +21,9 @@ const UsuariosModel = {
       callback
     );
   },
+  getAllUsers: (callback) => {
+    db.query("SELECT * FROM Usuarios", callback);
+  },
 };
 
 module.exports = UsuariosModel;

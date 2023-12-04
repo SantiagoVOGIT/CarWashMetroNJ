@@ -52,6 +52,39 @@ const ReservasModel = {
       );
     });
   },
+  getAllReservas: () => {
+    return new Promise((resolve, reject) => {
+      db.query(
+        `
+        SELECT r.*, u.nombre, u.apellido
+        FROM reservas r
+        JOIN usuarios u ON r.id_usuario = u.id_usuario
+      `,
+        (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+  },
+  updateReservaStatus: (idReserva, estado) => {
+    return new Promise((resolve, reject) => {
+      db.query(
+        "UPDATE reservas SET estado_reserva = ? WHERE id_reserva = ?",
+        [estado, idReserva],
+        (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+  },
 };
 
 module.exports = ReservasModel;

@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const AdminsModel = require("../models/adminsModel");
 const CeldasModel = require("../models/celdasModel");
+const ReservasModel = require("../models/reservasModel");
+const UsuariosModel = require("../models/usuariosModel");
 
 router.post("/", (req, res) => {
   const { correo, contrasena } = req.body;
@@ -73,9 +75,33 @@ router.get("/staff", (req, res) => {
   }
 });
 
-router.get("/reservationsDashboard", (req, res) => {
+router.get("/reservationsDashboard", async (req, res) => {
   if (req.session.admin) {
-    res.render("admin/reservationsDashboard.ejs");
+    try {
+      // Obtener la información de todas las reservas desde el modelo
+      const todasLasReservas = await ReservasModel.getAllReservas();
+
+      // Obtener la información de todos los usuarios desde el modelo
+      const todosLosUsuarios = await UsuariosModel.getAllUsers();
+
+      todasLasReservas.sort(
+        (a, b) => new Date(b.fecha_reserva) - new Date(a.fecha_reserva)
+      );
+      // Renderizar la página de reservationsDashboard.ejs con la información de todas las reservas y usuarios
+      res.render("admin/reservationsDashboard.ejs", {
+        todasLasReservas,
+        todosLosUsuarios,
+        usuarios: todosLosUsuarios,
+      });
+    } catch (error) {
+      console.error("Error al obtener reservas y usuarios:", error);
+      res.render("admin/reservationsDashboard.ejs", {
+        message: {
+          type: "error",
+          text: "Error al obtener la información de reservas y usuarios",
+        },
+      });
+    }
   } else {
     res.redirect("/");
   }
@@ -97,6 +123,29 @@ router.post("/update-cell-status", async (req, res) => {
   } catch (error) {
     console.error("Error al actualizar el estado de la celda:", error);
     res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
+router.post("/reservas/actualizarEstado/:idReserva", async (req, res) => {
+  try {
+    const idReserva = req.params.idReserva;
+    const nuevoEstado = req.body.estado;
+
+    console.log(`ID de reserva: ${idReserva}, Nuevo estado: ${nuevoEstado}`);
+
+    await ReservasModel.updateReservaStatus(idReserva, nuevoEstado);
+
+    console.log(
+      `Estado de la reserva con ID ${idReserva} actualizado a ${nuevoEstado}`
+    );
+
+    // Redirige a la página de reservas después de la actualización
+    res.redirect("/admin/reservationsDashboard");
+  } catch (error) {
+    console.error("Error al actualizar el estado de la reserva:", error);
+
+    // Manejar el error redirigiendo a la página de reservas
+    res.redirect("/admin/reservationsDashboard");
   }
 });
 

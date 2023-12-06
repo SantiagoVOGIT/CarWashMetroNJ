@@ -22,7 +22,10 @@ router.post("/", (req, res) => {
           const admin = results[0];
 
           // Si es un administrador, establecer la sesión y redirigir a dashboard
-          req.session.admin = admin;
+          req.session.admin = {
+            id_admin: admin.id_admin,
+          };
+
           res.redirect("/admin/dashboard");
         } else {
           res.render("index.ejs", {
@@ -73,7 +76,7 @@ router.get("/settings", (req, res) => {
       }
 
       // Renderiza la página settings.ejs y pasa la información de los administradores
-      res.render("admin/settings.ejs", { admins });
+      res.render("admin/settings.ejs", { admins, req }); // Asegúrate de pasar req aquí
     });
   } else {
     res.redirect("/");
@@ -163,25 +166,14 @@ router.post("/reservas/actualizarEstado/:idReserva", async (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  // Obtener el ID del admin desde el formulario
-  const adminId = req.body.adminId;
-
-  // Verificar si el admin está en sesión y si el ID coincide
-  if (req.session.admin && req.session.admin.id_admin === adminId) {
-    // Destruir la sección específica para el admin
-    req.session.destroy((err) => {
-      if (err) {
-        console.error("Error al cerrar sesión:", err);
-        return res.redirect("/admin/settings");
-      }
-
-      // Redirigir a la página de inicio de sesión
-      res.redirect("/");
-    });
-  } else {
-    // Redirigir a la página de inicio de sesión si el admin no está en sesión o el ID no coincide
+  // Destruir la sesión
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error al cerrar sesión:", err);
+    }
+    // Redirigir a la página de inicio de sesión
     res.redirect("/");
-  }
+  });
 });
 
 module.exports = router;

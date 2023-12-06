@@ -33,7 +33,7 @@
             <div class="col-12 col-lg-6 p-0">
               <div class="p-3">
                 <!-- Contenedor de información de admin -->
-                <div class="container-secondary border-primary w-100">
+                <div class="container-secondary border-primary w-100 p-5">
                   <!-- Contenedor de icono y texto de nombre de admin -->
                   <div class="d-flex align-items-center">
                     <div class="icon-container">
@@ -78,23 +78,28 @@
                       <%= admin.contrasena %>
                     </h3>
                   </div>
+
                   <hr />
-                  <form action="/admin/logout" method="post">
-                    <!-- Agrega un campo oculto para almacenar el ID del admin -->
-                    <input
-                      type="hidden"
-                      name="adminId"
-                      value="<%= admin.id_admin %>" />
-                    <button
-                      type="submit"
-                      class="mt-4 w-100 button-danger-primary">
-                      Cerrar sesión
-                    </button>
-                  </form>
+
+                  <span
+                    class="w-30 mt-4 <%= (req.session.admin && req.session.admin.id_admin === admin.id_admin) ? 'successAlert-primary' : 'errorAlert-primary' %>">
+                    <% if (req.session.admin && req.session.admin.id_admin ===
+                    admin.id_admin) { %> Activo <% } else { %> Inactivo <% } %>
+                  </span>
                 </div>
               </div>
             </div>
             <% }); %>
+          </div>
+          <div class="row w-100">
+            <form
+              action="/admin/logout"
+              method="post"
+              class="d-flex align-items-center">
+              <button type="submit" class="mt-4 w-100 button-danger-primary">
+                Cerrar sesión
+              </button>
+            </form>
           </div>
         </div>
       </main>

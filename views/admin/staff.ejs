@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio / Admin</title>
-    <meta name="robots" content="index, follow" />
+    <title>Personal / Admin</title>
+
     <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
 
     <!-- Links CSS -->
@@ -19,10 +19,105 @@
       <!-- contenedor principal -->
 
       <main
-        class="container-fluid p-5 gap-6 w-75 d-flex flex-column flex-lg-row align-items-center media-sm-w-100"
+        class="container-fluid p-5 gap-6 w-75 d-flex flex-column d-lg-flex justify-content-center align-items-center media-sm-w-100"
         style="flex: 1">
-        <h1>Empleados</h1>
-        <!-- contenedor de información de usuario -->
+        <div
+          class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center">
+          <div class="row d-flex justify-content-center">
+            <h1 class="text-center rem-2-2 weight-700 opacity-75">
+              Personal registrado
+            </h1>
+          </div>
+          <div class="row mt-5 w-100">
+            <% if (empleados.length > 0) { %> <% empleados.forEach(empleado => {
+            %>
+            <div class="col-12 col-lg-6 p-0">
+              <div class="p-3">
+                <!-- Contenedor de información de empleado -->
+                <div class="container-secondary border-primary p-5">
+                  <div class="justify-content-end d-flex">
+                    <span
+                      class="font-secondary opacity-75 w-30 <%= empleado.estado === 'Activo' ? 'successAlert-primary' : 'errorAlert-primary' %>">
+                      <%= empleado.estado %>
+                    </span>
+                  </div>
+                  <!-- Contenedor de icono y texto de nombre de empleado -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> person </i>
+                    </div>
+                    <h3 class="ms-3 opacity-75"><%= empleado.nombre %></h3>
+                  </div>
+
+                  <hr />
+
+                  <!-- Contenedor de icono y texto de número de identificación de empleado -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> badge </i>
+                    </div>
+                    <h3 class="ms-3 font-secondary opacity-75">
+                      <%= empleado.identificacion %>
+                    </h3>
+                  </div>
+
+                  <hr />
+
+                  <!-- Contenedor de icono y texto de correo de empleado -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> email </i>
+                    </div>
+                    <h3 class="ms-3 font-secondary opacity-75">
+                      <%= empleado.correo %>
+                    </h3>
+                  </div>
+
+                  <hr />
+
+                  <!-- Contenedor de icono y texto de teléfono de empleado -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> call </i>
+                    </div>
+                    <h3 class="ms-3 font-secondary opacity-75">
+                      <%= empleado.telefono %>
+                    </h3>
+                  </div>
+
+                  <hr />
+
+                  <!-- Contenedor de icono y texto de rol de empleado -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> construction </i>
+                    </div>
+                    <h3 class="ms-3 font-secondary opacity-75">
+                      <%= empleado.rol %>
+                    </h3>
+                  </div>
+
+                  <hr />
+
+                  <button
+                    class="mt-4 w-100 button-primary"
+                    onclick="openForm('<%= empleado.id %>')">
+                    Modificar información
+                  </button>
+                </div>
+              </div>
+            </div>
+            <% }); %> <% } else { %>
+            <div
+              class="col-12 d-flex justify-content-center flex-column align-items-center mt-5">
+              <p class="text-center d-flex rem-2 opacity-25">
+                No hay empleados disponibles para mostrar...
+              </p>
+              <i class="material-icons rem-10 mt-4 opacity-25"> group_off </i>
+            </div>
+            <% } %>
+          </div>
+        </div>
       </main>
     </div>
 

@@ -4,6 +4,7 @@ const AdminsModel = require("../models/adminsModel");
 const CeldasModel = require("../models/celdasModel");
 const ReservasModel = require("../models/reservasModel");
 const UsuariosModel = require("../models/usuariosModel");
+const EmpleadosModel = require("../models/empleadosModel");
 
 router.post("/", (req, res) => {
   const { correo, contrasena } = req.body;
@@ -83,11 +84,25 @@ router.get("/settings", (req, res) => {
   }
 });
 
-router.get("/staff", (req, res) => {
-  if (req.session.admin) {
-    res.render("admin/staff.ejs");
-  } else {
-    res.redirect("/");
+router.get("/staff", async (req, res) => {
+  try {
+    if (req.session.admin) {
+      // Obtener la información de todos los empleados desde el modelo
+      const empleados = await EmpleadosModel.getAllEmpleados();
+
+      // Renderizar la página de staff.ejs con la información de los empleados
+      res.render("admin/staff.ejs", { empleados });
+    } else {
+      res.redirect("/");
+    }
+  } catch (error) {
+    console.error("Error al obtener empleados:", error);
+    res.render("admin/staff.ejs", {
+      message: {
+        type: "error",
+        text: "Error al obtener la información de los empleados",
+      },
+    });
   }
 });
 

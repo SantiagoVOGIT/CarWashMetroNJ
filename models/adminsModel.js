@@ -12,6 +12,10 @@ const AdminsModel = {
       callback
     );
   },
+
+  getAllAdmins: (callback) => {
+    db.query("SELECT * FROM admins", callback);
+  },
 };
 
 module.exports = AdminsModel;

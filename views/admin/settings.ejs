@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Configuración / Admin</title>
-    <meta name="robots" content="index, follow" />
+
     <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
 
     <!-- Links CSS -->
@@ -19,10 +19,84 @@
       <!-- contenedor principal -->
 
       <main
-        class="container-fluid p-5 gap-6 w-75 d-flex flex-column flex-lg-row align-items-center media-sm-w-100"
+        class="container-fluid p-5 gap-6 w-75 d-flex flex-column d-lg-flex justify-content-center align-items-center media-sm-w-100"
         style="flex: 1">
-        <h1>Configuración</h1>
-        <!-- contenedor de información de usuario -->
+        <div
+          class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center">
+          <div class="row d-flex justify-content-center">
+            <h1 class="text-center rem-2-2 weight-700 opacity-75">
+              Cuentas de administrador
+            </h1>
+          </div>
+          <div class="row mt-5">
+            <% admins.forEach(admin => { %>
+            <div class="col-12 col-lg-6 p-0">
+              <div class="p-3">
+                <!-- Contenedor de información de admin -->
+                <div class="container-secondary border-primary w-100">
+                  <!-- Contenedor de icono y texto de nombre de admin -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> person </i>
+                    </div>
+                    <h3 class="ms-3 opacity-75">
+                      <%= admin.nombre + ' ' + admin.apellido %>
+                    </h3>
+                  </div>
+
+                  <hr />
+
+                  <!-- Contenedor de icono y texto de número de identificación de admin -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> badge </i>
+                    </div>
+                    <h3 class="ms-3 font-secondary opacity-75">
+                      <%= admin.identificacion %>
+                    </h3>
+                  </div>
+
+                  <hr />
+
+                  <!-- Contenedor de icono y texto de correo de admin-->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> email </i>
+                    </div>
+                    <h3 class="ms-3 font-secondary opacity-75">
+                      <%= admin.correo %>
+                    </h3>
+                  </div>
+
+                  <hr />
+                  <!-- Contenedor de icono y texto de contraseña de admin -->
+                  <div class="d-flex align-items-center">
+                    <div class="icon-container">
+                      <i class="material-icons"> key </i>
+                    </div>
+                    <h3 class="ms-3 font-secondary opacity-75">
+                      <%= admin.contrasena %>
+                    </h3>
+                  </div>
+                  <hr />
+                  <form action="/admin/logout" method="post">
+                    <!-- Agrega un campo oculto para almacenar el ID del admin -->
+                    <input
+                      type="hidden"
+                      name="adminId"
+                      value="<%= admin.id_admin %>" />
+                    <button
+                      type="submit"
+                      class="mt-4 w-100 button-danger-primary">
+                      Cerrar sesión
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
       </main>
     </div>
 

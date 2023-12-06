@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio / Admin</title>
-    <meta name="robots" content="index, follow" />
+    <title>Reservas / Admin</title>
     <link rel="icon" href="/img/logo-main-carwashmetro.png" type="image/png" />
 
     <!-- Links CSS -->
@@ -21,9 +20,8 @@
       <main
         class="container-fluid p-5 gap-6 w-75 d-flex flex-column justify-content-center align-items-center media-sm-w-100"
         style="flex: 1">
-        <!-- contenedor principal de historial de reservas pendientes -->
+        <!-- Historial de reservas pendientes -->
 
-        <!-- Historial de todas las reservas -->
         <div class="container-fluid p-0">
           <div class="row mb-5">
             <h2 class="text-center rem-2-2 weight-700 opacity-75">
@@ -98,13 +96,17 @@
 
             <div
               class="col-12 col-lg-3 p-0 d-flex align-items-center d-flex justify-content-center">
-              <!-- Asegúrate de estar pasando el id_reserva y el estado en tu plantilla -->
+              <!-- contenedor de formularios de los botones aceptar o cancelar -->
+
               <div class="w-50">
                 <form
                   action="/admin/reservas/actualizarEstado/<%= reserva.id_reserva %>"
                   method="post">
                   <input type="hidden" name="estado" value="Rechazada" />
-                  <button class="button-danger-primary w-100" type="submit">
+                  <button
+                    title="Rechazar esta reserva"
+                    class="button-danger-primary w-100"
+                    type="submit">
                     Rechazar
                   </button>
                 </form>
@@ -114,7 +116,10 @@
                   action="/admin/reservas/actualizarEstado/<%= reserva.id_reserva %>"
                   method="post">
                   <input type="hidden" name="estado" value="Aceptada" />
-                  <button class="button-primary w-100" type="submit">
+                  <button
+                    title="Aceptar esta reserva"
+                    class="button-primary w-100"
+                    type="submit">
                     Aceptar
                   </button>
                 </form>
@@ -122,6 +127,7 @@
             </div>
           </div>
           <% }); %> <% } else { %>
+          <!-- Diseño en caso de que no hayan reservas en estado pendiente -->
           <div
             class="col-12 d-flex justify-content-center flex-column align-items-center mt-5">
             <p class="text-center d-flex rem-2 opacity-25">
@@ -233,7 +239,7 @@
     <!-- Enlaces de scripts -->
     <%- include('../templates/scripts') %>
     <script>
-      // Recargar la página cada 12 segundos
+      // Recargar la página cada 3 segundos
       setInterval(function () {
         location.reload();
       }, 3000);

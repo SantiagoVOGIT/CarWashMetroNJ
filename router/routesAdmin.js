@@ -61,7 +61,20 @@ router.get("/dashboard", async (req, res) => {
 
 router.get("/settings", (req, res) => {
   if (req.session.admin) {
-    res.render("admin/settings.ejs");
+    // Obtén la información de todos los administradores
+    AdminsModel.getAllAdmins((err, admins) => {
+      if (err) {
+        console.error(
+          "Error al obtener la información de los administradores:",
+          err
+        );
+        res.redirect("/");
+        return;
+      }
+
+      // Renderiza la página settings.ejs y pasa la información de los administradores
+      res.render("admin/settings.ejs", { admins });
+    });
   } else {
     res.redirect("/");
   }
@@ -146,6 +159,28 @@ router.post("/reservas/actualizarEstado/:idReserva", async (req, res) => {
 
     // Manejar el error redirigiendo a la página de reservas
     res.redirect("/admin/reservationsDashboard");
+  }
+});
+
+router.post("/logout", (req, res) => {
+  // Obtener el ID del admin desde el formulario
+  const adminId = req.body.adminId;
+
+  // Verificar si el admin está en sesión y si el ID coincide
+  if (req.session.admin && req.session.admin.id_admin === adminId) {
+    // Destruir la sección específica para el admin
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Error al cerrar sesión:", err);
+        return res.redirect("/admin/settings");
+      }
+
+      // Redirigir a la página de inicio de sesión
+      res.redirect("/");
+    });
+  } else {
+    // Redirigir a la página de inicio de sesión si el admin no está en sesión o el ID no coincide
+    res.redirect("/");
   }
 });
 

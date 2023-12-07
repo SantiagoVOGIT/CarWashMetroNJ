@@ -44,21 +44,27 @@ function togglePasswordAdmin() {
 // Script para staff.ejs
 
 // Función para mostrar u ocultar un aviso
-function mostrarAviso(empleado) {
+function mostrarAvisoModifyStaff(empleado) {
   console.log("ID del empleado seleccionado:", empleado.id_empleado);
   console.log("Empleado seleccionado:", empleado);
 
   // Llenar los campos del formulario con la información del empleado
-  document.getElementById("id_empleado").value = empleado.id_empleado;
-  document.getElementById("identificacion").value = empleado.identificacion;
-  document.getElementById("nombre").value = empleado.nombre;
-  document.getElementById("telefono").value = empleado.telefono || "";
-  document.getElementById("correo").value = empleado.correo || "";
-  document.getElementById("rol").value = empleado.rol || "";
-  document.getElementById("estado").value = empleado.estado || "";
+  document.getElementById("id_empleado_modificar").value = empleado.id_empleado;
+  document.getElementById("identificacion_modificar").value =
+    empleado.identificacion;
+  document.getElementById("nombre_modificar").value = empleado.nombre;
+  document.getElementById("telefono_modificar").value = empleado.telefono || "";
+  document.getElementById("correo_modificar").value = empleado.correo || "";
+  document.getElementById("rol_modificar").value = empleado.rol || "";
+  document.getElementById("estado_modificar").value = empleado.estado || "";
 
   // Mostrar el cuadro de diálogo personalizado
   document.getElementById("dialog-overlay").style.display = "flex";
+}
+
+function cerrarAviso() {
+  // Cerrar el cuadro de diálogo personalizado
+  document.getElementById("dialog-overlay").style.display = "none";
 }
 
 function guardarCambios() {
@@ -80,10 +86,18 @@ function guardarCambios() {
 function mostrarAvisoUser() {
   document.getElementById("dialog-overlay").style.display = "flex";
 }
+function mostrarAvisoUser() {
+  document.getElementById("dialog-overlay").style.display = "flex";
+}
 
-function cerrarAviso() {
+function cerrarAvisoAddStaff() {
   // Cerrar el cuadro de diálogo personalizado
-  document.getElementById("dialog-overlay").style.display = "none";
+  document.getElementById("dialog-overlay-add-staff").style.display = "none";
+}
+
+function mostrarAvisoAddStaff() {
+  // Cerrar el cuadro de diálogo personalizado
+  document.getElementById("dialog-overlay-add-staff").style.display = "flex";
 }
 
 // Script para home.ejs

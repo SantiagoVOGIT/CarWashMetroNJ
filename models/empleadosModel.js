@@ -52,10 +52,10 @@ class EmpleadosModel {
       db.query(query, empleado, (error, results) => {
         if (error) {
           console.error(
-            "Error al agregar el empleado en la base de datos:",
+            "Error al agregar el empleado a la base de datos:",
             error
           );
-          return reject("Error al agregar el empleado en la base de datos");
+          return reject("Error al agregar el empleado a la base de datos");
         }
         resolve(results);
       });

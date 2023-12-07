@@ -99,7 +99,8 @@
           <div class="row">
             <div class="col-12 text-center">
               <!-- Ajuste del botón para deshabilitarlo cuando no hay celdas -->
-              <button title="Solicitar reserva" class="button-primary text-center w-100" type="<%= celdasDisponibles.length > 0 ? 'submit' : 'button' %>" <%= celdasDisponibles.length === 0 ? 'disabled' : '' %> >
+              <button title="Solicitar reserva" class="button-primary text-center w-100 p-2 d-flex align-items-center justify-content-center" type="<%= celdasDisponibles.length > 0 ? 'submit' : 'button' %>" <%= celdasDisponibles.length === 0 ? 'disabled' : '' %> >
+                <i class="material-icons me-2"> event_available </i>
                 Reservar
               </button>
             

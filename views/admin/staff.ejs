@@ -28,9 +28,20 @@
               Personal registrado
             </h1>
           </div>
-          <div class="row mt-5 w-100">
-            <% if (empleados.length > 0) { %> <% empleados.forEach(empleado => {
-            %>
+          <div class="row w-100 p-4 d-flex">
+            <button
+              title="Agregar nuevo personal"
+              class="button-primary d-flex p-2 d-flex align-items-center justify-content-center"
+              onclick="mostrarAvisoAddStaff()">
+              <i class="material-icons me-2"> person_add </i>
+              Agregar personal
+            </button>
+          </div>
+          <div class="row w-100">
+            <!-- Botón para abrir el formulario de agregar empleado -->
+
+            <%- include('../templates/addStaffModal') %> <% if (empleados.length
+            > 0) { %> <% empleados.forEach(empleado => { %>
             <div class="col-12 col-lg-6 p-0">
               <div class="p-3">
                 <!-- Contenedor de información de empleado -->
@@ -104,8 +115,9 @@
                     </div>
                     <div class="w-50 d-flex justify-content-end">
                       <form
+                        title="Eliminar toda la información de <%= empleado.nombre %>"
                         class=""
-                        action="/admin/staff/delete/<%= empleado.id_empleado %>"
+                        action="/admin/staff/delete/<%= empleado.id_empleado %> "
                         method="post">
                         <button class="button-danger-primary p-0 me-3">
                           <div class="icon-container-danger">
@@ -115,15 +127,17 @@
                       </form>
 
                       <button
+                        title="Editar información"
                         class="button-danger-primary p-0 me-3"
-                        onclick="mostrarAviso({ id_empleado: <%= empleado.id_empleado %>, identificacion: '<%= empleado.identificacion %>', nombre: '<%= empleado.nombre %>', telefono: '<%= empleado.telefono %>', correo: '<%= empleado.correo %>', rol: '<%= empleado.rol %>', estado: '<%= empleado.estado %>' })">
+                        onclick="mostrarAvisoModifyStaff({ id_empleado: <%= empleado.id_empleado %>, identificacion: '<%= empleado.identificacion %>', nombre: '<%= empleado.nombre %>', telefono: '<%= empleado.telefono %>', correo: '<%= empleado.correo %>', rol: '<%= empleado.rol %>', estado: '<%= empleado.estado %>' })">
                         <div class="icon-container">
                           <i class="material-icons"> edit </i>
                         </div>
                       </button>
                       <button
+                        title="Agregar nuevo personal"
                         class="button-danger-primary p-0"
-                        onclick="mostrarAviso({ id_empleado: <%= empleado.id_empleado %>, identificacion: '<%= empleado.identificacion %>', nombre: '<%= empleado.nombre %>', telefono: '<%= empleado.telefono %>', correo: '<%= empleado.correo %>', rol: '<%= empleado.rol %>', estado: '<%= empleado.estado %>' })">
+                        onclick="mostrarAvisoAddStaff()">
                         <div class="icon-container">
                           <i class="material-icons"> person_add </i>
                         </div>

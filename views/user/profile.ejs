@@ -77,12 +77,16 @@
 
               <hr />
               <button
-                class="mt-4 w-100 button-primary"
+                class="mt-4 w-100 button-primary p-2 d-flex align-items-center justify-content-center"
                 onclick="mostrarAvisoUser()">
+                <i class="material-icons me-1"> edit </i>
                 Modificar información
               </button>
               <form action="/user/logout" method="post">
-                <button type="submit" class="mt-4 w-100 button-danger-primary">
+                <button
+                  type="submit"
+                  class="mt-4 w-100 button-danger-primary p-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons me-2"> logout </i>
                   Cerrar sesión
                 </button>
               </form>

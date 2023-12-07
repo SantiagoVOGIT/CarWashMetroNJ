@@ -114,6 +114,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.text-color {
+  color: #ffffff;
+}
+
 .link-primary {
   color: #3398db !important;
   transition: 0.2s;
@@ -162,7 +166,7 @@
   outline: solid 1.6px rgba(51, 152, 219, 0.25) !important;
 }
 
-#dialog-overlay {
+#dialog-overlay, #dialog-overlay-add-staff {
   display: none;
   position: fixed;
   top: 0;

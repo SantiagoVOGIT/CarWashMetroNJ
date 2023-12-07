@@ -132,6 +132,10 @@
   font-family: $font-secondary;
 }
 
+.text-color {
+  color: $text-color;
+}
+
 .link-primary {
   color: $primary-color !important;
   transition: $transition-duration;
@@ -201,6 +205,10 @@
   align-items: center;
   color: $text-color;
   z-index: 1000;
+}
+
+#dialog-overlay-add-staff {
+  @extend #dialog-overlay;
 }
 
 #dialog-box {

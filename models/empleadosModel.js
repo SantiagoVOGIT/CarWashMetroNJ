@@ -19,7 +19,11 @@ class EmpleadosModel {
 
       db.query(query, [newData, id], (error, results) => {
         if (error) {
-          return reject(error);
+          console.error(
+            "Error al actualizar el empleado en la base de datos:",
+            error
+          );
+          return reject("Error al actualizar el empleado en la base de datos");
         }
         resolve(results);
       });

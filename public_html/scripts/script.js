@@ -44,8 +44,10 @@ function togglePasswordAdmin() {
 // Script para staff.ejs
 
 // Función para mostrar u ocultar un aviso
-
 function mostrarAviso(empleado) {
+  console.log("ID del empleado seleccionado:", empleado.id_empleado);
+  console.log("Empleado seleccionado:", empleado);
+
   // Llenar los campos del formulario con la información del empleado
   document.getElementById("id_empleado").value = empleado.id_empleado;
   document.getElementById("identificacion").value = empleado.identificacion;
@@ -57,6 +59,20 @@ function mostrarAviso(empleado) {
 
   // Mostrar el cuadro de diálogo personalizado
   document.getElementById("dialog-overlay").style.display = "flex";
+}
+
+function guardarCambios() {
+  // Obtener el valor del id_empleado
+  const idEmpleado = document.getElementById("id_empleado").value;
+
+  // Construir la URL dinámicamente
+  const url = `/admin/staff/update/${idEmpleado}`;
+
+  // Actualizar el atributo action del formulario con la URL construida
+  document.getElementById("modificarEmpleadoForm").action = url;
+
+  // Enviar el formulario
+  document.getElementById("modificarEmpleadoForm").submit();
 }
 
 // Script para profile.ejs

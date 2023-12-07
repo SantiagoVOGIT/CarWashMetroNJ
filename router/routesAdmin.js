@@ -87,10 +87,7 @@ router.get("/settings", (req, res) => {
 router.get("/staff", async (req, res) => {
   try {
     if (req.session.admin) {
-      // Obtener la información de todos los empleados desde el modelo
       const empleados = await EmpleadosModel.getAllEmpleados();
-
-      // Renderizar la página de staff.ejs con la información de los empleados
       res.render("admin/staff.ejs", { empleados });
     } else {
       res.redirect("/");
@@ -109,9 +106,9 @@ router.get("/staff", async (req, res) => {
 router.post("/staff/update/:idEmpleado", async (req, res) => {
   try {
     const idEmpleado = req.params.idEmpleado;
+    console.log("ID del Empleado:", idEmpleado);
     const { identificacion, nombre, telefono, correo, rol, estado } = req.body;
 
-    // Construir el objeto con los nuevos datos
     const newData = {
       identificacion,
       nombre,
@@ -121,15 +118,10 @@ router.post("/staff/update/:idEmpleado", async (req, res) => {
       estado,
     };
 
-    // Actualizar el empleado en la base de datos
     await EmpleadosModel.updateEmpleado(idEmpleado, newData);
-
-    // Redirigir a la página de staff después de la actualización
     res.redirect("/admin/staff");
   } catch (error) {
     console.error("Error al actualizar el empleado:", error);
-
-    // Manejar el error redirigiendo a la página de staff con un mensaje de error
     res.redirect("/admin/staff");
   }
 });

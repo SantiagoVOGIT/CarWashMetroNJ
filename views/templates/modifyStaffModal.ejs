@@ -1,8 +1,8 @@
 <!-- crudStaffModal.ejs -->
-<div id="dialog-overlay" class="h-90 pt-5 mt-4">
+<div id="dialog-overlay" class="h-90 pt-5">
   <div
     id="dialog-box"
-    class="m-5 p-5 container-fluid w-40 d-flex flex-column d-lg-flex justify-content-center align-items-center media-lg-w-100">
+    class="m-5 container-fluid w-40 d-flex flex-column d-lg-flex justify-content-center align-items-center media-lg-w-100">
     <div class="w-100">
       <form
         id="modificarEmpleadoForm"
@@ -66,14 +66,17 @@
         <!-- Selector para el estado -->
         <div class="row mt-3 w-100">
           <div class="col-6 p-0 pe-3">
-            <input
-              type="text"
-              id="rol"
-              name="rol"
-              value=""
-              class="w-100 input-primary"
-              placeholder="Cargo"
-              required />
+            <select id="rol" name="rol" class="w-100 input-primary" required>
+              <option value="Gerente">Gerente</option>
+
+              <option value="Atención al cliente">Atención al Cliente</option>
+              <option value="Técnico de limpieza de autos">
+                Técnico de Limpieza de autos
+              </option>
+              <option value="Mantenimiento">Mantenimiento</option>
+              <option value="Marketing y ventas">Marketing y ventas</option>
+              <option value="Contador">Contador</option>
+            </select>
           </div>
           <div class="col-6 p-0">
             <select name="estado" id="estado" class="input-primary w-100 h-100">
@@ -84,18 +87,20 @@
         </div>
 
         <!-- Botón para guardar cambios -->
-        <div class="row mt-4 w-100 d-flex justify-content-end">
+        <div
+          class="row mt-5 w-100 d-flex flex-column flex-lg-row justify-content-end">
           <div class="w-50 d-flex justify-content-end">
             <button
               title="Cancelar cambios"
               class="button-danger-primary w-50"
-              onclick="cerrarAviso()">
+              onclick="cerrarAviso()"
+              type="button">
               Cancelar
             </button>
             <button
               title="Guardar cambios"
               class="button-primary w-50 ms-3"
-              type="submit ">
+              onclick="guardarCambios()">
               Guardar
             </button>
           </div>

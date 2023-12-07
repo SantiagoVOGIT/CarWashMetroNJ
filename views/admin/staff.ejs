@@ -40,6 +40,9 @@
                       class="font-secondary opacity-75 w-30 <%= empleado.estado === 'Activo' ? 'successAlert-primary' : 'errorAlert-primary' %>">
                       <%= empleado.estado %>
                     </span>
+                    <div class="icon-container bg-danger">
+                      <i class="material-icons"> delete_forever </i>
+                    </div>
                   </div>
                   <!-- Contenedor de icono y texto de nombre de empleado -->
                   <div class="d-flex align-items-center">
@@ -103,7 +106,7 @@
 
                   <button
                     class="mt-4 w-100 button-primary"
-                    onclick="mostrarAviso(<%= JSON.stringify(empleado) %>)">
+                    onclick="mostrarAviso({ id_empleado: <%= empleado.id_empleado %>, identificacion: '<%= empleado.identificacion %>', nombre: '<%= empleado.nombre %>', telefono: '<%= empleado.telefono %>', correo: '<%= empleado.correo %>', rol: '<%= empleado.rol %>', estado: '<%= empleado.estado %>' })">
                     Modificar información
                   </button>
 

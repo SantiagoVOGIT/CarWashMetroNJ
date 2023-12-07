@@ -29,6 +29,38 @@ class EmpleadosModel {
       });
     });
   }
+  static async deleteEmpleado(id) {
+    return new Promise((resolve, reject) => {
+      const query = "DELETE FROM empleados WHERE id_empleado = ?";
+
+      db.query(query, [id], (error, results) => {
+        if (error) {
+          console.error(
+            "Error al eliminar el empleado en la base de datos:",
+            error
+          );
+          return reject("Error al eliminar el empleado en la base de datos");
+        }
+        resolve(results);
+      });
+    });
+  }
+  static async addEmpleado(empleado) {
+    return new Promise((resolve, reject) => {
+      const query = "INSERT INTO empleados SET ?";
+
+      db.query(query, empleado, (error, results) => {
+        if (error) {
+          console.error(
+            "Error al agregar el empleado en la base de datos:",
+            error
+          );
+          return reject("Error al agregar el empleado en la base de datos");
+        }
+        resolve(results);
+      });
+    });
+  }
 }
 
 module.exports = EmpleadosModel;

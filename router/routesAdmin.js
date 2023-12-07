@@ -5,6 +5,7 @@ const CeldasModel = require("../models/celdasModel");
 const ReservasModel = require("../models/reservasModel");
 const UsuariosModel = require("../models/usuariosModel");
 const EmpleadosModel = require("../models/empleadosModel");
+const { v4: uuidv4 } = require("uuid"); // Para generar un nuevo ID único
 
 router.post("/", (req, res) => {
   const { correo, contrasena } = req.body;
@@ -197,6 +198,42 @@ router.post("/reservas/actualizarEstado/:idReserva", async (req, res) => {
 
     // Manejar el error redirigiendo a la página de reservas
     res.redirect("/admin/reservationsDashboard");
+  }
+});
+
+router.post("/staff/delete/:idEmpleado", async (req, res) => {
+  try {
+    const idEmpleado = req.params.idEmpleado;
+
+    await EmpleadosModel.deleteEmpleado(idEmpleado);
+    res.redirect("/admin/staff");
+  } catch (error) {
+    console.error("Error al eliminar el empleado:", error);
+    res.redirect("/admin/staff");
+  }
+});
+
+router.post("/staff/add", async (req, res) => {
+  try {
+    const { identificacion, nombre, telefono, correo, rol, estado } = req.body;
+
+    const nuevoEmpleado = {
+      id_empleado: uuidv4(), // Generar un nuevo ID único
+      identificacion,
+      nombre,
+      telefono,
+      correo,
+      rol,
+      estado,
+    };
+
+    // Lógica para agregar el nuevo empleado al modelo
+    await EmpleadosModel.addEmpleado(nuevoEmpleado);
+
+    res.redirect("/admin/staff");
+  } catch (error) {
+    console.error("Error al agregar el empleado:", error);
+    res.redirect("/admin/staff");
   }
 });
 

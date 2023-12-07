@@ -423,6 +423,11 @@
   height: max-content !important;
 }
 
+.w-max-content {
+  width: -moz-max-content !important;
+  width: max-content !important;
+}
+
 .switch {
   position: relative;
   display: inline-block;
@@ -634,7 +639,7 @@ table {
   box-shadow: 0 0 5px rgba(46, 46, 46, 0.1), 0 0 10px rgba(46, 46, 46, 0.1), 0 0 15px rgba(46, 46, 46, 0.1);
 }
 
-.icon-container {
+.icon-container, .icon-container-danger {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -645,7 +650,11 @@ table {
   padding-bottom: 2px;
 }
 
-.icon-container i {
+.icon-container-danger {
+  background-color: #db3333;
+}
+
+.icon-container i, .icon-container-danger i {
   font-size: 2.5rem;
   color: #ffffff;
 }

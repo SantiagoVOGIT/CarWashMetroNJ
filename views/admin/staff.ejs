@@ -35,15 +35,6 @@
               <div class="p-3">
                 <!-- Contenedor de información de empleado -->
                 <div class="container-secondary border-primary p-5">
-                  <div class="justify-content-end d-flex">
-                    <span
-                      class="font-secondary opacity-75 w-30 <%= empleado.estado === 'Activo' ? 'successAlert-primary' : 'errorAlert-primary' %>">
-                      <%= empleado.estado %>
-                    </span>
-                    <div class="icon-container bg-danger">
-                      <i class="material-icons"> delete_forever </i>
-                    </div>
-                  </div>
                   <!-- Contenedor de icono y texto de nombre de empleado -->
                   <div class="d-flex align-items-center">
                     <div class="icon-container">
@@ -104,11 +95,41 @@
 
                   <hr />
 
-                  <button
-                    class="mt-4 w-100 button-primary"
-                    onclick="mostrarAviso({ id_empleado: <%= empleado.id_empleado %>, identificacion: '<%= empleado.identificacion %>', nombre: '<%= empleado.nombre %>', telefono: '<%= empleado.telefono %>', correo: '<%= empleado.correo %>', rol: '<%= empleado.rol %>', estado: '<%= empleado.estado %>' })">
-                    Modificar información
-                  </button>
+                  <div class="w-100 d-flex mt-4">
+                    <div class="w-50">
+                      <span
+                        class="h-100 d-flex align-items-center opacity-75 w-70 <%= empleado.estado === 'Activo' ? 'successAlert-primary' : 'errorAlert-primary' %>">
+                        <%= empleado.estado %>
+                      </span>
+                    </div>
+                    <div class="w-50 d-flex justify-content-end">
+                      <form
+                        class=""
+                        action="/admin/staff/delete/<%= empleado.id_empleado %>"
+                        method="post">
+                        <button class="button-danger-primary p-0 me-3">
+                          <div class="icon-container-danger">
+                            <i class="material-icons"> delete_forever </i>
+                          </div>
+                        </button>
+                      </form>
+
+                      <button
+                        class="button-danger-primary p-0 me-3"
+                        onclick="mostrarAviso({ id_empleado: <%= empleado.id_empleado %>, identificacion: '<%= empleado.identificacion %>', nombre: '<%= empleado.nombre %>', telefono: '<%= empleado.telefono %>', correo: '<%= empleado.correo %>', rol: '<%= empleado.rol %>', estado: '<%= empleado.estado %>' })">
+                        <div class="icon-container">
+                          <i class="material-icons"> edit </i>
+                        </div>
+                      </button>
+                      <button
+                        class="button-danger-primary p-0"
+                        onclick="mostrarAviso({ id_empleado: <%= empleado.id_empleado %>, identificacion: '<%= empleado.identificacion %>', nombre: '<%= empleado.nombre %>', telefono: '<%= empleado.telefono %>', correo: '<%= empleado.correo %>', rol: '<%= empleado.rol %>', estado: '<%= empleado.estado %>' })">
+                        <div class="icon-container">
+                          <i class="material-icons"> person_add </i>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
 
                   <%- include('../templates/modifyStaffModal', { empleado:
                   empleado }) %>

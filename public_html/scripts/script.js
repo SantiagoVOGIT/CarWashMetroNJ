@@ -41,12 +41,27 @@ function togglePasswordAdmin() {
   }
 }
 
-// Script para profile.ejs
+// Script para staff.ejs
 
 // Función para mostrar u ocultar un aviso
 
-function mostrarAviso() {
+function mostrarAviso(empleado) {
+  // Llenar los campos del formulario con la información del empleado
+  document.getElementById("id_empleado").value = empleado.id_empleado;
+  document.getElementById("identificacion").value = empleado.identificacion;
+  document.getElementById("nombre").value = empleado.nombre;
+  document.getElementById("telefono").value = empleado.telefono || "";
+  document.getElementById("correo").value = empleado.correo || "";
+  document.getElementById("rol").value = empleado.rol || "";
+  document.getElementById("estado").value = empleado.estado || "";
+
   // Mostrar el cuadro de diálogo personalizado
+  document.getElementById("dialog-overlay").style.display = "flex";
+}
+
+// Script para profile.ejs
+
+function mostrarAvisoUser() {
   document.getElementById("dialog-overlay").style.display = "flex";
 }
 

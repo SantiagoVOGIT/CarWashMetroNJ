@@ -106,6 +106,34 @@ router.get("/staff", async (req, res) => {
   }
 });
 
+router.post("/staff/update/:idEmpleado", async (req, res) => {
+  try {
+    const idEmpleado = req.params.idEmpleado;
+    const { identificacion, nombre, telefono, correo, rol, estado } = req.body;
+
+    // Construir el objeto con los nuevos datos
+    const newData = {
+      identificacion,
+      nombre,
+      telefono,
+      correo,
+      rol,
+      estado,
+    };
+
+    // Actualizar el empleado en la base de datos
+    await EmpleadosModel.updateEmpleado(idEmpleado, newData);
+
+    // Redirigir a la página de staff después de la actualización
+    res.redirect("/admin/staff");
+  } catch (error) {
+    console.error("Error al actualizar el empleado:", error);
+
+    // Manejar el error redirigiendo a la página de staff con un mensaje de error
+    res.redirect("/admin/staff");
+  }
+});
+
 router.get("/reservationsDashboard", async (req, res) => {
   if (req.session.admin) {
     try {

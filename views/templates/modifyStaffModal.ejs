@@ -1,0 +1,106 @@
+<!-- crudStaffModal.ejs -->
+<div id="dialog-overlay" class="h-90 pt-5 mt-4">
+  <div
+    id="dialog-box"
+    class="m-5 p-5 container-fluid w-40 d-flex flex-column d-lg-flex justify-content-center align-items-center media-lg-w-100">
+    <div class="w-100">
+      <form
+        id="modificarEmpleadoForm"
+        action="/admin/staff/update/<%= empleado.id_empleado %>"
+        method="post"
+        class="w-100 d-flex justify-content-center flex-column align-items-center">
+        <!-- Campo para el ID del empleado -->
+        <input
+          type="hidden"
+          name="id_empleado"
+          id="id_empleado"
+          value="<%= empleado.id_empleado %>" />
+
+        <div class="row d-flex justify-content-center">
+          <h1 class="text-center rem-2-2 weight-700">Modificar información</h1>
+        </div>
+
+        <div class="row mt-4 w-100">
+          <!-- Campo para el nombre del empleado -->
+          <input
+            class="w-100 input-primary"
+            placeholder="Nombre"
+            type="text"
+            id="nombre"
+            name="nombre"
+            value=""
+            required />
+
+          <input
+            type="text"
+            id="identificacion"
+            name="identificacion"
+            class="w-100 input-primary mt-3"
+            placeholder="Identificación"
+            value=""
+            required />
+
+          <!-- Campo para el correo del empleado -->
+
+          <input
+            type="text"
+            id="correo"
+            name="correo"
+            value=""
+            class="w-100 input-primary mt-3"
+            placeholder="Correo"
+            required />
+
+          <!-- Campo para el teléfono del empleado -->
+
+          <input
+            type="text"
+            id="telefono"
+            name="telefono"
+            value=""
+            class="w-100 input-primary mt-3"
+            placeholder="Teléfono"
+            required />
+        </div>
+
+        <!-- Selector para el estado -->
+        <div class="row mt-3 w-100">
+          <div class="col-6 p-0 pe-3">
+            <input
+              type="text"
+              id="rol"
+              name="rol"
+              value=""
+              class="w-100 input-primary"
+              placeholder="Cargo"
+              required />
+          </div>
+          <div class="col-6 p-0">
+            <select name="estado" id="estado" class="input-primary w-100 h-100">
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Botón para guardar cambios -->
+        <div class="row mt-4 w-100 d-flex justify-content-end">
+          <div class="w-50 d-flex justify-content-end">
+            <button
+              title="Cancelar cambios"
+              class="button-danger-primary w-50"
+              onclick="cerrarAviso()">
+              Cancelar
+            </button>
+            <button
+              title="Guardar cambios"
+              class="button-primary w-50 ms-3"
+              type="submit ">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

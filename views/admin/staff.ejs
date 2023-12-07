@@ -46,7 +46,9 @@
                     <div class="icon-container">
                       <i class="material-icons"> person </i>
                     </div>
-                    <h3 class="ms-3 opacity-75"><%= empleado.nombre %></h3>
+                    <h3 class="ms-3 opacity-75 weight-700">
+                      <%= empleado.nombre %>
+                    </h3>
                   </div>
 
                   <hr />
@@ -101,9 +103,12 @@
 
                   <button
                     class="mt-4 w-100 button-primary"
-                    onclick="openForm('<%= empleado.id %>')">
+                    onclick="mostrarAviso(<%= JSON.stringify(empleado) %>)">
                     Modificar información
                   </button>
+
+                  <%- include('../templates/modifyStaffModal', { empleado:
+                  empleado }) %>
                 </div>
               </div>
             </div>

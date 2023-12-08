@@ -16,7 +16,8 @@
 <body class="vh-100">
   <div class="container-fluid d-flex flex-column h-100 p-0">
     <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
-    <%- include(__dirname + '/../views/templates/headeruser') %>
+    <%- include(process.env.HEADER_USER_TEMPLATE_PATH) %>
+
 
 
     <!-- contenedor principal -->

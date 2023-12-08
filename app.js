@@ -17,13 +17,14 @@ app.use(express.static(__dirname + "/public_html"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.set("trust proxy", 1);
 // Middleware para el manejo de sesiones
 app.use(
   session({
     secret: "Valenciano2005.", // Clave secreta para cifrar las sesiones
     resave: false, // Evitar guardar la sesión si no hay cambios
     saveUninitialized: false, // Evitar guardar sesiones no inicializadas
-    cookie: { secure: false }, // Configuración de la cookie de la sesión
+    cookie: { secure: true, sameSite: "None" }, // Configuración de la cookie de la sesión
   })
 );
 

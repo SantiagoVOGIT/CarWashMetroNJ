@@ -30,6 +30,7 @@
 .button-primary, .button-safety-primary, .button-danger-primary {
   background-color: #3b8dc4;
   font-weight: 700;
+  color: #010101;
   padding: 10px;
   border: none;
   letter-spacing: 0.1px;

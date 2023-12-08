@@ -49,6 +49,7 @@ function mostrarAvisoModifyStaff(empleado) {
   console.log("Empleado seleccionado:", empleado);
 
   // Llenar los campos del formulario con la información del empleado
+
   document.getElementById("id_empleado_modificar").value = empleado.id_empleado;
   document.getElementById("identificacion_modificar").value =
     empleado.identificacion;
@@ -61,15 +62,13 @@ function mostrarAvisoModifyStaff(empleado) {
   // Mostrar el cuadro de diálogo personalizado
   document.getElementById("dialog-overlay").style.display = "flex";
 }
-
 function cerrarAviso() {
   // Cerrar el cuadro de diálogo personalizado
   document.getElementById("dialog-overlay").style.display = "none";
 }
-
 function guardarCambios() {
   // Obtener el valor del id_empleado
-  const idEmpleado = document.getElementById("id_empleado").value;
+  const idEmpleado = document.getElementById("id_empleado_modificar").value;
 
   // Construir la URL dinámicamente
   const url = `/admin/staff/update/${idEmpleado}`;

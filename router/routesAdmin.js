@@ -103,29 +103,6 @@ router.get("/staff", async (req, res) => {
   }
 });
 
-router.post("/staff/update/:idEmpleado", async (req, res) => {
-  try {
-    const idEmpleado = req.params.idEmpleado;
-    console.log("ID del Empleado:", idEmpleado);
-    const { identificacion, nombre, telefono, correo, rol, estado } = req.body;
-
-    const newData = {
-      identificacion,
-      nombre,
-      telefono,
-      correo,
-      rol,
-      estado,
-    };
-
-    await EmpleadosModel.updateEmpleado(idEmpleado, newData);
-    res.redirect("/admin/staff");
-  } catch (error) {
-    console.error("Error al actualizar el empleado:", error);
-    res.redirect("/admin/staff");
-  }
-});
-
 router.get("/reservationsDashboard", async (req, res) => {
   if (req.session.admin) {
     try {
@@ -197,6 +174,29 @@ router.post("/reservas/actualizarEstado/:idReserva", async (req, res) => {
 
     // Manejar el error redirigiendo a la página de reservas
     res.redirect("/admin/reservationsDashboard");
+  }
+});
+
+router.post("/staff/update/:idEmpleado", async (req, res) => {
+  try {
+    const idEmpleado = req.params.idEmpleado;
+    console.log("ID del Empleado:", idEmpleado);
+    const { identificacion, nombre, telefono, correo, rol, estado } = req.body;
+
+    const newData = {
+      identificacion,
+      nombre,
+      telefono,
+      correo,
+      rol,
+      estado,
+    };
+
+    await EmpleadosModel.updateEmpleado(idEmpleado, newData);
+    res.redirect("/admin/staff");
+  } catch (error) {
+    console.error("Error al actualizar el empleado:", error);
+    res.redirect("/admin/staff");
   }
 });
 

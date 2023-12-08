@@ -60,10 +60,14 @@
 
                   <!-- Contenedor de icono y texto de número de identificación de empleado -->
                   <div class="d-flex align-items-center">
-                    <div class="icon-container">
+                    <div
+                      title="Número de identificacion (C.C)"
+                      class="icon-container">
                       <i class="material-icons"> badge </i>
                     </div>
-                    <h3 class="ms-3 font-secondary opacity-75">
+                    <h3
+                      title="Número de identificacion (C.C)"
+                      class="ms-3 font-secondary opacity-75">
                       <%= empleado.identificacion %>
                     </h3>
                   </div>
@@ -72,10 +76,12 @@
 
                   <!-- Contenedor de icono y texto de correo de empleado -->
                   <div class="d-flex align-items-center">
-                    <div class="icon-container">
+                    <div title="Correo electrónico" class="icon-container">
                       <i class="material-icons"> email </i>
                     </div>
-                    <h3 class="ms-3 font-secondary opacity-75">
+                    <h3
+                      title="Correo electronico"
+                      class="ms-3 font-secondary opacity-75">
                       <%= empleado.correo %>
                     </h3>
                   </div>
@@ -84,10 +90,12 @@
 
                   <!-- Contenedor de icono y texto de teléfono de empleado -->
                   <div class="d-flex align-items-center">
-                    <div class="icon-container">
+                    <div title="Número de teléfono " class="icon-container">
                       <i class="material-icons"> call </i>
                     </div>
-                    <h3 class="ms-3 font-secondary opacity-75">
+                    <h3
+                      title="Número de teléfono "
+                      class="ms-3 font-secondary opacity-75">
                       <%= empleado.telefono %>
                     </h3>
                   </div>
@@ -96,10 +104,12 @@
 
                   <!-- Contenedor de icono y texto de rol de empleado -->
                   <div class="d-flex align-items-center">
-                    <div class="icon-container">
+                    <div title="Cargo que desempeña" class="icon-container">
                       <i class="material-icons"> construction </i>
                     </div>
-                    <h3 class="ms-3 font-secondary opacity-75">
+                    <h3
+                      title="Cargo que desempeña"
+                      class="ms-3 font-secondary opacity-75">
                       <%= empleado.rol %>
                     </h3>
                   </div>
@@ -109,10 +119,12 @@
                   <div class="w-100 d-flex mt-4">
                     <div class="w-50">
                       <span
+                        title="Se encuentra <%= empleado.estado %> en la empresa"
                         class="h-100 d-flex align-items-center opacity-75 w-70 <%= empleado.estado === 'Activo' ? 'successAlert-primary' : 'errorAlert-primary' %>">
                         <%= empleado.estado %>
                       </span>
                     </div>
+
                     <div class="w-50 d-flex justify-content-end">
                       <form
                         title="Eliminar toda la información de <%= empleado.nombre %>"

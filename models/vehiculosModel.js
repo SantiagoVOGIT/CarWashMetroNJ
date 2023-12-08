@@ -2,12 +2,12 @@ const db = require("../database");
 
 const VehiculosModel = {
   createVehiculo: (vehiculo, callback) => {
-    db.query("INSERT INTO Vehiculos SET ?", vehiculo, callback);
+    db.query("INSERT INTO vehiculos SET ?", vehiculo, callback);
   },
 
   getVehiculoByIdUsuario: (idUsuario, callback) => {
     db.query(
-      "SELECT * FROM Vehiculos WHERE id_usuario = ?",
+      "SELECT * FROM vehiculos WHERE id_usuario = ?",
       [idUsuario],
       callback
     );

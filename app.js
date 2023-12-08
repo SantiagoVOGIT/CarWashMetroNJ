@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Configuración del motor de vistas EJS
 app.set("view engine", "ejs");
@@ -18,7 +18,7 @@ app.use(express.json());
 // Middleware para el manejo de sesiones
 app.use(
   session({
-    secret: "your-secret-key", // Clave secreta para cifrar las sesiones
+    secret: "Valenciano2005.", // Clave secreta para cifrar las sesiones
     resave: false, // Evitar guardar la sesión si no hay cambios
     saveUninitialized: false, // Evitar guardar sesiones no inicializadas
     cookie: { secure: false }, // Configuración de la cookie de la sesión
@@ -62,6 +62,6 @@ function formatDateTime(dateTimeString) {
 app.locals.formatDateTime = formatDateTime;
 
 // Iniciar el servidor en el puerto especificado
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`La aplicación está escuchando en el puerto ${PORT}`);
 });

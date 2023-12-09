@@ -13,77 +13,7 @@
   <body class="vh-100">
     <div class="container-fluid p-0 m-0 d-flex flex-column h-100">
       <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
-      <header
-        class="navbar-background d-flex justify-content-center sticky-top">
-        <nav class="navbar navbar-expand-lg w-75">
-          <a class="navbar-brand ms-5" href="">
-            <img
-              src="/img/logo-main-carwashmetro.png"
-              alt=""
-              class="logo-nav img-fluid" />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="collapse navbar-collapse justify-content-end me-lg-5 collapse-nav-config me-0"
-            id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="/admin/dashboard">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> warehouse </i>
-                    </div>
-                    <span class="ms-3">Celdas</span>
-                  </button>
-                </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/admin/reservationsDashboard">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> edit_calendar </i>
-                    </div>
-                    <span class="ms-3">Reservas</span>
-                  </button>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/staff">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> manage_accounts </i>
-                    </div>
-                    <span class="ms-3">Personal</span>
-                  </button>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/settings">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> settings </i>
-                    </div>
-                    <span class="ms-3">Configuración</span>
-                  </button>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+      <%- include('../templates/headerAdmin') %>
 
       <!-- contenedor principal -->
 
@@ -94,9 +24,9 @@
 
         <div class="container-fluid p-0">
           <div class="row mb-5">
-            <h2 class="text-center rem-2-2 weight-700 opacity-75">
+            <h1 class="text-center rem-2-2 weight-700 opacity-75">
               Reservas pendientes
-            </h2>
+            </h1>
           </div>
 
           <% const reservasPendientes = todasLasReservas.filter(reserva =>
@@ -112,9 +42,9 @@
                 <div class="icon-container">
                   <i class="material-icons"> watch_later </i>
                 </div>
-                <h3 class="ms-3 opacity-75 font-secondary">
+                <span class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= formatDateTime(reserva.fecha_reserva) %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -129,11 +59,11 @@
                     'airport_shuttle') %>
                   </i>
                 </div>
-                <h3
+                <span
                   title="Placa del vehículo"
-                  class="ms-3 opacity-75 font-secondary">
+                  class="ms-3 opacity-75 font-secondary rem-1-4">
                   <%= reserva.placa_vehiculo %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -144,9 +74,9 @@
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
-                <h3 class="ms-3 opacity-75 font-secondary">
+                <span class="ms-3 opacity-75 font-secondary rem-1-4">
                   #<%= reserva.id_celda %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -155,10 +85,10 @@
                 <div class="icon-container">
                   <i class="material-icons"> person </i>
                 </div>
-                <h3 class="ms-3 opacity-75">
+                <span class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= reserva.nombre && reserva.apellido ? reserva.nombre + ' '
                   + reserva.apellido : 'Usuario no encontrado' %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -229,9 +159,9 @@
                 <div class="icon-container">
                   <i class="material-icons"> watch_later </i>
                 </div>
-                <h3 class="ms-3 opacity-75 font-secondary">
+                <span class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= formatDateTime(reserva.fecha_reserva) %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -246,11 +176,11 @@
                     'airport_shuttle') %>
                   </i>
                 </div>
-                <h3
+                <span
                   title="Placa del vehículo"
-                  class="ms-3 opacity-75 font-secondary">
+                  class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= reserva.placa_vehiculo %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -261,9 +191,9 @@
                 <div class="icon-container">
                   <i class="material-icons"> warehouse </i>
                 </div>
-                <h3 class="ms-3 opacity-75 font-secondary">
+                <span class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   #<%= reserva.id_celda %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -272,10 +202,10 @@
                 <div class="icon-container">
                   <i class="material-icons"> person </i>
                 </div>
-                <h3 class="ms-3 opacity-75 pe-4">
+                <span class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= reserva.nombre && reserva.apellido ? reserva.nombre + ' '
                   + reserva.apellido : 'Usuario no encontrado' %>
-                </h3>
+                </span>
               </div>
             </div>
 
@@ -310,7 +240,7 @@
       // Recargar la página cada 3 segundos
       setInterval(function () {
         location.reload();
-      }, 3000);
+      }, 10000);
     </script>
   </body>
 </html>

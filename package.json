@@ -17,7 +17,7 @@
   ],
   "author": "Santiago Valencia Ochoa <santiagovalenciaochoa2005@gmail.com>",
   "contributors": [
-    "Susana Gonzalez Lopez <zacglopez13@gmail.com>",
+    "Susana González Lopéz <zacglopez13@gmail.com>",
     "Erika Alexandra Mendoza <alexandramendoza511@gmail.com>",
     "Maria Clara Baldovino <mariaclarabaldovino@gmail.com>"
   ],
@@ -33,7 +33,6 @@
     "express-session": "^1.17.3",
     "mysql": "^2.18.1",
     "mysql2": "^3.6.5",
-    "nodemon": "^3.0.1",
-    "socket.io": "^4.7.2"
+    "nodemon": "^3.0.1"
   }
 }

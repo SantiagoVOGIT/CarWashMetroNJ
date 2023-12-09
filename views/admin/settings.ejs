@@ -14,77 +14,7 @@
   <body class="vh-100">
     <div class="container-fluid p-0 m-0 d-flex flex-column h-100">
       <!-- El estilo "display: flex; flex-direction: column; height: 100%;" establece el contenedor padre como flexbox con dirección de columna y altura del 100% -->
-      <header
-        class="navbar-background d-flex justify-content-center sticky-top">
-        <nav class="navbar navbar-expand-lg w-75">
-          <a class="navbar-brand ms-5" href="">
-            <img
-              src="/img/logo-main-carwashmetro.png"
-              alt=""
-              class="logo-nav img-fluid" />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="collapse navbar-collapse justify-content-end me-lg-5 collapse-nav-config me-0"
-            id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="/admin/dashboard">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> warehouse </i>
-                    </div>
-                    <span class="ms-3">Celdas</span>
-                  </button>
-                </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/admin/reservationsDashboard">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> edit_calendar </i>
-                    </div>
-                    <span class="ms-3">Reservas</span>
-                  </button>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/staff">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> manage_accounts </i>
-                    </div>
-                    <span class="ms-3">Personal</span>
-                  </button>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/settings">
-                  <button
-                    class="button-primary d-flex flex-sm-row justify-content-sm-start align-items-center ms-3 text-icon-container w-100 w-sm-auto">
-                    <div class="icon-container">
-                      <i class="material-icons"> settings </i>
-                    </div>
-                    <span class="ms-3">Configuración</span>
-                  </button>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+      <%- include('../templates/headerAdmin') %>
 
       <!-- contenedor principal -->
 
@@ -109,9 +39,10 @@
                     <div class="icon-container">
                       <i class="material-icons"> person </i>
                     </div>
-                    <h3 class="ms-3 opacity-75 weight-700">
+                    <span
+                      class="ms-3 font-secondary weight-600 rem-1-4 opacity-75">
                       <%= admin.nombre + ' ' + admin.apellido %>
-                    </h3>
+                    </span>
                   </div>
 
                   <hr />
@@ -121,9 +52,10 @@
                     <div class="icon-container">
                       <i class="material-icons"> badge </i>
                     </div>
-                    <h3 class="ms-3 font-secondary opacity-75">
+                    <span
+                      class="ms-3 font-secondary weight-600 rem-1-4 opacity-75">
                       <%= admin.identificacion %>
-                    </h3>
+                    </span>
                   </div>
 
                   <hr />
@@ -133,9 +65,10 @@
                     <div class="icon-container">
                       <i class="material-icons"> email </i>
                     </div>
-                    <h3 class="ms-3 font-secondary opacity-75">
+                    <span
+                      class="ms-3 font-secondary weight-600 rem-1-4 opacity-75">
                       <%= admin.correo %>
-                    </h3>
+                    </span>
                   </div>
 
                   <hr />
@@ -144,9 +77,10 @@
                     <div class="icon-container">
                       <i class="material-icons"> key </i>
                     </div>
-                    <h3 class="ms-3 font-secondary opacity-75">
+                    <span
+                      class="ms-3 font-secondary weight-600 rem-1-4 opacity-75">
                       <%= admin.contrasena %>
-                    </h3>
+                    </span>
                   </div>
 
                   <hr />

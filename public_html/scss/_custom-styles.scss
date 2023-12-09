@@ -43,12 +43,16 @@
 .button-primary {
   background-color: $primary-color;
   font-weight: 700;
+  font-size: 1.4rem;
   color: $color-black;
-  padding: 10px;
+  padding: 1rem;
   border: none;
   letter-spacing: 0.1px;
   border-radius: $border-radius-secondary;
   transition: $transition-duration;
+  & i {
+    font-size: 2.5rem;
+  }
   &:hover {
     filter: $brightness-primary;
     box-shadow: $shadow-primary;
@@ -81,7 +85,8 @@
   font-family: $font-secondary;
   line-height: $line-height;
   font-weight: 600;
-  padding: 10px;
+  font-size: 1.4rem;
+  padding: 1rem;
   border-radius: $border-radius-tertiary;
   border: none;
   transition: $transition-duration;
@@ -120,11 +125,16 @@
 
 .password-input {
   width: calc(100% - 30px);
-  padding-right: 30px;
+  padding-right: 3rem;
 }
 
+// Tamaño del icono
 #toggle-icon {
-  font-size: 20px;
+  font-size: 2rem;
+}
+
+#toggle-icon-admin {
+  font-size: 2rem;
 }
 
 // Estilos de textos
@@ -148,10 +158,13 @@
   }
 }
 
+// Estilos de textos de alertas o extos que deben resaltarse
+
 .alert-primary {
-  padding: 5px;
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
+  font-size: 1.4rem;
   width: 100%;
   box-sizing: border-box;
   border-radius: $border-radius-tertiary;
@@ -234,7 +247,7 @@
   font-weight: 700;
 }
 
-// vhs
+// vh
 
 .vh-100 {
   height: 100vh;
@@ -252,6 +265,7 @@ $font-sizes: (
   "1": 1rem,
   "1-2": 1.2rem,
   "1-5": 1.5rem,
+  "1-4": 1.4rem,
   "1-8": 1.8rem,
   "2": 2rem,
   "2-2": 2.2rem,
@@ -339,13 +353,13 @@ $heights: (
   width: max-content !important;
 }
 
-//* Estilos para el switch */
+//* Estilos para el switch de palaca*/
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 40px; /* Ajusta el ancho aquí */
-  height: 20px; /* Ajusta la altura aquí */
+  width: 4rem; /* Ajusta el ancho aquí */
+  height: 2rem; /* Ajusta la altura aquí */
 }
 
 .switch input {
@@ -363,16 +377,16 @@ $heights: (
   bottom: 0;
   background-color: rgba($primary-color, 0.05);
   border-radius: $border-radius-secondary;
-  padding: 5px;
+  padding: 0.5rem; /* Ajusta el padding aquí */
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 16px; /* Ajusta la altura aquí */
-  width: 16px; /* Ajusta el ancho aquí */
-  left: 2px;
-  bottom: 2px;
+  height: 1.6rem; /* Ajusta la altura aquí */
+  width: 1.6rem; /* Ajusta el ancho aquí */
+  left: 0.2rem; /* Ajusta el espacio aquí */
+  bottom: 0.2rem; /* Ajusta el espacio aquí */
   background-color: $color-white;
   transition: $transition-duration;
   border-radius: 50%;
@@ -383,13 +397,18 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(20px); /* Ajusta la distancia de desplazamiento aquí */
+  transform: translateX(
+    1.9rem
+  ); /* Ajusta la distancia de desplazamiento aquí */
 }
+
+//* Estilos para form check*/
 
 .form-check-input {
   background-color: rgba($primary-color, 0.05);
   @extend .border-primary;
   background-image: none;
+  font-size: 1.4rem;
 }
 
 .form-check-input:checked {

@@ -1,6 +1,6 @@
-// Script para index.js
+// Script para index.ejs
 
-// Función para cambiar el login de usuario a admin mediante el checkbox (index.js)
+// Función para cambiar el login de usuario a admin mediante el checkbox (index.ejs)
 document.getElementById("usePassword").addEventListener("change", function () {
   var form1 = document.getElementById("myForm");
   var form2 = document.getElementById("loginAdminForm");
@@ -13,7 +13,7 @@ document.getElementById("usePassword").addEventListener("change", function () {
   }
 });
 
-// Función para mostrar u ocultar la contraseña en el login de user
+// Función para mostrar u ocultar la contraseña en el login de user (index.ejs)
 function togglePassword() {
   var passwordInput = document.getElementById("identificacion");
   var toggleIcon = document.getElementById("toggle-icon");
@@ -27,10 +27,10 @@ function togglePassword() {
   }
 }
 
-// Función para mostrar u ocultar la contraseña en el login de admin (index.js)
+// Función para mostrar u ocultar la contraseña en el login de admin (index.ejs)
 function togglePasswordAdmin() {
   var passwordInput = document.getElementById("contrasena");
-  var toggleIcon = document.getElementById("toggle-icon");
+  var toggleIcon = document.getElementById("toggle-icon-admin");
 
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
@@ -43,13 +43,11 @@ function togglePasswordAdmin() {
 
 // Script para staff.ejs
 
-// Función para mostrar u ocultar un aviso
+// Modal para modificar información de empleado
+
+// Función para mostrar el modal
 function mostrarAvisoModifyStaff(empleado) {
-  console.log("ID del empleado seleccionado:", empleado.id_empleado);
-  console.log("Empleado seleccionado:", empleado);
-
   // Llenar los campos del formulario con la información del empleado
-
   document.getElementById("id_empleado_modificar").value = empleado.id_empleado;
   document.getElementById("identificacion_modificar").value =
     empleado.identificacion;
@@ -59,44 +57,47 @@ function mostrarAvisoModifyStaff(empleado) {
   document.getElementById("rol_modificar").value = empleado.rol || "";
   document.getElementById("estado_modificar").value = empleado.estado || "";
 
-  // Mostrar el cuadro de diálogo personalizado
+  // Mostrar el modal
   document.getElementById("dialog-overlay").style.display = "flex";
 }
+
 function cerrarAviso() {
-  // Cerrar el cuadro de diálogo personalizado
+  // cerrar el modal
   document.getElementById("dialog-overlay").style.display = "none";
 }
-function guardarCambios() {
-  // Obtener el valor del id_empleado
-  const idEmpleado = document.getElementById("id_empleado_modificar").value;
 
-  // Construir la URL dinámicamente
+// Función para guardar los cambios con url dinámica
+function guardarCambios() {
+  const idEmpleado = document.getElementById("id_empleado_modificar").value;
   const url = `/admin/staff/update/${idEmpleado}`;
 
-  // Actualizar el atributo action del formulario con la URL construida
   document.getElementById("modificarEmpleadoForm").action = url;
-
-  // Enviar el formulario
   document.getElementById("modificarEmpleadoForm").submit();
 }
 
-// Script para profile.ejs
+// Modal para agregar personal
 
-function mostrarAvisoUser() {
-  document.getElementById("dialog-overlay").style.display = "flex";
-}
-function mostrarAvisoUser() {
-  document.getElementById("dialog-overlay").style.display = "flex";
+function mostrarAvisoAddStaff() {
+  // Mostrar el modal
+  document.getElementById("dialog-overlay-add-staff").style.display = "flex";
 }
 
 function cerrarAvisoAddStaff() {
-  // Cerrar el cuadro de diálogo personalizado
+  // Cerrar el modal
   document.getElementById("dialog-overlay-add-staff").style.display = "none";
 }
 
-function mostrarAvisoAddStaff() {
-  // Cerrar el cuadro de diálogo personalizado
-  document.getElementById("dialog-overlay-add-staff").style.display = "flex";
+// profile.ejs
+
+// Modal normal
+function mostrarAvisoUser() {
+  // Mostrar el modal
+  document.getElementById("dialog-overlay").style.display = "flex";
+}
+
+function mostrarAvisoUser() {
+  // Cerrar el modal
+  document.getElementById("dialog-overlay").style.display = "flex";
 }
 
 // Script para home.ejs

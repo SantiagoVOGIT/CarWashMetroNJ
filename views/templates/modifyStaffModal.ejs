@@ -44,7 +44,7 @@
             name="correo"
             value="<%= empleado.correo %>"
             class="w-100 input-primary mt-3"
-            placeholder="Correo"
+            placeholder="Correo eléctronico"
             required />
           <input
             type="text"
@@ -57,12 +57,12 @@
         </div>
 
         <!-- Selector para el estado -->
-        <div class="row mt-3 w-100">
-          <div class="col-6 p-0 pe-3">
+        <div class="row mt-3 w-100 h-100">
+          <div class="col-6 p-0 pe-3 h-100">
             <select
               id="rol_modificar"
               name="rol"
-              class="w-100 input-primary"
+              class="w-100 input-primary h-100"
               required>
               <!-- Opciones para el rol del empleado -->
               <option value="Gerente">Gerente</option>
@@ -75,7 +75,7 @@
               <option value="Contador">Contador</option>
             </select>
           </div>
-          <div class="col-6 p-0">
+          <div class="col-6 p-0 h-100">
             <select
               name="estado"
               id="estado_modificar"
@@ -88,20 +88,25 @@
         </div>
 
         <!-- Botones para cancelar y guardar cambios -->
-        <div
-          class="row mt-5 w-100 d-flex flex-column flex-lg-row justify-content-end">
-          <div class="w-50 d-flex justify-content-end">
+
+        <div class="row mt-5 w-100 d-flex justify-content-end">
+          <div class="col-6 col-lg-3 col-md-4 p-0 pe-3">
             <button
               title="Cancelar cambios"
-              class="button-danger-primary w-50"
+              class="button-danger-primary w-100 p-2 d-flex align-items-center justify-content-center"
               onclick="cerrarAviso()"
               type="button">
+              <i class="material-icons me-1"> block </i>
               Cancelar
             </button>
+          </div>
+          <div class="col-6 col-lg-3 col-md-4 p-0">
             <button
+              type="submit"
+              onclick="guardarCambios()"
               title="Guardar cambios"
-              class="button-primary w-50 ms-3"
-              onclick="guardarCambios()">
+              class="button-primary w-100 w-100 p-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons me-1"> save </i>
               Guardar
             </button>
           </div>

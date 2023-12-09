@@ -1,4 +1,4 @@
-// modulos o partials de sass
+// Módulos de SASS
 @use "custom-styles";
 @use "reset";
 @use "navbar";
@@ -13,8 +13,8 @@
 // Estilos globales
 
 :root {
-  // Heredor del rem responsive
-  font-size: 62.5%;
+  // Ajustar size para el heredor del rem
+  font-size: 10px;
   font-family: $font-primary;
   font-weight: 600;
 }
@@ -23,7 +23,6 @@ body,
 html {
   background-color: $background-color-primary;
   color: $text-color;
-  font-size: 1.4rem;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -31,11 +30,24 @@ html {
 
 // Responsive globales
 
-// lg
+// SM
+
+@media (max-width: 576px) {
+  :root {
+    font-size: 9.5px;
+  }
+
+  // Complemento responsive para ajustar el width de los contenedores principales en diferentes tamaños
+  .media-sm-w-100 {
+    width: 100% !important;
+  }
+}
+
+// LG
 @media (max-width: 991px) {
   // heredor del rem global
-  body {
-    font-size: 1.2rem;
+  :root {
+    font-size: 10px;
   }
 
   // Complemento responsive para ajustar el width de los contenedores principales en diferentes tamaños
@@ -44,15 +56,42 @@ html {
   }
 }
 
-// sm
+// XL
 
-@media (max-width: 576px) {
-  body {
-    font-size: 1.2rem;
+@media (min-width: 1200px) {
+  :root {
+    font-size: 10px;
   }
+}
 
-  // Complemento responsive para ajustar el width de los contenedores principales en diferentes tamaños
-  .media-sm-w-100 {
-    width: 100% !important;
+// XLL
+
+@media (min-width: 1400px) {
+  :root {
+    font-size: 11px;
+  }
+}
+
+// 1080p (HD): 1920 × 1080.
+
+@media (min-width: 1920px) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+// 1440p (2K): 2560 × 1440.
+
+@media (min-width: 2560px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+// 2160p (4K): 3840 × 2160.
+
+@media (min-width: 3840px) {
+  :root {
+    font-size: 24px;
   }
 }

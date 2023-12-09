@@ -42,7 +42,7 @@
             name="correo"
             value=""
             class="w-100 input-primary mt-3"
-            placeholder="Correo"
+            placeholder="Correo eléctronico"
             required />
 
           <!-- Campo para el teléfono del empleado -->
@@ -79,20 +79,23 @@
         </div>
 
         <!-- Botón para guardar cambios -->
-        <div
-          class="row mt-5 w-100 d-flex flex-column flex-lg-row justify-content-end">
-          <div class="w-50 d-flex justify-content-end">
+        <div class="row mt-5 w-100 d-flex justify-content-end">
+          <div class="col-6 col-lg-3 col-md-4 p-0 pe-3">
             <button
               title="Cancelar cambios"
-              class="button-danger-primary w-50"
+              class="button-danger-primary w-100 p-2 d-flex align-items-center justify-content-center"
               onclick="cerrarAvisoAddStaff()"
               type="button">
+              <i class="material-icons me-1"> block </i>
               Cancelar
             </button>
+          </div>
+          <div class="col-6 col-lg-3 col-md-4 p-0">
             <button
               type="submit"
               title="Guardar cambios"
-              class="button-primary w-50 ms-3">
+              class="button-primary w-100 w-100 p-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons me-1"> save </i>
               Guardar
             </button>
           </div>

@@ -46,7 +46,7 @@
                 <div class="icon-container">
                   <i class="material-icons"> person </i>
                 </div>
-                <h3 class="ms-3 opacity-75">
+                <h3 class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= user.nombre %> <%= user.apellido %>
                 </h3>
               </div>
@@ -58,7 +58,7 @@
                 <div class="icon-container">
                   <i class="material-icons"> badge </i>
                 </div>
-                <h3 class="ms-3 font-secondary opacity-75">
+                <h3 class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= user.identificacion %>
                 </h3>
               </div>
@@ -70,7 +70,7 @@
                 <div class="icon-container">
                   <i class="material-icons"> call </i>
                 </div>
-                <h3 class="ms-3 font-secondary opacity-75">
+                <h3 class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                   <%= user.telefono %>
                 </h3>
               </div>
@@ -128,7 +128,7 @@
                 <i class="material-icons">directions_car</i>
                 <% } %>
               </div>
-              <h2 class="ms-3 opacity-75">
+              <h2 class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                 <%= user.vehiculo.tipo_vehiculo %>
               </h2>
             </div>
@@ -138,7 +138,9 @@
               <div class="icon-container">
                 <i class="material-icons"> branding_watermark </i>
               </div>
-              <h2 class="ms-3 opacity-75"><%= user.vehiculo.marca %></h2>
+              <h2 class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
+                <%= user.vehiculo.marca %>
+              </h2>
             </div>
 
             <!-- Contenedor de info de placa de vehículo -->
@@ -146,7 +148,7 @@
               <div class="icon-container">
                 <i class="material-icons"> money </i>
               </div>
-              <h2 class="ms-3 font-secondary opacity-75">
+              <h2 class="ms-3 opacity-75 font-secondary rem-1-4 weight-600">
                 <%= user.vehiculo.placa %>
               </h2>
             </div>

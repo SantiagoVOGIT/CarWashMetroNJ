@@ -1,21 +1,24 @@
 @import "variables";
 
+// Fondo del navbar
+
 .navbar-background {
   background-color: rgba($background-color-secondary, 0.5);
   backdrop-filter: $blur-primary;
 }
 
-// Estilado de los textos con contenedores de iconos
+// Estilado de los contenedores de texto con iconos
 
+// Contenedor de icono de texto del navbar
 .text-icon-container {
   background-color: $background-color-tertiary;
   border-radius: $border-radius-tertiary;
   color: $text-color;
   font-size: 1.5rem;
-  padding: 8px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  padding-right: 9px;
+  padding: 0.8rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-right: 0.9rem;
   &:hover {
     box-shadow: $shadow-secondary;
   }
@@ -27,9 +30,9 @@
   align-items: center;
   background-color: $primary-color;
   border-radius: $border-radius-tertiary;
-  padding: 4px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding: 0.4rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 
 .icon-container-danger {
